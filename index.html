@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm bánh online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-birthday-cake"></i></div>
+                <div class="logo-text">
+                    Sweet Crumbs
+                    <small>Bakery &amp; Patisserie</small>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                <a href="products.html" class="nav-link"><i class="fas fa-th-large"></i> Products</a>
+                <a href="cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            </nav>
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="homeSearch" placeholder="Search our bakery...">
+            </div>
+            <a href="cart.html" class="cart-icon" id="headerCart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge">3</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ========== HERO SLIDER ========== -->
+    <section class="hero-slider" id="heroSlider">
+        <button class="slider-btn slider-btn-prev" id="sliderPrev" aria-label="Previous slide">&#8249;</button>
+        <button class="slider-btn slider-btn-next" id="sliderNext" aria-label="Next slide">&#8250;</button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <div class="slide-content">
+                <span class="slide-badge"><i class="fas fa-star"></i> Fresh From Our Oven</span>
+                <h2>Freshly Baked Cakes Every Day</h2>
+                <p>Handcrafted cakes made with premium ingredients for every special occasion.</p>
+                <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
+            </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop" alt="Delicious freshly baked chocolate cake">
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <span class="slide-badge"><i class="fas fa-heart"></i> For Special Moments</span>
+                <h2>Sweet Moments, Beautiful Memories</h2>
+                <p>Celebrate birthdays and special moments with our delicious cakes.</p>
+                <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
+            </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1736959574670-a8ace9856e1c?w=800&h=600&fit=crop" alt="Beautiful birthday celebration cake">
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+            <div class="slide-content">
+                <span class="slide-badge"><i class="fas fa-leaf"></i> Daily Freshness</span>
+                <h2>Fresh Pastries &amp; Desserts</h2>
+                <p>From croissants to macarons, discover freshly baked treats every day.</p>
+                <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
+            </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1612201142855-7873bc1661b4?w=800&h=600&fit=crop" alt="Colorful French macarons and pastries">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURED CAKES ========== -->
+    <section class="section" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Cakes</h2>
+                <p>Our most loved creations, freshly baked every morning for you</p>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-name="Classic Chocolate Layer Cake" data-price="42.99">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" alt="Classic Chocolate Layer Cake">
+                        <span class="product-card-tag">Best Seller</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Classic Chocolate Layer Cake</h3>
+                        <p>Rich, moist chocolate layers with silky ganache frosting. A timeless favorite for every celebration.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$42.99</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="1">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card" data-name="Strawberry Shortcake" data-price="38.50">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop" alt="Strawberry Shortcake">
+                        <span class="product-card-tag">Seasonal</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Strawberry Shortcake</h3>
+                        <p>Light vanilla sponge layered with fresh strawberries and whipped cream. Springtime in every bite.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$38.50</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="2">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card" data-name="Red Velvet Dream" data-price="45.00">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop" alt="Red Velvet Dream">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Red Velvet Dream</h3>
+                        <p>Velvety crimson cake with cream cheese frosting. Elegant, indulgent, and utterly irresistible.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$45.00</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="3">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card" data-name="French Macaron Tower" data-price="65.00">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=400&h=300&fit=crop" alt="French Macaron Tower">
+                        <span class="product-card-tag">New</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>French Macaron Tower</h3>
+                        <p>A stunning tower of delicate almond macarons in assorted flavors. Perfect for parties and events.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$65.00</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="4">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="product-card" data-name="Cinnamon Roll Bundt Cake" data-price="35.99">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=400&h=300&fit=crop" alt="Cinnamon Roll Bundt Cake">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Cinnamon Roll Bundt Cake</h3>
+                        <p>Warm cinnamon swirls in a tender bundt cake, drizzled with vanilla glaze. Comfort in cake form.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$35.99</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="5">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="product-card" data-name="Triple Berry Cheesecake" data-price="48.99">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop" alt="Triple Berry Cheesecake">
+                        <span class="product-card-tag">Popular</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Triple Berry Cheesecake</h3>
+                        <p>Creamy New York-style cheesecake topped with a vibrant mixed berry compote. Pure decadence.</p>
+                        <div class="product-card-footer">
+                            <span class="product-price">$48.99</span>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="add-to-cart-btn" data-product-id="6">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <a href="product-details.html" class="view-details-btn">
+                            <i class="fas fa-eye"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--space-2xl);">
+                <a href="products.html" class="btn btn-outline">
+                <i class="fas fa-th-large"></i> View All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="section" style="background: var(--color-white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>We pour our hearts into every creation, using only the finest ingredients</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon pink">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We source the finest organic ingredients from local farms. No artificial preservatives, no shortcuts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon brown">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Made with Love</h3>
+                    <p>Every cake is handcrafted by our master bakers with decades of experience and genuine passion.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon gold">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Same Day Delivery</h3>
+                    <p>Fresh from oven to doorstep. We deliver your orders on the same day to ensure maximum freshness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it &mdash; hear from our happy customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>The chocolate cake was absolutely divine! My guests couldn't stop complimenting it. Sweet Crumbs has become my go-to for every celebration.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                        <div class="testimonial-author-info">
+                            <strong>Sarah Johnson</strong>
+                            <span>Regular Customer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>I ordered a custom birthday cake and it exceeded all expectations. The attention to detail and taste was remarkable. Highly recommended!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                        <div class="testimonial-author-info">
+                            <strong>Michael Chen</strong>
+                            <span>Wedding Client</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>Fresh, delicious, and delivered right on time! The macarons were like little bites of heaven. I order from here at least twice a month.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                        <div class="testimonial-author-info">
+                            <strong>Maria Lopez</strong>
+                            <span>Loyal Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        Sweet Crumbs
+                        <small>Bakery &amp; Patisserie</small>
+                    </div>
+                    <p>Creating sweet memories since 2015. Our passion for baking drives everything we do, from sourcing the finest ingredients to delivering happiness to your doorstep.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                        <li><a href="cart.html"><i class="fas fa-chevron-right"></i> Cart</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Wedding Cakes</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Birthday Cakes</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Pastries</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Macarons</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Cheesecakes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Baker Street, Sweet City, SC 12345</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> hello@sweetcrumbs.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 7AM - 8PM &bull; Sun: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sweet Crumbs Bakery. All rights reserved. Baked with <i class="fas fa-heart" style="color: var(--color-light-pink);"></i> and a lot of butter.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Product added to cart</span>
+    </div>
+    <script>
+        /* === Hero Slider === */
+        (function () {
+        var slider = document.getElementById('heroSlider');
+        var slides = slider.querySelectorAll('.slide');
+        var dotsContainer = document.getElementById('sliderDots');
+        var prevBtn = document.getElementById('sliderPrev');
+        var nextBtn = document.getElementById('sliderNext');
+        var totalSlides = slides.length;
+        var currentIndex = 0;
+        var autoPlayInterval = null;
+        var autoPlayDelay = 5000;
+        
+        // Dynamically create navigation dots
+        function createDots() {
+            for (var i = 0; i < totalSlides; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.setAttribute('data-index', i);
+            dotsContainer.appendChild(dot);
+            }
+        }
+        
+        // Go to a specific slide
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            var dots = dotsContainer.querySelectorAll('.slider-dot');
+            dots[currentIndex].classList.remove('active');
+        
+            currentIndex = (index + totalSlides) % totalSlides;
+        
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+        
+        // Next slide
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+        
+        // Start auto-play
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+        }
+        
+        // Stop auto-play
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+            }
+        }
+        
+        // Reset auto-play timer (for manual navigation)
+        function resetAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', function () {
+            nextSlide();
+            resetAutoPlay();
+        });
+        
+        prevBtn.addEventListener('click', function () {
+            prevSlide();
+            resetAutoPlay();
+        });
+        
+        // Dots click delegation
+        dotsContainer.addEventListener('click', function (e) {
+            if (e.target.classList.contains('slider-dot')) {
+            var index = parseInt(e.target.getAttribute('data-index'), 10);
+            goToSlide(index);
+            resetAutoPlay();
+            }
+        });
+        
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoPlay);
+        slider.addEventListener('mouseleave', startAutoPlay);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') { prevSlide(); resetAutoPlay(); }
+            if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
+        });
+        
+        // Initialize
+        createDots();
+        startAutoPlay();
+        })();
+        
+        /* === Toast Notification === */
+        function showToast() {
+        var toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show'); }, 3000);
+        }
+        document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() { showToast(); });
+        });
+    </script>
+</body>
+</html>
