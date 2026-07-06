@@ -1,0 +1,116 @@
+.cart__chooseMethod button img {
+  width: 17px;
+  height: 17px;
+}
+
+.btn--cart {
+  padding: 12px;
+}
+
+.btn--cart:hover {
+  background-color: rgba(61, 43, 31, 0.8);
+  color: #fff;
+}
+
+.cart__chooseMethod {
+  padding: 21px;
+}
+
+.personal__order {
+  padding: 30px 12px;
+  margin: 17px 0;
+}
+
+.personal__form {
+  margin-bottom: 12px;
+}
+
+.personal__login--promotions {
+  padding: 10px;
+  background-color: rgba(215, 247, 215, 0.5);
+}
+
+.personal__login--promotions img {
+  width: 17px;
+  height: 17px;
+}
+
+.promotions__link {
+  margin-bottom: 0;
+}
+
+.promotions__link span {
+  color: green;
+  font-weight: bold;
+}
+
+.orther__person-order img {
+  width: 17px;
+  height: 17px;
+}
+
+.checked__input {
+  width: auto;
+}
+
+.orther__person-order {
+  padding: 12px;
+}
+
+.personal__content p {
+  margin-bottom: 0;
+}
+
+.personal__content--header {
+  font-weight: bold;
+}
+
+.address__container {
+  padding: 16px 0;
+}
+
+.address__container label {
+  font-weight: bold;
+}
+
+.select__Address--City button img,
+.select__Address--district button img {
+  width: 17px;
+  height: 17px;
+  margin-left: 10px;
+}
+
+.select__Address--City p,
+.select__Address--district p,
+.select__Address--ward p {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.select__Address--City--dropdown,
+.select__Address--district--dropdown {
+  padding: 8px 12px;
+}
+
+.select__Address--Container {
+  margin-bottom: 17px;
+}
+
+hr {
+  border: none;
+  height: 0.5px;
+  background: #ddd;
+}
+
+input[type="checkbox"] {
+  accent-color: green;
+}
+
+.Select__Date {
+  margin-top: 5px;
+}
+
+.Select__Date p {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
