@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sweet Crumbs Bakery - Products</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<!-- ========== HEADER ========== -->
+		<header class="header">
+			<div class="container">
+				<a href="index.html" class="logo">
+					<!-- <div class="logo-icon"><i class="fas fa-birthday-cake"></i></div> -->
+					<div class="logo-image">
+						<img src="images/web_logo_small.png">
+					</div>
+					<div class="logo-text">
+						Maison Sucrée Bakery
+						<small>Bakery &amp; Patisserie</small>
+					</div>
+				</a>
+				<nav class="nav-menu">
+					<a href="index.html" class="nav-link"><i class="fas fa-home"></i> Trang chủ</a>
+                    <a href="products.html" class="nav-link active"><i class="fas fa-th-large"></i> Sản phẩm</a>
+                    <a href="cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Giỏ hàng</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Liên hệ</a>
+				</nav>
+				<div class="search-box">
+					<i class="fas fa-search search-icon"></i>
+					<input type="text" id="homeSearch" placeholder="Search our bakery...">
+				</div>
+				<a href="cart.html" class="cart-icon" id="headerCart">
+				<i class="fas fa-shopping-cart"></i>
+				<span class="cart-badge">3</span>
+				</a>
+			</div>
+		</header>
+		<!-- ========== PRODUCTS SECTION ========== -->
+		<section class="section">
+			<div class="container">
+				<div class="section-title">
+					<h2>Our Products</h2>
+					<p>Explore our full collection of handcrafted treats</p>
+				</div>
+				<div class="products-layout">
+					<!-- Filter Sidebar -->
+					<aside class="filter-sidebar">
+						<h3><i class="fas fa-filter"></i> Filters</h3>
+						<div class="filter-group">
+							<label for="searchKeyword">Search by Name</label>
+							<input type="text" id="searchKeyword" placeholder="e.g. Chocolate Cake">
+						</div>
+						<div class="filter-group">
+							<label>Price Range</label>
+							<div class="price-range">
+								<input type="number" id="minPrice" placeholder="Min $" min="0" step="0.01">
+								<input type="number" id="maxPrice" placeholder="Max $" min="0" step="0.01">
+							</div>
+						</div>
+						<div class="filter-group">
+							<label for="sortBy">Sort By</label>
+							<select id="sortBy">
+								<option value="">Default</option>
+								<option value="name-asc">Name A - Z</option>
+								<option value="name-desc">Name Z - A</option>
+								<option value="price-asc">Price: Low to High</option>
+								<option value="price-desc">Price: High to Low</option>
+							</select>
+						</div>
+						<button class="apply-filters-btn" id="applyFiltersBtn">
+						<i class="fas fa-search"></i> Apply Filters
+						</button>
+					</aside>
+					<!-- Product Grid Area -->
+					<div>
+						<div class="products-header">
+							<span class="products-count">Showing <strong>12</strong> products</span>
+						</div>
+						<div class="product-grid" id="productGrid">
+							<!-- Product 1 -->
+							<div class="product-card" data-name="Classic Chocolate Layer Cake" data-price="42.99">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" alt="Classic Chocolate Layer Cake">
+									<span class="product-card-tag">Best Seller</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Classic Chocolate Layer Cake</h3>
+									<p>Rich, moist chocolate layers with silky ganache frosting.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$42.99</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="1">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 2 -->
+							<div class="product-card" data-name="Strawberry Shortcake" data-price="38.50">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop" alt="Strawberry Shortcake">
+									<span class="product-card-tag">Seasonal</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Strawberry Shortcake</h3>
+									<p>Light vanilla sponge layered with fresh strawberries and cream.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$38.50</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="2">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 3 -->
+							<div class="product-card" data-name="Red Velvet Dream" data-price="45.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop" alt="Red Velvet Dream">
+								</div>
+								<div class="product-card-body">
+									<h3>Red Velvet Dream</h3>
+									<p>Velvety crimson cake with cream cheese frosting.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$45.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="3">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 4 -->
+							<div class="product-card" data-name="French Macaron Tower" data-price="65.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=400&h=300&fit=crop" alt="French Macaron Tower">
+									<span class="product-card-tag">New</span>
+								</div>
+								<div class="product-card-body">
+									<h3>French Macaron Tower</h3>
+									<p>A stunning tower of delicate almond macarons in assorted flavors.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$65.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="4">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 5 -->
+							<div class="product-card" data-name="Cinnamon Roll Bundt Cake" data-price="35.99">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=400&h=300&fit=crop" alt="Cinnamon Roll Bundt Cake">
+								</div>
+								<div class="product-card-body">
+									<h3>Cinnamon Roll Bundt Cake</h3>
+									<p>Warm cinnamon swirls in a tender bundt cake with vanilla glaze.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$35.99</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="5">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 6 -->
+							<div class="product-card" data-name="Triple Berry Cheesecake" data-price="48.99">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop" alt="Triple Berry Cheesecake">
+									<span class="product-card-tag">Popular</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Triple Berry Cheesecake</h3>
+									<p>Creamy New York-style cheesecake with mixed berry compote.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$48.99</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="6">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 7 -->
+							<div class="product-card" data-name="Lemon Meringue Tart" data-price="32.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&h=300&fit=crop" alt="Lemon Meringue Tart">
+								</div>
+								<div class="product-card-body">
+									<h3>Lemon Meringue Tart</h3>
+									<p>Tangy lemon curd in a buttery crust, topped with torched meringue.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$32.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="7">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 8 -->
+							<div class="product-card" data-name="Raspberry Almond Tart" data-price="36.50">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop" alt="Raspberry Almond Tart">
+									<span class="product-card-tag">Chef's Pick</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Raspberry Almond Tart</h3>
+									<p>Buttery almond frangipane with fresh raspberries on puff pastry.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$36.50</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="8">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 9 -->
+							<div class="product-card" data-name="Carrot Cake Supreme" data-price="40.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1621955511667-e2c316e57194?w=400&h=300&fit=crop" alt="Carrot Cake Supreme">
+								</div>
+								<div class="product-card-body">
+									<h3>Carrot Cake Supreme</h3>
+									<p>Moist spiced carrot cake with walnuts and cream cheese frosting.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$40.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="9">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 10 -->
+							<div class="product-card" data-name="Hazelnut Praline Mousse" data-price="52.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" alt="Hazelnut Praline Mousse">
+									<span class="product-card-tag">Premium</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Hazelnut Praline Mousse</h3>
+									<p>Layers of hazelnut mousse, praline crunch, and dark chocolate glaze.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$52.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="10">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 11 -->
+							<div class="product-card" data-name="Vanilla Bean Cupcake Set" data-price="28.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=400&h=300&fit=crop" alt="Vanilla Bean Cupcake Set">
+								</div>
+								<div class="product-card-body">
+									<h3>Vanilla Bean Cupcake Set</h3>
+									<p>Six fluffy vanilla cupcakes with buttercream frosting. Set of 6.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$28.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="11">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- Product 12 -->
+							<div class="product-card" data-name="Pistachio Rose Cake" data-price="55.00">
+								<div class="product-card-image">
+									<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=300&fit=crop" alt="Pistachio Rose Cake">
+									<span class="product-card-tag">Exclusive</span>
+								</div>
+								<div class="product-card-body">
+									<h3>Pistachio Rose Cake</h3>
+									<p>Delicate pistachio sponge with rose water buttercream and crushed pistachios.</p>
+									<div class="product-card-footer">
+										<span class="product-price">$55.00</span>
+									</div>
+									<div class="product-card-actions">
+										<button class="add-to-cart-btn" data-product-id="12">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+										</button>
+										<a href="product-details.html" class="view-details-btn">
+										<i class="fas fa-eye"></i> Details
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ========== FOOTER ========== -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<div class="logo-text">
+							Sweet Crumbs
+							<small>Bakery &amp; Patisserie</small>
+						</div>
+						<p>Creating sweet memories since 2015. Our passion for baking drives everything we do, from sourcing the finest ingredients to delivering happiness to your doorstep.</p>
+						<div class="footer-social">
+							<a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+							<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+							<a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+							<a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+							<a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+						</div>
+					</div>
+					<div>
+						<h4>Quick Links</h4>
+						<ul class="footer-links">
+							<li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+							<li><a href="cart.html"><i class="fas fa-chevron-right"></i> Cart</a></li>
+							<li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+							<li><a href="policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+						</ul>
+					</div>
+					<div>
+						<h4>Categories</h4>
+						<ul class="footer-links">
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Wedding Cakes</a></li>
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Birthday Cakes</a></li>
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Pastries</a></li>
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Macarons</a></li>
+							<li><a href="products.html"><i class="fas fa-chevron-right"></i> Cheesecakes</a></li>
+						</ul>
+					</div>
+					<div>
+						<h4>Contact Info</h4>
+						<ul class="footer-contact">
+							<li><i class="fas fa-map-marker-alt"></i> 123 Baker Street, Sweet City, SC 12345</li>
+							<li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+							<li><i class="fas fa-envelope"></i> hello@sweetcrumbs.com</li>
+							<li><i class="fas fa-clock"></i> Mon-Sat: 7AM - 8PM &bull; Sun: 8AM - 6PM</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p>&copy; 2025 Sweet Crumbs Bakery. All rights reserved. Baked with <i class="fas fa-heart" style="color: var(--color-light-pink);"></i> and a lot of butter.</p>
+				</div>
+			</div>
+		</footer>
+		<!-- Toast Notification -->
+		<div class="toast" id="toast">
+			<i class="fas fa-check-circle"></i>
+			<span>Product added to cart</span>
+		</div>
+		<script>
+			function showToast() {
+			    var toast = document.getElementById('toast');
+			    toast.classList.add('show');
+			    setTimeout(function() { toast.classList.remove('show'); }, 3000);
+			}
+			document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+			  btn.addEventListener('click', function() { showToast(); });
+			});
+
+            let urlParams = new URLSearchParams(window.location.search);
+            let searchedKeyword = urlParams.get("keyword");
+            console.log("keyword param : " + searchedKeyword);
+            console.log("productId param : " + urlParams.get("productId"));
+		</script>
+	</body>
+</html>
