@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Crumbs Bakery - Contact Us</title>
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-birthday-cake"></i></div>
+        <div class="logo-text">
+          Sweet Crumbs
+          <small>Bakery &amp; Patisserie</small>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="products.html" class="nav-link"><i class="fas fa-th-large"></i> Products</a>
+        <a href="cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+        <a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a>
+      </nav>
+
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="homeSearch" placeholder="Search our bakery...">
+      </div>
+
+      <a href="cart.html" class="cart-icon" id="headerCart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge">3</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== CONTACT HERO ========== -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you. Whether it's a question, feedback, or a custom order request — reach out anytime!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Contact Info Cards -->
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4>Visit Us</h4>
+            <p>123 Baker Street<br>Sweet City, SC 12345</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <h4>Call Us</h4>
+            <p>+1 (555) 123-4567<br>Mon - Sat, 7AM - 8PM</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h4>Email Us</h4>
+            <p>hello@sweetcrumbs.com<br>orders@sweetcrumbs.com</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h4>Business Hours</h4>
+            <p>Mon - Sat: 7AM - 8PM<br>Sunday: 8AM - 6PM</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Your Name <span>*</span></label>
+                <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Your Email <span>*</span></label>
+                <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" name="phone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject <span>*</span></label>
+              <select id="contactSubject" name="subject" required>
+                <option value="" disabled selected>Choose a topic...</option>
+                <option value="general">General Inquiry</option>
+                <option value="order">Order Question</option>
+                <option value="custom">Custom Cake Request</option>
+                <option value="feedback">Feedback</option>
+                <option value="catering">Catering & Events</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Your Message <span>*</span></label>
+              <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary contact-submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAP SECTION ========== -->
+  <section class="contact-map-section">
+    <div class="container">
+      <div class="contact-map-wrapper">
+        <div class="contact-map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <h4>Find Us on the Map</h4>
+          <p>123 Baker Street, Sweet City, SC 12345</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-outline btn-small">
+            <i class="fas fa-directions"></i> Get Directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">
+            Sweet Crumbs
+            <small>Bakery &amp; Patisserie</small>
+          </div>
+          <p>Creating sweet memories since 2015. Our passion for baking drives everything we do, from sourcing the finest ingredients to delivering happiness to your doorstep.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+            <li><a href="cart.html"><i class="fas fa-chevron-right"></i> Cart</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+            <li><a href="policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Wedding Cakes</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Birthday Cakes</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Pastries</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Macarons</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Cheesecakes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Baker Street, Sweet City, SC 12345</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> hello@sweetcrumbs.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Sat: 7AM - 8PM &bull; Sun: 8AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sweet Crumbs Bakery. All rights reserved. Baked with <i class="fas fa-heart" style="color: var(--color-light-pink);"></i> and a lot of butter.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span>Product added to cart</span>
+  </div>
+
+  <script>
+    // Toast function
+    function showToast() {
+      var toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(function() {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Attach to all Add to Cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        showToast();
+      });
+    });
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you shortly.');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
