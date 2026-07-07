@@ -5,6 +5,9 @@
 function showProductsList(productsData, containerId) {
     let productsHtml = "";
 
+    // console.log("Ta co products data :");
+    // console.log(productsData);
+
     for (let i=0; i < productsData.length; i++) {
         // open div product-card
         productsHtml += '<div class="product-card">';
@@ -31,5 +34,3 @@ function showProductsList(productsData, containerId) {
 
     document.getElementById(containerId).innerHTML = productsHtml;
 }
-
-showProductsList(productsList, "featuredProductsBox");
