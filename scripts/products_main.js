@@ -34,3 +34,35 @@ function showProductsList(productsData, containerId) {
 
     document.getElementById(containerId).innerHTML = productsHtml;
 }
+
+/**
+ * Ham lay ra object product tu array productList dua theo productId truyen vao
+*/
+
+function getProductDetailsById(productId) {
+    let productObj = null;
+
+    for(let i=0; i < productsList.length; i++) {
+        if (productsList[i].id == productId) {
+            console.log("[getProductDetailsById] Da tim thay product co id " + productId);
+            console.log(productsList[i]);
+
+            productObj = structuredClone(productsList[i]);
+            //productObj = { ...productsList[i] };
+
+            // productObj.name = "bánh quế Cosy mùi dâu";
+            // productObj.price = 315000;
+            // productObj.relatedProductIds = [233, 543];
+
+            // console.log("[getProductDetailsById] productObj sau khi thay doi cac attribute :");
+            // console.log(productObj);
+
+            // console.log("[getProductDetailsById] productsList[" + i + "] hien tai :");
+            // console.log(productsList[i]);
+
+            break;
+        }
+    }
+
+    return productObj;
+}
