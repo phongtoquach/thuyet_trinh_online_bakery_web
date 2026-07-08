@@ -1,3 +1,5 @@
+const maxEnteredQuantity = 60;
+
 let productsList = [
     {
         id: 123,
@@ -44,7 +46,7 @@ let productsList = [
             "images/mousse-ngoc-nhan-5.jpg"
         ],
         shortDescription: "Mousse Ngọc Nhãn gây ấn tượng với lớp thạch trong veo bao bọc nhãn độc đáo. Cấu trúc bánh kết hợp hài hòa giữa bạt chocolate đắng nhẹ, mousse nhãn mịn mượt ngọt thanh và điểm nhấn nhân nhãn giòn sần sật quyện cùng hạt dẻ béo bùi. Sự đối lập thú vị giữa các tầng kết cấu và vị trái cây thanh mát mang đến một trải nghiệm tinh tế",
-        description: "<p><strong>Hương vị:</strong>&nbsp;Thanh mát - Ngọt dịu - Béo nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm 3 lớp xen kẽ các lớp:</p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh.</p></li><li><p>Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li></ul><p>Phần trang trí: Trên mặt bánh decor kem topping, nhãn lon, hoa gumpaste, lá húng lủi, choco.</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
+        description: "<p style=\"color: red;\">Đoạn text để test 125</p><p><strong>Hương vị:</strong>&nbsp;Thanh mát - Ngọt dịu - Béo nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm 3 lớp xen kẽ các lớp:</p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh.</p></li><li><p>Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li></ul><p>Phần trang trí: Trên mặt bánh decor kem topping, nhãn lon, hoa gumpaste, lá húng lủi, choco.</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
         isFeatured: true,
         relatedProductIds: [12, 36, 57],
         inStock: true

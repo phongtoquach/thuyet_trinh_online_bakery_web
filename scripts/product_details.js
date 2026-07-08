@@ -41,15 +41,16 @@ function showProductDetailsById(productData) {
                             <button type="button" class="btn-minus" id="btnQuantityMinus">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="text" id="productQuantity" value="1">
+                            <input type="text" id="txtProductQuantity" value="1">
                             <button type="button" class="btn-plus" id="btnQuantityPlus">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
+                    <div class="quantity-error-box" id="quantityErrorBox"></div>
                     
                     <div class="product-detail-actions">
-                        <button class="add-to-cart-btn" id="addToCartBtn" data-product-id="1">
+                        <button class="add-to-cart-btn" id="addToCartBtn" onclick="handleAddProductToCart(` + productData.id + `)">
                         <i class="fas fa-cart-plus"></i> Add to Cart
                         </button>
                         <button class="btn btn-secondary" id="wishlistBtn">
@@ -107,10 +108,217 @@ function showProductDetailsById(productData) {
 
     // set toan bo productHtml vao cho div productDetailsSection
     document.getElementById("productDetailsSection").innerHTML = productHtml;
+
+    // bind event input cho textbox quantity
+    document.getElementById("txtProductQuantity").addEventListener("input", checkQuantityInput);
+    // bind event click cho button +
+    document.getElementById("btnQuantityPlus").addEventListener("click", increaseQuantityForAddToCart);
+    // bind event click cho button -
+    document.getElementById("btnQuantityMinus").addEventListener("click", decreaseQuantityForAddToCart); 
 }
 
-let urlParams = new URLSearchParams(window.location.search);
+/**
+ * Ham check value do user nhap vao textbox quantity
+ * Ham duoc goi ngay moi khi user nhap value vao textbox quantity
+ */
+function checkQuantityInput(event) {
+    // clear content cua quantityErrorBox
+    document.getElementById("quantityErrorBox").innerHTML = "";
 
+    // Ngoai this.value, cung co the dung event.target.value de lay value cua input
+    console.log("[checkQuantityInput] Da bat duoc event input cua textbox quantity! Value : " + event.target.value);
+    
+    // dung regex de bat buoc user chi duoc phep nhap cac ky tu so tu 0 -> 9
+    // Neu user nhap ky tu nao khac 0 -> 9 thi se bi xoa ngay
+    let quantityVal = event.target.value.replace(/[^0-9]/g, '');
+    if (quantityVal != "") {
+        console.log("[checkQuantityInput] user nhap quantity : " + quantityVal);
+
+        quantityVal = Number(quantityVal);
+        if (quantityVal <= 0) {
+            // Neu user nhap quantity = 0 thi set quantity lai thanh 1
+            console.log("[checkQuantityInput] user nhap quantity = " + quantityVal + ". Set lai thanh 1 !");
+            quantityVal = 1;
+
+            showQuantityErrorBox("Nhập số lượng phải từ 1 trở lên");
+        }
+        else if (quantityVal > maxEnteredQuantity) {
+            // Neu user nhap quantity > 99 thi set quantity lai thanh 99
+            console.log("[checkQuantityInput] user nhap quantity = " + quantityVal + ", lon hon muc cho phep. Set lai thanh " + maxEnteredQuantity + " !");
+            quantityVal = maxEnteredQuantity;
+
+            showQuantityErrorBox("Nhập số lượng không được vượt quá " + maxEnteredQuantity);
+        }
+
+        console.log("[checkQuantityInput] quantity sau cung : " + quantityVal);
+    }
+    else {
+        console.log("[checkQuantityInput] user nhap quantity rong. Bo qua !");
+    }
+
+    event.target.value = quantityVal;
+}
+
+
+/**
+ * Ham tang quantity trong textbox Quantity them 1
+ * Ham nay duoc goi moi khi user click button +
+ */
+function increaseQuantityForAddToCart() {
+    // clear content cua quantityErrorBox
+    document.getElementById("quantityErrorBox").innerHTML = "";
+
+    let qtyInputVal = document.getElementById("txtProductQuantity").value.trim();
+    
+    let currentQty = 0;
+    if (qtyInputVal == "") {
+        console.log("[increaseQuantityForAddToCart] textbox quantity hien dang rong. currentQty = 0");
+        currentQty = 0;
+    }
+    else {
+        currentQty = Number(qtyInputVal);
+        console.log("[increaseQuantityForAddToCart] currentQty = " + currentQty);
+    }
+
+    let newQty = currentQty + 1;
+    console.log("[increaseQuantityForAddToCart] newQty = " + newQty);
+    // check newQty co valid hay ko
+    let resultValidateQuantity = validateQuantity(newQty);
+    console.log("[increaseQuantityForAddToCart] Ket qua ham validateQuantity() : ");
+    console.log(resultValidateQuantity);
+
+    if (resultValidateQuantity.isValid == true) {
+        console.log("[increaseQuantityForAddToCart] newQty = " + newQty + " la HOP LE! Update cho textbox Quantity!");
+        // update value moi cho textbox Quantity
+        document.getElementById("txtProductQuantity").value = newQty;
+    }
+    else {
+        console.log("[increaseQuantityForAddToCart] newQty = " + newQty + " KHONG HOP LE! Show error msg!");
+        showQuantityErrorBox(resultValidateQuantity.errorMsg);
+    }
+}
+
+
+/**
+ * Ham giam quantity trong textbox Quantity di 1
+ * Ham nay duoc goi moi khi user click button -
+ */
+function decreaseQuantityForAddToCart() {
+    // clear content cua quantityErrorBox
+    document.getElementById("quantityErrorBox").innerHTML = "";
+
+    let qtyInputVal = document.getElementById("txtProductQuantity").value.trim();
+    
+    let currentQty = 0;
+    if (qtyInputVal == "") {
+        console.log("[decreaseQuantityForAddToCart] textbox quantity hien dang rong. Update textbox quantity thanh 1 ngay !");
+        document.getElementById("txtProductQuantity").value = 1;
+        //currentQty = 0;
+
+        return false;
+    }
+    else {
+        currentQty = Number(qtyInputVal);
+        console.log("[decreaseQuantityForAddToCart] currentQty = " + currentQty);
+    }
+
+    let newQty = currentQty - 1;
+    console.log("[decreaseQuantityForAddToCart] newQty = " + newQty);
+    // check newQty co valid hay ko
+    let resultValidateQuantity = validateQuantity(newQty);
+    console.log("[decreaseQuantityForAddToCart] Ket qua ham validateQuantity() : ");
+    console.log(resultValidateQuantity);
+
+    if (resultValidateQuantity.isValid == true) {
+        console.log("[decreaseQuantityForAddToCart] newQty = " + newQty + " la HOP LE! Update cho textbox Quantity!");
+        // update value moi cho textbox Quantity
+        document.getElementById("txtProductQuantity").value = newQty;
+    }
+    else {
+        console.log("[decreaseQuantityForAddToCart] newQty = " + newQty + " KHONG HOP LE! Show error msg!");
+        showQuantityErrorBox(resultValidateQuantity.errorMsg);
+    }
+}
+
+
+/**
+ * Ham validate quantity truyen vao co hop le hay ko
+ */
+function validateQuantity(quantity) {
+    let isValid = true;
+    let errorMsg = "";
+
+    if (quantity <= 0) {
+        console.log("[validateQuantity] quantity = " + quantity + ". Not valid !");
+        errorMsg = "Số lượng phải từ 1 trở lên";
+        isValid = false;
+    }
+    else if (quantity > maxEnteredQuantity) {
+        console.log("[validateQuantity] quantity = " + quantity + ". Vuot qua " + maxEnteredQuantity + ". Not valid !");
+        errorMsg = "Số lượng không được vượt quá " + maxEnteredQuantity;
+        isValid = false;
+    }
+    else {
+        console.log("[validateQuantity] quantity = " + quantity + ". Valid !");
+    }
+
+    return {
+        "isValid": isValid,
+        "errorMsg": errorMsg
+    };
+}
+
+let quantityErrorTimeOut;
+function showQuantityErrorBox(errorMessage) {
+    clearTimeout(quantityErrorTimeOut);
+
+    document.getElementById("quantityErrorBox").innerHTML = errorMessage;
+
+    quantityErrorTimeOut = setTimeout(() => {
+        document.getElementById("quantityErrorBox").innerHTML = "";
+    }, 3000);
+}
+
+
+/**
+ * Ham xu ly check quantity do user nhap truoc khi add to cart
+ * Ham duoc goi khi user click nut Add To Cart trong khu vuc product details
+ */
+function handleAddProductToCart(productId) {
+    // clear content cua quantityErrorBox
+    document.getElementById("quantityErrorBox").innerHTML = "";
+
+    let quantityInputVal = document.getElementById("txtProductQuantity").value.trim();
+    let currentQty = 0;
+
+    if (quantityInputVal == "") {
+        console.log("[handleAddProductToCart] textbox quantity hien dang rong. Set currentQty = 1. Va update textbox quantity thanh 1 !");
+        currentQty = 1;
+        document.getElementById("txtProductQuantity").value = currentQty;
+    }
+    else {
+        currentQty = Number(quantityInputVal);
+        console.log("[handleAddProductToCart] textbox quantity co value. currentQty = " + currentQty);
+    }
+
+    // check currentQty co valid hay ko
+    let resultValidateQuantity = validateQuantity(currentQty);
+    console.log("[handleAddProductToCart] Ket qua ham validateQuantity() : ");
+    console.log(resultValidateQuantity);
+
+    if (resultValidateQuantity.isValid == true) {
+        console.log("[handleAddProductToCart] currentQty = " + currentQty + " la HOP LE! Goi ham addProductToCart() voi productId " + productId);
+        addProductToCart(productId, currentQty);
+    }
+    else {
+        console.log("[handleAddProductToCart] currentQty = " + currentQty + " KHONG HOP LE! Show error msg!");
+        showQuantityErrorBox(resultValidateQuantity.errorMsg);
+    }
+}
+
+
+// kiem tra param product_id trong URL
+let urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has("product_id") && urlParams.get("product_id") !== "") {
     console.log("Co ton tai URL param product_id : " + urlParams.get("product_id"));
     let productId_val = urlParams.get("product_id").trim();

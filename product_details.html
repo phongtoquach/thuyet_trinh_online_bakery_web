@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sweet Crumbs Bakery - Classic Chocolate Layer Cake</title>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/product_details.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
@@ -359,9 +360,9 @@
 			</div>
 		</footer>
 		<!-- Toast Notification -->
-		<div class="toast" id="toast">
+		<div class="toast" id="toastNotiBox">
 			<i class="fas fa-check-circle"></i>
-			<span>Product added to cart</span>
+			<span id="toastMessageSection">Product added to cart</span>
 		</div>
 
         <script src="scripts/products_data.js"></script>
@@ -372,11 +373,11 @@
 			function showToast() {
 			  var toast = document.getElementById('toast');
 			  toast.classList.add('show');
-			  setTimeout(function() { toast.classList.remove('show'); }, 3000);
+			  setTimeout(function() { toast.classList.remove('show'); }, 4000);
 			}
-			document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
-			  btn.addEventListener('click', function() { showToast(); });
-			});
+			// document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+			//   btn.addEventListener('click', function() { showToast(); });
+			// });
 		</script>
 	</body>
 </html>
