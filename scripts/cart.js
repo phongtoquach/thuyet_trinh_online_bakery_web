@@ -1,27 +1,27 @@
-// Mã giả lưu giỏ hàng
+// // Mã giả lưu giỏ hàng
 
-let cart = [
-  {
-    productId: 124,
-    name: "Bánh Mousse Thanh Nhãn",
-    image: "./images/mousse-thanh-nhan.jpg",
-    unitPrice: 261000,
-    quantity: 3,
-  },
-  {
-    productId: 125,
-    name: "Bánh Mousse Ngọc Nhãn",
-    image: "./images/mousse-ngoc-nhan.jpg",
-    unitPrice: 565000,
-    quantity: 4,
-  },
-];
+// let cart = [
+//   {
+//     productId: 124,
+//     name: "Bánh Mousse Thanh Nhãn",
+//     image: "./images/mousse-thanh-nhan.jpg",
+//     unitPrice: 261000,
+//     quantity: 3,
+//   },
+//   {
+//     productId: 125,
+//     name: "Bánh Mousse Ngọc Nhãn",
+//     image: "./images/mousse-ngoc-nhan.jpg",
+//     unitPrice: 565000,
+//     quantity: 4,
+//   },
+// ];
 
-// Chuyển giỏ Object thàng chuỗi JSON
-let cartString = JSON.stringify(cart);
+// // Chuyển giỏ Object thàng chuỗi JSON
+// let cartString = JSON.stringify(cart);
 
-// Đẩy chuỗi này lên LocalStorage
-localStorage.setItem("bakeryShopCartLs", cartString);
+// // Đẩy chuỗi này lên LocalStorage
+// localStorage.setItem("bakeryShopCartLs", cartString);
 
 // Kết thúc mã giả lưu giỏ hàng
 
