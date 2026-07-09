@@ -97,20 +97,23 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="contactName">Your Name <span>*</span></label>
-                <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                <input type="text" id="contactName" name="name" placeholder="John Doe" >
+                <div class="errorcontact" id="fullnameError"></div>
               </div>
               <div class="form-group">
                 <label for="contactEmail">Your Email <span>*</span></label>
-                <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                <input type="email" id="contactEmail" name="email" placeholder="john@example.com" >
+                <div class="errorcontact" id="emailError"></div>
               </div>
             </div>
             <div class="form-group">
               <label for="contactPhone">Phone Number</label>
               <input type="tel" id="contactPhone" name="phone" placeholder="+1 (555) 000-0000">
+              <div class="errorcontact" id="phonenumberError"></div>
             </div>
             <div class="form-group">
               <label for="contactSubject">Subject <span>*</span></label>
-              <select id="contactSubject" name="subject" required>
+              <select id="contactSubject" name="subject" >
                 <option value="" disabled selected>Choose a topic...</option>
                 <option value="general">General Inquiry</option>
                 <option value="order">Order Question</option>
@@ -119,10 +122,12 @@
                 <option value="catering">Catering & Events</option>
                 <option value="other">Other</option>
               </select>
+              <div class="errorcontact" id="subjectError"></div>
             </div>
             <div class="form-group">
               <label for="contactMessage">Your Message <span>*</span></label>
-              <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea>
+              <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can help..." ></textarea>
+              <div class="errorcontact" id="messageError"></div>
             </div>
             <button type="submit" class="btn btn-primary contact-submit-btn">
               <i class="fas fa-paper-plane"></i> Send Message
@@ -208,36 +213,24 @@
     </div>
   </footer>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span>Product added to cart</span>
-  </div>
+  <!-- NEW Toast Notification -->
+		<div id="toastBox" class="toast-box toast-success">
+			<div class="toast-icon">
+				<i class="fa-solid fa-circle-check"></i>
+			</div>
 
-  <script>
-    // Toast function
-    function showToast() {
-      var toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(function() {
-        toast.classList.remove('show');
-      }, 3000);
-    }
+			<div class="toast-content">
+				<div class="toast-title"></div>
+				<div class="toast-message"></div>
+			</div>
 
-    // Attach to all Add to Cart buttons
-    document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        showToast();
-      });
-    });
+			<button class="toast-close">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		</div>
 
-    // Contact form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will get back to you shortly.');
-      this.reset();
-    });
-  </script>
-
+  <script src="scripts/contact.js"></script>
+  <script src="scripts/products_data.js"></script>
+  <script src="scripts/products_main.js"></script>
 </body>
 </html>
