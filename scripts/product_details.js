@@ -111,6 +111,19 @@ function showProductDetailsById(productData) {
         let relatedProductsList = getProductsByProductIds(productData.relatedProductIds);
         console.log("Related products list :");
         console.log(relatedProductsList);
+
+        // neu mang relatedProductsList co it nhat 1 phan tu thi moi generate noi dung section
+        if (relatedProductsList.length > 0) {
+            let relatedProductsGridHtml = showOrGetProductsGrid(relatedProductsList, "get");
+
+            productHtml += `<div class="section" style="padding-bottom: 0;">
+                                <div class="section-title">
+                                    <h2>Sản phẩm liên quan</h2>
+                                    <p>Khám phá thêm những hương vị được tuyển chọn dành cho bạn.</p>
+                                </div>
+                                <div id="relatedProductsGridSection">` + relatedProductsGridHtml + `</div>
+                            </div>`;
+        }
     }
 
 

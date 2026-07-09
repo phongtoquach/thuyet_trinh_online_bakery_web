@@ -32,7 +32,8 @@ let productsList = [
         shortDescription: "Mousse Thanh Nhãn là sự giao thoa giữa cốt choco đậm đà và mousse nhãn ngọt thanh, mát mịn. Nhân bánh gây ấn tượng với thịt nhãn giòn sần sật quyện cùng hạt dẻ béo bùi lạ miệng, thơm ngậy. Vẻ ngoài chỉn chu với nhãn tươi và hoa thủ công, mang đến trải nghiệm vị giác tinh tế, thanh mát cho ngày hè",
         description: "<p><strong>Hương vị:</strong>&nbsp;Thanh mát - Ngọt dịu - Béo nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm 3 lớp xen kẽ các lớp:</p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh.</p></li><li><p>Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li></ul><p>Phần trang trí: Trên mặt bánh decor kem topping, nhãn lon, hoa gumpaste, lá húng lủi, choco.</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
         isFeatured: true,
-        relatedProductIds: [123, 125],
+        relatedProductIds: [123, 125, 126],
+        //relatedProductIds: [],
         inStock: true
     },
     {
@@ -111,7 +112,7 @@ let productsList = [
         shortDescription: "Mẫu bánh giữ trọn vị truyền thống với lớp flan béo mịn đan xen cốt chocolate đắng thanh, xốp nhẹ. Lớp jelly caramel óng ả quyện cùng dâu, dưa lưới, đào và búp sữa chua thanh mát tạo nên sự cân bằng hoàn hảo, không hề gây ngấy. Diện mạo rạng rỡ, tươi mới, là tâm điểm ý nghĩa cho mọi bữa tiệc gia đình",
         description: "<p><strong>Hương vị:</strong> Ngọt dịu - Béo nhẹ - Đắng nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm các lớp chính:</p><ul><li><p>Bánh flan vị truyền thống</p></li><li><p>Bông lan sô-cô-la</p></li></ul><p>Phần trang trí: vòng chocolate trắng, viên mousse sữa chua, dâu tây, dưa lưới và đào</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
         isFeatured: true,
-        relatedProductIds: [126, 138, 0, 127],
+        relatedProductIds: [126, 138, 0, "123abc", 127, 125, 123],
         inStock: true
     }
 ];
