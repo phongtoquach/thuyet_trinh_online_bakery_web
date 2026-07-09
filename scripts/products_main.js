@@ -2,7 +2,7 @@
  * Ham tao HTML danh sach product dua theo array productsData truyen vao
  * Ham nay se xai chung cho tat ca cac section can show danh sach product
  */
-function showProductsGrid(productsData, containerId) {
+function showOrGetProductsGrid(productsData, actionName="show", containerId="") {
     let productsHtml = '<div class="product-grid">';
 
     // console.log("Ta co products data :");
@@ -34,7 +34,15 @@ function showProductsGrid(productsData, containerId) {
 
     productsHtml += '</div>';
 
-    document.getElementById(containerId).innerHTML = productsHtml;
+    if (actionName == "show") {
+        console.log("[showOrGetProductsGrid] action la : " + actionName + ". Set content cho container " + containerId);
+        document.getElementById(containerId).innerHTML = productsHtml;
+        return "";
+    }
+    else {
+        console.log("[showOrGetProductsGrid] action la : " + actionName + ". Chi return content !");
+        return productsHtml;
+    }
 }
 
 /**
@@ -82,8 +90,18 @@ function getProductsByProductIds(productIds) {
     for (let i=0; i < productIds.length; i++) {
         let productId = productIds[i];
         let productId_int = Number(productId);
+
+        // if (Number.isNaN(productId_int)) {
+        //     console.log("[getProductsByProductIds] product id " + productId + " khong phai number! Bo qua!");
+        //     continue;
+        // }
+        // if (productId_int <= 0) {
+        //     console.log("[getProductsByProductIds] product id " + productId_int + " nho hon hoac bang 0! Bo qua!");
+        //     continue;
+        // }
+
         if (Number.isNaN(productId_int) || productId_int <= 0) {
-            console.log("[getProductsByProductIds] product id " + productId_int + " is not valid! Bo qua!");
+            console.log("[getProductsByProductIds] product id " + productId + " is not valid! Bo qua!");
             continue;
         }
 
