@@ -7,18 +7,26 @@ function showProductDetailsById(productData) {
     // open div product details layout
     productHtml = '<div class="product-details-layout">';
 
+    // check images
+    let mainImageSrc = "";
+    if (productData.images.length > 0) {
+        mainImageSrc = productData.images[0];
+    }
+
     // open div : product gallery
     productHtml += '<div class="product-gallery" id="productGallery">';
     productHtml += '<div class="main-image"><img src="' + productData.images[0] + '" alt=""></div>';
-    productHtml += '<div class="gallery-thumbnails" id="galleryThumbnails">';
+
+    // neu mang images rong thi ko can thumbnail
+    productHtml += '<div class="gallery-thumbnails" id="productGalleryThumbnails">';
 
     for(let i=0; i < productData.images.length; i++) {
-        let imgHtml = '<img src="' + productData.images[i] + '" alt=""';
+        let imgHtml = '<img src="' + productData.images[i] + '" alt="image thumbnail"';
         if (i == 0) {
-            imgHtml += ' class="active">';
+            imgHtml += ' class="product-image-thumbnail active">';
         }
         else {
-            imgHtml += '>';
+            imgHtml += ' class="product-image-thumbnail">';
         }
         productHtml += imgHtml;
     }
@@ -136,6 +144,25 @@ function showProductDetailsById(productData) {
     document.getElementById("btnQuantityPlus").addEventListener("click", increaseQuantityForAddToCart);
     // bind event click cho button -
     document.getElementById("btnQuantityMinus").addEventListener("click", decreaseQuantityForAddToCart); 
+
+    // bind event click cho cac image thumbnail
+    let imgThumbnails = document.querySelectorAll("#productGalleryThumbnails img.product-image-thumbnail");
+    imgThumbnails.forEach(imgThumb => {
+        imgThumb.addEventListener("click", function() {
+            console.log("[showProductDetailsById] image thumb duoc click la : " + this.src);
+
+            // set source cho image lon bang src cua thumb image nay
+            document.querySelector("#productGallery .main-image img").src = this.src;
+
+            // remove CSS class active cua tat ca thumb image
+            document.querySelectorAll("#productGalleryThumbnails .product-image-thumbnail").forEach(imageThumb => {
+                imageThumb.classList.remove("active");
+            });
+
+            // add CSS class active cho thumb image nay
+            this.classList.add("active");
+        }); 
+    });
 }
 
 /**
