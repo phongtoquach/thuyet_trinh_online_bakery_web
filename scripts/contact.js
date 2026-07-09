@@ -51,6 +51,7 @@ form.addEventListener("submit", function(event){
 
     if(isValid){
         contactForm.reset();
+        showToastBox("success", "send success", "Your message has been sent successfully.");
     }
-    showToastBox("success", "send success", "Your message has been sent successfully.");
+    
 });
