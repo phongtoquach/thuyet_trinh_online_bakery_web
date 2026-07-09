@@ -21,7 +21,7 @@ function showProductsGrid(productsData, containerId) {
         
         // generate buttons : Add to cart, xem chi tiet
         productsHtml += '<div class="product-card-actions">';
-        productsHtml += '<button class="add-to-cart-btn" onclick="addToCart(' + productsData[i].id + ')"><i class="fas fa-cart-plus"></i> Add to Cart</button>';
+        productsHtml += '<button class="add-to-cart-btn" onclick="addProductToCart(' + productsData[i].id + ')"><i class="fas fa-cart-plus"></i> Add to Cart</button>';
         productsHtml += '<a href="product_details.html?product_id=' + productsData[i].id + '" class="view-details-btn" target="_blank"><i class="fas fa-eye"></i> Details</a>';
         productsHtml += "</div>";
 
