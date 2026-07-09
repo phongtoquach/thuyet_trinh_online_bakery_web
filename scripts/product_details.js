@@ -312,8 +312,7 @@ function handleAddProductToCart(productId) {
         console.log("[handleAddProductToCart] currentQty = " + currentQty + " la HOP LE! Goi ham addProductToCart() voi productId " + productId);
         
         // goi ham addProductToCart()
-        //addProductToCart(productId, currentQty);
-        addProductToCart(productId, 0);
+        addProductToCart(productId, currentQty);
     }
     else {
         console.log("[handleAddProductToCart] currentQty = " + currentQty + " KHONG HOP LE! Show error msg!");
