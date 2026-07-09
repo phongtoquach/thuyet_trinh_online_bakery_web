@@ -80,8 +80,8 @@ function showProductDetailsById(productData) {
     // section : product tabs (bao gom : Product Description, Thanh phan)
     productHtml += `<div class="product-tabs">
                         <div class="tab-buttons">
-							<button class="tab-btn active" data-tab="description">Description</button>
-							<button class="tab-btn" data-tab="ingredients">Ingredients</button>
+							<button class="tab-btn active" data-tab="description">Mô tả</button>
+							<button class="tab-btn" data-tab="ingredients">Thành phần</button>
 						</div>
 
                         <div class="tab-content active" id="tab-description">`+ productData.description +`</div>
@@ -105,6 +105,8 @@ function showProductDetailsById(productData) {
 							</p>
 						</div>
                     </div>`;
+
+    // section : cac san pham lien quan
 
     // set toan bo productHtml vao cho div productDetailsSection
     document.getElementById("productDetailsSection").innerHTML = productHtml;
@@ -281,7 +283,7 @@ function showQuantityErrorBox(errorMessage) {
 
 
 /**
- * Ham xu ly check quantity do user nhap truoc khi add to cart
+ * Ham xu ly check quantity do user nhap va thuc hien add to cart
  * Ham duoc goi khi user click nut Add To Cart trong khu vuc product details
  */
 function handleAddProductToCart(productId) {
@@ -308,7 +310,10 @@ function handleAddProductToCart(productId) {
 
     if (resultValidateQuantity.isValid == true) {
         console.log("[handleAddProductToCart] currentQty = " + currentQty + " la HOP LE! Goi ham addProductToCart() voi productId " + productId);
-        addProductToCart(productId, currentQty);
+        
+        // goi ham addProductToCart()
+        //addProductToCart(productId, currentQty);
+        addProductToCart(productId, 0);
     }
     else {
         console.log("[handleAddProductToCart] currentQty = " + currentQty + " KHONG HOP LE! Show error msg!");
@@ -318,6 +323,7 @@ function handleAddProductToCart(productId) {
 
 
 // kiem tra param product_id trong URL
+// param product_id hop le thi lay ra product details data theo product_id do
 let urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has("product_id") && urlParams.get("product_id") !== "") {
     console.log("Co ton tai URL param product_id : " + urlParams.get("product_id"));

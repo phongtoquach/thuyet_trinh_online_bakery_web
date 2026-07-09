@@ -300,10 +300,6 @@
 				</div>
 
 				
-				
-				
-				
-				
 			</div>
 		</section>
 		<!-- ========== FOOTER ========== -->
@@ -359,25 +355,27 @@
 				</div>
 			</div>
 		</footer>
-		<!-- Toast Notification -->
-		<div class="toast" id="toastNotiBox">
-			<i class="fas fa-check-circle"></i>
-			<span id="toastMessageSection">Product added to cart</span>
+
+
+		<!-- NEW Toast Notification -->
+		<div id="toastBox" class="toast-box toast-success">
+			<div class="toast-icon">
+				<i class="fa-solid fa-circle-check"></i>
+			</div>
+
+			<div class="toast-content">
+				<div class="toast-title"></div>
+				<div class="toast-message"></div>
+			</div>
+
+			<button class="toast-close">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
 		</div>
+
 
         <script src="scripts/products_data.js"></script>
         <script src="scripts/products_main.js"></script>
         <script src="scripts/product_details.js"></script>
-
-		<script>
-			function showToast() {
-			  var toast = document.getElementById('toast');
-			  toast.classList.add('show');
-			  setTimeout(function() { toast.classList.remove('show'); }, 4000);
-			}
-			// document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
-			//   btn.addEventListener('click', function() { showToast(); });
-			// });
-		</script>
 	</body>
 </html>

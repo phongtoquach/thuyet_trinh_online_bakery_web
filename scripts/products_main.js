@@ -2,8 +2,8 @@
  * Ham tao HTML danh sach product dua theo array productsData truyen vao
  * Ham nay se xai chung cho tat ca cac section can show danh sach product
  */
-function showProductsList(productsData, containerId) {
-    let productsHtml = "";
+function showProductsGrid(productsData, containerId) {
+    let productsHtml = '<div class="product-grid">';
 
     // console.log("Ta co products data :");
     // console.log(productsData);
@@ -31,6 +31,8 @@ function showProductsList(productsData, containerId) {
         // close div product-card
         productsHtml += "</div>";
     }
+
+    productsHtml += '</div>';
 
     document.getElementById(containerId).innerHTML = productsHtml;
 }
@@ -72,6 +74,12 @@ function getProductDetailsById(productId) {
 */
 function addProductToCart(proId, quantity=1) {
     console.log("[addProductToCart] chuan bi add vao cart - product ID : " + proId + " ; quantity : " + quantity);
+
+    // truoc tien, check quantity phai >= 1
+    if (quantity <= 0) {
+        showToastBox("error", "Có lỗi xảy ra!", "<span>Số lượng thêm vào giỏ hàng cần phải từ 1 trở lên.</span>");
+        return false;
+    }
 
     let cart = JSON.parse(localStorage.getItem("bakeryShopCartLs")) || [];
 
@@ -134,7 +142,10 @@ function addProductToCart(proId, quantity=1) {
     // set cart vao local storage
     localStorage.setItem("bakeryShopCartLs", JSON.stringify(cart));
 
-    showToastNotiBox(cartItemObj.name + " đã được thêm vào giỏ hàng ! Số lượng hiện tại trong giỏ hàng : " + cartItemObj.quantity);
+    let toastMsg = `<span>` + cartItemObj.name + `</span><br>
+                    <span>Số lượng trong giỏ: ` + cartItemObj.quantity + `</span><br>
+                    <a href="cart.html">Xem giỏ hàng</a>`;
+    showToastBox("success", "Đã thêm vào giỏ hàng", toastMsg);
 
     console.log("Data cua cart hien tai : ");
     console.log(cart);
@@ -147,8 +158,87 @@ function showToastNotiBox(messageContent) {
     document.getElementById("toastMessageSection").innerHTML = messageContent;
 
     toast.classList.add('show');
-    setTimeout(function() { toast.classList.remove('show'); }, 4000);
+    //setTimeout(function() { toast.classList.remove('show'); }, 4000);
 }
+
+
+let hideToastTimer = null;
+// Ham start timer dem x giay de thuc hien hide Toast Box
+function startHideToastTimer() {
+    console.log("[startHideToastTimer] Bat dau set timer dem nguoc de hide Toast Box!")
+    clearTimeout(hideToastTimer);
+
+    hideToastTimer = setTimeout(() => {
+        hideToastBox();
+    }, 4000);
+}
+
+
+// Ham thuc hien show Toast Box (new)
+// toastType : success / error
+function showToastBox(toastType, title, messageContent) {
+    let toastBox = document.getElementById('toastBox');
+    toastBox.classList.remove("toast-success", "toast-error", "show");
+
+    // check toastType de quyet dinh add CSS class toast-success hay toast-error
+    if (toastType == "success") {
+        toastBox.classList.add("toast-success");
+    }
+    else {
+        toastBox.classList.add("toast-error");
+    }
+
+    // set title
+    toastBox.querySelector(".toast-title").innerHTML = title;
+    // set message content
+    toastBox.querySelector(".toast-message").innerHTML = messageContent;
+
+    // set icon
+    if (toastType == "success") {
+        toastBox.querySelector(".toast-icon i").className = "fa-solid fa-circle-check";
+    }
+    else {
+        toastBox.querySelector(".toast-icon i").className = "fa-solid fa-circle-xmark";
+    }
+
+    toastBox.classList.add('show');
+
+    // sau x giay thi hide Toast Box nay di
+    startHideToastTimer();
+}
+
+
+// Ham hide toast box
+function hideToastBox() {
+    clearTimeout(hideToastTimer);
+
+    let toast_box = document.getElementById('toastBox');
+    toast_box.classList.remove("show");
+
+    console.log("[hideToastBox] Da hide toast box roi!");
+}
+// bind event "click" cho nut close de hide Toast Box
+let toastBoxCloseButton = document.getElementById('toastBox').querySelector(".toast-box .toast-close");
+toastBoxCloseButton.addEventListener("click", hideToastBox);
+
+
+// Hover vao Toast Box -> stop auto hide
+document.getElementById('toastBox').addEventListener("mouseenter", () => {
+    console.log("Xay ra event mouseenter, user dang hover vao Toast box ! Stop auto hide Toast Box!");
+    clearTimeout(hideToastTimer);
+});
+
+// Re chuot ra khoi Toast Box -> start lai timer hide Toast Box
+document.getElementById('toastBox').addEventListener("mouseleave", () => {
+    let toast_box = document.getElementById('toastBox');
+    if (toast_box.classList.contains("show") == true) {
+        console.log("[ToastBox - mouseleave] toastBox dang co CSS class 'show', nen can goi ham startHideToastTimer()!");
+        startHideToastTimer();
+    }
+    else {
+        console.log("[ToastBox - mouseleave] toastBox khong co CSS class 'show', nen KHONG CAN goi ham startHideToastTimer()!");
+    }
+});
 
 
 // Ham de xoa het cac item trong cart
