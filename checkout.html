@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <!-- <div class="logo-icon"><i class="fas fa-birthday-cake"></i></div> -->
+          <div class="logo-image">
+            <img src="images/web_logo_small.png" />
+          </div>
+          <div class="logo-text">
+            Maison Sucrée Bakery
+            <small>Bakery &amp; Patisserie</small>
+          </div>
+        </a>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link active"
+            ><i class="fas fa-home"></i> Trang chủ</a
+          >
+          <a href="products.html" class="nav-link"
+            ><i class="fas fa-th-large"></i> Sản phẩm</a
+          >
+          <a href="cart.html" class="nav-link"
+            ><i class="fas fa-shopping-bag"></i> Giỏ hàng</a
+          >
+          <a href="contact.html" class="nav-link"
+            ><i class="fas fa-envelope"></i> Liên hệ</a
+          >
+        </nav>
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="homeSearch" placeholder="Tìm sản phẩm..." />
+        </div>
+        <a href="cart.html" class="cart-icon" id="headerCart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge">3</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ========== CART CAKES ========== -->
+    <section class="section" id="">
+      <div class="container">
+        <div class="section-title">
+          <h2>Giỏ Hàng</h2>
+        </div>
+
+        <!-- CART CONTAINER -->
+        <div class="cart__container md:grid md:grid-cols-3 md:gap-6">
+          <!-- Main Containt -->
+          <div class="cart__maincontent space-y-4 md:col-span-2 md:space-y-6">
+            <div
+              class="cart__chooseMethod space-y-4 md:rounded-lg md:border md:p-5"
+            >
+              <div class="cart__chooseMethod--button grid grid-cols-2 gap-2">
+                <button
+                  class="btn--cart active flex items-center justify-center gap-2 rounded-xl border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                >
+                  <img src="CartImgs/delivery.png" alt="" />
+                  Giao hàng
+                </button>
+                <button
+                  class="btn--cart flex items-center justify-center gap-2 rounded-xl border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                >
+                  <img src="CartImgs/shop.png" alt="" />
+                  Ghé lấy tại cửa hàng
+                </button>
+              </div>
+
+              <!-- Personal Order -->
+              <div
+                class="personal__order rounded-xl border border-amber-200 bg-amber-50 p-3 space-y-3"
+              >
+                <p class="personal__text text-sm font-semibold text-amber-800">
+                  Bạn đặt hàng với tư cách khách
+                </p>
+                <div class="personal__form grid grid-cols-2 gap-3">
+                  <div>
+                    <label for="name">Tên người đặt *</label>
+                    <input type="text" placeholder="Họ và tên" id="name" />
+                  </div>
+                  <div>
+                    <label for="phone">SĐT người đặt *</label>
+                    <input type="text" placeholder="0123456789" id="phone" />
+                  </div>
+                </div>
+
+                <div
+                  class="personal__login--promotions flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 p-2.5"
+                >
+                  <img src="CartImgs/gift.png" alt="" />
+                  <p class="promotions__link">
+                    <a href="#"><span>Đăng nhập</span></a> để xem ví voucher ưu
+                    đãi và áp dụng khi đặt hàng
+                  </p>
+                </div>
+              </div>
+
+              <!-- Start Người nhận khác người mua -->
+              <label
+                class="orther__person-order flex items-center gap-2.5 rounded-lg border p-3 cursor-pointer"
+              >
+                <input
+                  id="input_check"
+                  class="checked__input"
+                  type="checkbox"
+                />
+                <img src="CartImgs/user.png" alt="" />
+                <div class="personal__content">
+                  <p class="personal__content--header">
+                    Người nhận khác người mua
+                  </p>
+                  <p class="personal__content--desc">
+                    Gửi bánh làm quà cho người khác
+                  </p>
+                </div>
+              </label>
+              <!-- End Người nhận khác người mua -->
+
+              <!-- Start Actived -->
+              <div
+                id="information__container"
+                class="information__container rounded-lg"
+              >
+                <p class="information__header">Thông tin người mua (bạn)</p>
+                <p class="information__content">Quang Diệu - 0709</p>
+              </div>
+              <!-- End Actived -->
+
+              <!-- Start Địa Chỉ Giao Hàng -->
+              <div class="address__container">
+                <label for="texetArea" class="address__container--text"
+                  >Địa Chỉ Giao Hàng *</label
+                >
+                <textarea
+                  name=""
+                  id="texetArea"
+                  placeholder="Số nhà, đường..."
+                ></textarea>
+              </div>
+              <!-- End Địa Chỉ Giao Hàng -->
+
+              <!-- Start Select Tỉnh Thành -->
+              <div
+                class="select__Address--Container grid grid-cols-2 gap-3 sm:grid-cols-4"
+              >
+                <div class="select__Address--City">
+                  <p>Tỉnh/TP *</p>
+                  <select
+                    class="select__Address--City--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                  >
+                    <option value="">Tp Hồ Chí Minh</option>
+                  </select>
+                </div>
+                <div class="select__Address--district">
+                  <p>Phường/Xã *</p>
+                  <select
+                    class="select__Address--district--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                  >
+                    <option value="">Tân Bình</option>
+                  </select>
+                </div>
+              </div>
+              <!-- End Select Tỉnh Thành -->
+
+              <hr />
+              <!-- Start Select Ship Date -->
+              <div class="Select__Date">
+                <p>Chọn Ngày Giao</p>
+                <div class="date__container flex flex-wrap gap-2">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <!-- End Select Ship Date -->
+            </div>
+
+            <!-- Cash -->
+            <div class="cart__howToCash"></div>
+          </div>
+
+          <!-- Side containt -->
+          <div class="Side_cash--container">
+            <div class="Side_cash--main rounded-lg">
+              <h3 class="Side_cash--main--text">
+                Tóm tắt (<span id="quantityOrder">2</span> món)
+              </h3>
+              <div class="cash__cart--list">
+                <!-- Start Cart Items -->
+                <div class="cash__cart--item flex items-center gap-2">
+                  <div class="item__img">
+                    <img src="CartImgs/banh_dua_luoi.png" alt="" />
+                  </div>
+                  <div class="item__desc">
+                    <div class="item__name--container">
+                      <h3 class="item__name">Hộp bánh Sweetcup Dưa lưới</h3>
+                    </div>
+
+                    <div class="item__quantity flex item-center gap-2">
+                      <div class="item__quantity--span--container">
+                        <span class="item__quantity--span">SL</span>
+                      </div>
+
+                      <input
+                        class="input--quantity"
+                        type="number"
+                        value="2"
+                        min="1"
+                      />
+
+                      <div class="totalPriceTemp--container">
+                        <span class="totalPriceTemp"> 510.000 đ </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cash__cart--item flex items-center gap-2">
+                  <div class="item__img">
+                    <img src="CartImgs/banh_dua_luoi.png" alt="" />
+                  </div>
+                  <div class="item__desc">
+                    <div class="item__name--container">
+                      <h3 class="item__name">Hộp bánh Sweetcup Dưa lưới</h3>
+                    </div>
+
+                    <div class="item__quantity flex item-center gap-2">
+                      <div class="item__quantity--span--container">
+                        <span class="item__quantity--span">SL</span>
+                      </div>
+
+                      <input
+                        class="input--quantity"
+                        type="number"
+                        value="2"
+                        min="1"
+                      />
+
+                      <div class="totalPriceTemp--container">
+                        <span class="totalPriceTemp"> 510.000 đ </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Cart Items -->
+                <hr />
+                <div class="tempTotal--container">
+                  <div class="tempTotal--flex">
+                    <p class="tempTotal--text">Tạm tính:</p>
+                    <p>
+                      <span class="tempTotal--price"> 1.610.000 đ </span>
+                    </p>
+                  </div>
+
+                  <div class="tempTotal--flex">
+                    <p class="tempTotal--text">Vận chuyển:</p>
+                    <p>
+                      <span class="tempTotal--price"> Miễn Phí </span>
+                    </p>
+                  </div>
+                </div>
+
+                <hr />
+                <div class="primary--Total">
+                  <p class="primary--Total-text">Tổng:</p>
+                  <p class="primary--Total-text">
+                    <span class="primaryTotalPrice" id="primaryTotalPrice"
+                      >1.064.000</span
+                    >
+                    <span class="primaryTotalPrice"> đ</span>
+                  </p>
+                </div>
+
+                <button class="button--order">
+                  <img src="CartImgs/delivery.png" alt="" />
+                  Đặt hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo-text">
+              Sweet Crumbs
+              <small>Bakery &amp; Patisserie</small>
+            </div>
+            <p>
+              Creating sweet memories since 2015. Our passion for baking drives
+              everything we do, from sourcing the finest ingredients to
+              delivering happiness to your doorstep.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Pinterest"
+                ><i class="fab fa-pinterest-p"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Products</a
+                >
+              </li>
+              <li>
+                <a href="cart.html"
+                  ><i class="fas fa-chevron-right"></i> Cart</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="policy.html"
+                  ><i class="fas fa-chevron-right"></i> Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4>Categories</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Wedding Cakes</a
+                >
+              </li>
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Birthday Cakes</a
+                >
+              </li>
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Pastries</a
+                >
+              </li>
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Macarons</a
+                >
+              </li>
+              <li>
+                <a href="products.html"
+                  ><i class="fas fa-chevron-right"></i> Cheesecakes</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact Info</h4>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Baker Street, Sweet
+                City, SC 12345
+              </li>
+              <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+              <li><i class="fas fa-envelope"></i> hello@sweetcrumbs.com</li>
+              <li>
+                <i class="fas fa-clock"></i> Mon-Sat: 7AM - 8PM &bull; Sun: 8AM
+                - 6PM
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Sweet Crumbs Bakery. All rights reserved. Baked with
+            <i class="fas fa-heart" style="color: var(--color-light-pink)"></i>
+            and a lot of butter.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span>Product added to cart</span>
+    </div>
+
+    <script src="scripts/checkout.js"></script>
+  </body>
+</html>
