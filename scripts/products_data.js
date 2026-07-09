@@ -1,5 +1,5 @@
 const maxEnteredQuantity = 60;
-const maxCartItemQuantity = 80;
+const maxCartItemQuantity = 100;
 
 let productsList = [
     {
@@ -90,8 +90,7 @@ let productsList = [
             "images/flan-tra-thai-do-1.jpg",
             "images/flan-tra-thai-do-2.jpg",
             "images/flan-tra-thai-do-3.jpg",
-            "images/flan-tra-thai-do-4.jpg",
-            "images/flan-tra-thai-do-5.jpg"
+            "images/flan-tra-thai-do-4.jpg"
         ],
         shortDescription: "Flan Gato Trà Thái Đỏ là bản giao thoa đầy lôi cuốn giữa lớp flan Trà Thái Đỏ thơm nồng, béo mịn và bạt bông lan chocolate đắng nhẹ, ẩm mịn. Vị ngọt dịu quyện cùng hương trà đặc trưng, điểm xuyết thêm jelly caramel, đào, dâu và dưa lưới. Một trải nghiệm mới lạ, thanh mát và cực kỳ nịnh miệng",
         description: "<p><strong>Hương vị:</strong> Ngọt dịu - Béo nhẹ - Thơm - Đắng nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm các lớp chính:</p><ul><li><p>Bánh flan vị trà thái đỏ</p></li><li><p>Bông lan sô-cô-la</p></li></ul><p>Phần trang trí: jelly caramel, đào, dâu tây, dưa lưới, socola</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li><li><p>Cây ghim</p></li></ul><p></p>",

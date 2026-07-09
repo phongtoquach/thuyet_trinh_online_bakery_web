@@ -92,7 +92,17 @@ function addProductToCart(proId, quantity=1) {
             foundInCart = 1;
             
             // tang quantity theo param quantity
-            cart[i].quantity += quantity;
+            let newCartItemQty = cart[i].quantity + quantity;
+
+            // can check quantity moi duoc cong them có vuot qua so luong cho phep cua 1 item trong cart hay ko
+            if (newCartItemQty > maxCartItemQuantity) {
+                console.log("[addProductToCart] Neu tang them " + quantity + ", quantity hien tai trong cart cua product " + proId + " se la " + newCartItemQty + ". Vuot qua " + maxCartItemQuantity + ". Stop update quantity cua product nay trong cart !");
+                showToastBox("error", "Có lỗi xảy ra!", "Số lượng của sản phẩm này trong giỏ hàng chỉ được phép tối đa là " + maxCartItemQuantity);
+                return false;
+            }
+
+            // sau khi check ok thi moi update cho quantity cua item nay trong mang cart
+            cart[i].quantity = newCartItemQty;
 
             // copy cart[i] ra 1 ban cho cartItemObj
             cartItemObj = { ...cart[i] };
@@ -104,7 +114,7 @@ function addProductToCart(proId, quantity=1) {
     }
 
     if (foundInCart == 0) {
-        console.log("[addProductToCart] Product co ID " + proId + " chua co trong cart. Bat dau add vao trong cart voi quantity = 1 !");
+        console.log("[addProductToCart] Product co ID " + proId + " chua co trong cart. Bat dau add vao trong cart voi quantity = " + quantity);
         // tim product voi ID nay trong array productsList
         let isFoundInProductsList = 0;
         for (let i=0; i < productsList.length; i++) {
@@ -113,6 +123,13 @@ function addProductToCart(proId, quantity=1) {
                 console.log(productsList[i]);
 
                 isFoundInProductsList = 1;
+
+                // can check quantity them vao cart có vuot qua so luong cho phep cua 1 item trong cart hay ko
+                if (quantity > maxCartItemQuantity) {
+                    console.log("[addProductToCart] quantity chuan bi add vao cart cho product " + proId + " la " + quantity + ". Vuot qua " + maxCartItemQuantity + ". Stop add to cart !");
+                    showToastBox("error", "Có lỗi xảy ra!", "Số lượng của sản phẩm này trong giỏ hàng chỉ được phép tối đa là " + maxCartItemQuantity);
+                    return false;
+                }
 
                 // lay vai attribute can thiet tu product object
                 cartItemObj = {
@@ -131,7 +148,8 @@ function addProductToCart(proId, quantity=1) {
         }
 
         if (isFoundInProductsList == 0) {
-            alert("Sản phẩm có ID " + proId + " không tồn tại trong danh sách sản phẩm của shop !");
+            console.log("[addProductToCart] Product co ID " + proId + " khong ton tai trong array productsList !");
+            showToastBox("error", "Có lỗi xảy ra!", "<span>Sản phẩm này không tồn tại trong danh sách sản phẩm của shop.</span>");
             return false;
         }
     }
@@ -142,13 +160,13 @@ function addProductToCart(proId, quantity=1) {
     // set cart vao local storage
     localStorage.setItem("bakeryShopCartLs", JSON.stringify(cart));
 
+    console.log("Data cua cart hien tai : ");
+    console.log(cart);
+
     let toastMsg = `<span>` + cartItemObj.name + `</span><br>
                     <span>Số lượng trong giỏ: ` + cartItemObj.quantity + `</span><br>
                     <a href="cart.html">Xem giỏ hàng</a>`;
     showToastBox("success", "Đã thêm vào giỏ hàng", toastMsg);
-
-    console.log("Data cua cart hien tai : ");
-    console.log(cart);
 }
 
 
