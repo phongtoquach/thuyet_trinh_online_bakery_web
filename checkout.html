@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart</title>
+    <title>Checkout</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/cart.css" />
@@ -85,113 +85,117 @@
               </div>
 
               <!-- Personal Order -->
-              <div
-                class="personal__order rounded-xl border border-amber-200 bg-amber-50 p-3 space-y-3"
-              >
-                <p class="personal__text text-sm font-semibold text-amber-800">
-                  Bạn đặt hàng với tư cách khách
-                </p>
-                <div class="personal__form grid grid-cols-2 gap-3">
-                  <div>
-                    <label for="name">Tên người đặt *</label>
-                    <input type="text" placeholder="Họ và tên" id="name" />
-                  </div>
-                  <div>
-                    <label for="phone">SĐT người đặt *</label>
-                    <input type="text" placeholder="0123456789" id="phone" />
-                  </div>
-                </div>
-
+              <form action="/" id="checkOutForm">
                 <div
-                  class="personal__login--promotions flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 p-2.5"
+                  class="personal__order rounded-xl border border-amber-200 bg-amber-50 p-3 space-y-3"
                 >
-                  <img src="CartImgs/gift.png" alt="" />
-                  <p class="promotions__link">
-                    <a href="#"><span>Đăng nhập</span></a> để xem ví voucher ưu
-                    đãi và áp dụng khi đặt hàng
+                  <p
+                    class="personal__text text-sm font-semibold text-amber-800"
+                  >
+                    Bạn đặt hàng với tư cách khách
                   </p>
+                  <div class="personal__form grid grid-cols-2 gap-3">
+                    <div>
+                      <label for="name">Tên người đặt *</label>
+                      <input type="text" placeholder="Họ và tên" id="name" />
+                    </div>
+                    <div>
+                      <label for="phone">SĐT người đặt *</label>
+                      <input type="text" placeholder="0123456789" id="phone" />
+                    </div>
+                  </div>
+
+                  <div
+                    class="personal__login--promotions flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 p-2.5"
+                  >
+                    <img src="CartImgs/gift.png" alt="" />
+                    <p class="promotions__link">
+                      <a href="#"><span>Đăng nhập</span></a> để xem ví voucher
+                      ưu đãi và áp dụng khi đặt hàng
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Start Người nhận khác người mua -->
-              <label
-                class="orther__person-order flex items-center gap-2.5 rounded-lg border p-3 cursor-pointer"
-              >
-                <input
-                  id="input_check"
-                  class="checked__input"
-                  type="checkbox"
-                />
-                <img src="CartImgs/user.png" alt="" />
-                <div class="personal__content">
-                  <p class="personal__content--header">
-                    Người nhận khác người mua
-                  </p>
-                  <p class="personal__content--desc">
-                    Gửi bánh làm quà cho người khác
-                  </p>
-                </div>
-              </label>
-              <!-- End Người nhận khác người mua -->
-
-              <!-- Start Actived -->
-              <div
-                id="information__container"
-                class="information__container rounded-lg"
-              >
-                <p class="information__header">Thông tin người mua (bạn)</p>
-                <p class="information__content">Quang Diệu - 0709</p>
-              </div>
-              <!-- End Actived -->
-
-              <!-- Start Địa Chỉ Giao Hàng -->
-              <div class="address__container">
-                <label for="texetArea" class="address__container--text"
-                  >Địa Chỉ Giao Hàng *</label
+                <!-- Start Người nhận khác người mua -->
+                <label
+                  class="orther__person-order flex items-center gap-2.5 rounded-lg border p-3 cursor-pointer"
                 >
-                <textarea
-                  name=""
-                  id="texetArea"
-                  placeholder="Số nhà, đường..."
-                ></textarea>
-              </div>
-              <!-- End Địa Chỉ Giao Hàng -->
+                  <input
+                    id="input_check"
+                    class="checked__input"
+                    type="checkbox"
+                  />
+                  <img src="CartImgs/user.png" alt="" />
+                  <div class="personal__content">
+                    <p class="personal__content--header">
+                      Người nhận khác người mua
+                    </p>
+                    <p class="personal__content--desc">
+                      Gửi bánh làm quà cho người khác
+                    </p>
+                  </div>
+                </label>
+                <!-- End Người nhận khác người mua -->
 
-              <!-- Start Select Tỉnh Thành -->
-              <div
-                class="select__Address--Container grid grid-cols-2 gap-3 sm:grid-cols-4"
-              >
-                <div class="select__Address--City">
-                  <p>Tỉnh/TP *</p>
-                  <select
-                    class="select__Address--City--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
-                  >
-                    <option value="">Tp Hồ Chí Minh</option>
-                  </select>
+                <!-- Start Actived -->
+                <div
+                  id="information__container"
+                  class="information__container rounded-lg"
+                >
+                  <p class="information__header">Thông tin người mua (bạn)</p>
+                  <p class="information__content"> <span id="nameValue"></span> -  <span id="phoneValue"></span> </p>
                 </div>
-                <div class="select__Address--district">
-                  <p>Phường/Xã *</p>
-                  <select
-                    class="select__Address--district--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
-                  >
-                    <option value="">Tân Bình</option>
-                  </select>
-                </div>
-              </div>
-              <!-- End Select Tỉnh Thành -->
+                <!-- End Actived -->
 
-              <hr />
-              <!-- Start Select Ship Date -->
-              <div class="Select__Date">
-                <p>Chọn Ngày Giao</p>
-                <div class="date__container flex flex-wrap gap-2">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                <!-- Start Địa Chỉ Giao Hàng -->
+                <div class="address__container">
+                  <label for="texetArea" class="address__container--text"
+                    >Địa Chỉ Giao Hàng *</label
+                  >
+                  <textarea
+                    name=""
+                    id="texetArea"
+                    placeholder="Số nhà, đường..."
+                  ></textarea>
                 </div>
-              </div>
-              <!-- End Select Ship Date -->
+                <!-- End Địa Chỉ Giao Hàng -->
+
+                <!-- Start Select Tỉnh Thành -->
+                <div
+                  class="select__Address--Container grid grid-cols-2 gap-3 sm:grid-cols-4"
+                >
+                  <div class="select__Address--City">
+                    <p>Tỉnh/TP *</p>
+                    <select
+                      class="select__Address--City--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                    >
+                      <option value="">Tp Hồ Chí Minh</option>
+                    </select>
+                  </div>
+                  <div class="select__Address--district">
+                    <p>Phường/Xã *</p>
+                    <select
+                      class="select__Address--district--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                    >
+                      <option value="">Tân Bình</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- End Select Tỉnh Thành -->
+
+                <hr />
+                <!-- Start Select Ship Date -->
+                <div class="Select__Date">
+                  <p>Chọn Ngày Giao</p>
+                  <div class="date__container flex flex-wrap gap-2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <!-- End Select Ship Date -->
+              </form>
             </div>
 
             <!-- Cash -->
@@ -204,7 +208,7 @@
               <h3 class="Side_cash--main--text">
                 Tóm tắt (<span id="quantityOrder">2</span> món)
               </h3>
-              <div class="cash__cart--list">
+              <div class="cash__cart--list" id="cashCartList">
                 <!-- Start Cart Items -->
                 <div class="cash__cart--item flex items-center gap-2">
                   <div class="item__img">
@@ -262,43 +266,46 @@
                   </div>
                 </div>
                 <!-- End Cart Items -->
-                <hr />
-                <div class="tempTotal--container">
-                  <div class="tempTotal--flex">
-                    <p class="tempTotal--text">Tạm tính:</p>
-                    <p>
-                      <span class="tempTotal--price"> 1.610.000 đ </span>
-                    </p>
-                  </div>
+              </div>
 
-                  <div class="tempTotal--flex">
-                    <p class="tempTotal--text">Vận chuyển:</p>
-                    <p>
-                      <span class="tempTotal--price"> Miễn Phí </span>
-                    </p>
-                  </div>
-                </div>
-
-                <hr />
-                <div class="primary--Total">
-                  <p class="primary--Total-text">Tổng:</p>
-                  <p class="primary--Total-text">
-                    <span class="primaryTotalPrice" id="primaryTotalPrice"
-                      >1.064.000</span
-                    >
-                    <span class="primaryTotalPrice"> đ</span>
+              <hr />
+              <div class="tempTotal--container">
+                <div class="tempTotal--flex">
+                  <p class="tempTotal--text">Tạm tính:</p>
+                  <p>
+                    <span class="tempTotal--price"> 1.610.000 đ </span>
                   </p>
                 </div>
 
-                <button class="button--order">
-                  <img src="CartImgs/delivery.png" alt="" />
-                  Đặt hàng
-                </button>
+                <div class="tempTotal--flex">
+                  <p class="tempTotal--text">Vận chuyển:</p>
+                  <p>
+                    <span class="tempTotal--price" id="tempTotalShip">
+                      Miễn Phí
+                    </span>
+                  </p>
+                </div>
               </div>
+
+              <hr />
+              <div class="primary--Total">
+                <p class="primary--Total-text">Tổng:</p>
+                <p class="primary--Total-text">
+                  <span class="primaryTotalPrice" id="primaryTotalPrice"
+                    >1.064.000</span
+                  >
+                  <span class="primaryTotalPrice"> đ</span>
+                </p>
+              </div>
+
+              <button type="submit" id="checkout" form="checkOutForm" class="button--order">
+                <img src="CartImgs/delivery.png" alt="" />
+                Đặt hàng
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      
     </section>
 
     <!-- ========== FOOTER ========== -->
