@@ -176,8 +176,14 @@ document.getElementById("cartBody").addEventListener("click", function (e) {
   );
 
   // xử lý nút tăng số lượng (+)
+  const maxCartItemQuantity = 99;
   if (target.closest(".btn-plus")) {
-    bakeryShopCartLs[itemIndex].quantity++;
+    if (bakeryShopCartLs[itemIndex].quantity <= maxCartItemQuantity - 1) {
+      bakeryShopCartLs[itemIndex].quantity++;
+    } else {
+      bakeryShopCartLs[itemIndex].quantity = 99;
+      alert("Số lượng tối đa là 99");
+    }
     localStorage.setItem("bakeryShopCartLs", JSON.stringify(bakeryShopCartLs));
     renderCart();
   }
