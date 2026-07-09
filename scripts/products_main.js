@@ -70,6 +70,46 @@ function getProductDetailsById(productId) {
 
 
 /**
+ * Ham get cac object product theo array cac product Id truyen vao
+ */
+function getProductsByProductIds(productIds) {
+    if (productIds.length <= 0) {
+        console.log("[getProductsByProductIds] array productIds rong! stop ham nay ngay!");
+        return [];
+    }
+
+    let productsArr = [];
+    for (let i=0; i < productIds.length; i++) {
+        let productId = productIds[i];
+        let productId_int = Number(productId);
+        if (Number.isNaN(productId_int) || productId_int <= 0) {
+            console.log("[getProductsByProductIds] product id " + productId_int + " is not valid! Bo qua!");
+            continue;
+        }
+
+        let foundInProductsList = false;
+        for(let j=0; j < productsList.length; j++) {
+            if (productId_int == productsList[j].id) {
+                foundInProductsList = true;
+                console.log("[getProductsByProductIds] product id " + productId_int + " co trong mang productsList!");
+                let proObj = structuredClone(productsList[j]);
+                console.log(proObj);
+
+                productsArr.push(proObj);
+                break;
+            }
+        }
+
+        if (foundInProductsList == false) {
+            console.log("[getProductsByProductIds] product id " + productId_int + " khong ton tai trong mang productsList!");
+        }
+    }
+
+    return productsArr;
+}
+
+
+/**
  * Ham xu ly add 1 product vao cart dua theo productId truyen vao ham
 */
 function addProductToCart(proId, quantity=1) {
@@ -167,16 +207,6 @@ function addProductToCart(proId, quantity=1) {
                     <span>Số lượng trong giỏ: ` + cartItemObj.quantity + `</span><br>
                     <a href="cart.html">Xem giỏ hàng</a>`;
     showToastBox("success", "Đã thêm vào giỏ hàng", toastMsg);
-}
-
-
-function showToastNotiBox(messageContent) {
-    let toast = document.getElementById('toastNotiBox');
-
-    document.getElementById("toastMessageSection").innerHTML = messageContent;
-
-    toast.classList.add('show');
-    //setTimeout(function() { toast.classList.remove('show'); }, 4000);
 }
 
 

@@ -111,7 +111,7 @@ let productsList = [
         shortDescription: "Mẫu bánh giữ trọn vị truyền thống với lớp flan béo mịn đan xen cốt chocolate đắng thanh, xốp nhẹ. Lớp jelly caramel óng ả quyện cùng dâu, dưa lưới, đào và búp sữa chua thanh mát tạo nên sự cân bằng hoàn hảo, không hề gây ngấy. Diện mạo rạng rỡ, tươi mới, là tâm điểm ý nghĩa cho mọi bữa tiệc gia đình",
         description: "<p><strong>Hương vị:</strong> Ngọt dịu - Béo nhẹ - Đắng nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm các lớp chính:</p><ul><li><p>Bánh flan vị truyền thống</p></li><li><p>Bông lan sô-cô-la</p></li></ul><p>Phần trang trí: vòng chocolate trắng, viên mousse sữa chua, dâu tây, dưa lưới và đào</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
         isFeatured: true,
-        relatedProductIds: [126, 127],
+        relatedProductIds: [126, 138, 0, 127],
         inStock: true
     }
 ];

@@ -106,7 +106,13 @@ function showProductDetailsById(productData) {
 						</div>
                     </div>`;
 
-    // section : cac san pham lien quan
+    // Section : cac san pham lien quan
+    if (productData.relatedProductIds.length > 0) {
+        let relatedProductsList = getProductsByProductIds(productData.relatedProductIds);
+        console.log("Related products list :");
+        console.log(relatedProductsList);
+    }
+
 
     // set toan bo productHtml vao cho div productDetailsSection
     document.getElementById("productDetailsSection").innerHTML = productHtml;
