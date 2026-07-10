@@ -21,8 +21,8 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
         
         // generate buttons : Add to cart, xem chi tiet
         productsHtml += '<div class="product-card-actions">';
-        productsHtml += '<button class="add-to-cart-btn" onclick="addProductToCart(' + productsData[i].id + ')"><i class="fas fa-cart-plus"></i> Add to Cart</button>';
-        productsHtml += '<a href="product_details.html?product_id=' + productsData[i].id + '" class="view-details-btn" target="_blank"><i class="fas fa-eye"></i> Details</a>';
+        productsHtml += '<button class="add-to-cart-btn" onclick="addProductToCart(' + productsData[i].id + ')"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>';
+        productsHtml += '<a href="product_details.html?product_id=' + productsData[i].id + '" class="view-details-btn" target="_blank"><i class="fas fa-eye"></i> Xem chi tiết</a>';
         productsHtml += "</div>";
 
         // close div product-card-body

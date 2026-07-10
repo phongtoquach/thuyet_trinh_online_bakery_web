@@ -4,6 +4,12 @@
 function showProductDetailsById(productData) {
     let productHtml = "";
 
+    // set title cho page
+    document.title = productData.name + " | " + websiteName;
+
+    // set breadcrumb
+    document.getElementById("breadcrumbProduct").innerHTML = productData.name;
+
     // open div product details layout
     productHtml = '<div class="product-details-layout">';
 
@@ -117,7 +123,7 @@ function showProductDetailsById(productData) {
     // Section : cac san pham lien quan
     if (productData.relatedProductIds.length > 0) {
         let relatedProductsList = getProductsByProductIds(productData.relatedProductIds);
-        console.log("Related products list :");
+        console.log("[showProductDetailsById] Related products list :");
         console.log(relatedProductsList);
 
         // neu mang relatedProductsList co it nhat 1 phan tu thi moi generate noi dung section
@@ -367,6 +373,15 @@ function handleAddProductToCart(productId) {
 }
 
 
+function showNoProductMessage() {
+    // set content cho div productDetailsSection : thong bao khong tim thay product
+    document.getElementById("productDetailsSection").innerHTML = `<h2>Không tìm thấy sản phẩm</h2>`;
+
+    // hide breadcrumb
+    document.getElementById("breadcrumb").style.display = "none";
+}
+
+
 // kiem tra param product_id trong URL
 // param product_id hop le thi lay ra product details data theo product_id do
 let urlParams = new URLSearchParams(window.location.search);
@@ -376,18 +391,26 @@ if (urlParams.has("product_id") && urlParams.get("product_id") !== "") {
     let productId_int = Number(productId_val);
     if (Number.isNaN(productId_int)) {
         console.log("param product_id khong phai number!");
+        showNoProductMessage();
     }
     else {
         console.log("param product_id la number! Goi ham getProductDetailsById() !");
         let producItemObj = getProductDetailsById(productId_int);
-        console.log("Product details cua product " + productId_int + " : ");
+        console.log("Product details cua product Id " + productId_int + " : ");
         console.log(producItemObj);
 
-        // truyen producItemObj vao ham showProductDetailsById()
-        showProductDetailsById(producItemObj);
+        if (producItemObj !== null) {
+            // truyen producItemObj vao ham showProductDetailsById()
+            showProductDetailsById(producItemObj);
+        }
+        else {
+            // neu producItemObj null, tuc la khong co product details data
+            showNoProductMessage();
+        }
     }
 
 }
 else {
     console.log("Khong ton tai URL param product_id hoac product_id rong!");
+    showNoProductMessage()
 }

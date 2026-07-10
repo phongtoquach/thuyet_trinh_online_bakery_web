@@ -1,6 +1,8 @@
 const maxEnteredQuantity = 60;
 const maxCartItemQuantity = 100;
 
+const websiteName = "Maison Sweet Bakery";
+
 let productsList = [
     {
         id: 123,
