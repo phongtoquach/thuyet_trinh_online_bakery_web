@@ -74,7 +74,16 @@
 							<div class="product-toolbar-sort">
 								<span class="sort-label">Sort by:</span>
 								<div class="sort-toggle-group">
-									<button class="sort-toggle-btn active" data-sort="price-asc">
+									<button class="sort-toggle-btn active" data-sort="default">
+									Default
+									</button>
+									<button class="sort-toggle-btn" data-sort="name-asc">
+									Name: A → Z
+									</button>
+									<button class="sort-toggle-btn" data-sort="name-desc">
+									Name: Z → A
+									</button>
+									<button class="sort-toggle-btn" data-sort="price-asc">
 									Price: Low → High
 									</button>
 									<button class="sort-toggle-btn" data-sort="price-desc">
@@ -430,10 +439,10 @@
 		<script src="scripts/products.js"></script>
 
 		<script>
-            let urlParams = new URLSearchParams(window.location.search);
-            let searchedKeyword = urlParams.get("keyword");
-            console.log("keyword param : " + searchedKeyword);
-            console.log("productId param : " + urlParams.get("productId"));
+            // let urlParams = new URLSearchParams(window.location.search);
+            // let searchedKeyword = urlParams.get("keyword");
+            // console.log("keyword param : " + searchedKeyword);
+            // console.log("productId param : " + urlParams.get("productId"));
 		</script>
 	</body>
 </html>
