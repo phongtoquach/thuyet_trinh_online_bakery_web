@@ -991,62 +991,7 @@ select {
   font-size: 0.85rem;
 }
 
-/* === Filter Sidebar (Products Page) === */
-.filter-sidebar {
-  background: var(--color-white);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  height: fit-content;
-  position: sticky;
-  top: calc(var(--header-height) + var(--space-xl));
-  border: 1px solid rgba(232, 213, 192, 0.3);
-}
 
-.filter-sidebar h3 {
-  font-size: 1.15rem;
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-md);
-  border-bottom: 2px solid var(--color-border);
-}
-
-.filter-group {
-  margin-bottom: var(--space-xl);
-}
-
-.filter-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-  color: var(--color-chocolate);
-  font-size: 0.9rem;
-}
-
-.filter-group input,
-.filter-group select {
-  font-size: 0.9rem;
-}
-
-.filter-group .price-range {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
-}
-
-.apply-filters-btn {
-  width: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(135deg, var(--color-chocolate), #8b6b4a);
-  color: var(--color-white);
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-
-.apply-filters-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(111, 78, 55, 0.3);
-}
 
 /* === Products Page Layout === */
 .products-layout {

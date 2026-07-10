@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sweet Crumbs Bakery - Products</title>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/products.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
@@ -18,7 +19,7 @@
 						<img src="images/web_logo_small.png">
 					</div>
 					<div class="logo-text">
-						Maison Sucrée Bakery
+						Maison Sweet Bakery
 						<small>Bakery &amp; Patisserie</small>
 					</div>
 				</a>
@@ -38,6 +39,8 @@
 				</a>
 			</div>
 		</header>
+
+
 		<!-- ========== PRODUCTS SECTION ========== -->
 		<section class="section">
 			<div class="container">
@@ -60,24 +63,25 @@
 								<input type="number" id="maxPrice" placeholder="Max $" min="0" step="0.01">
 							</div>
 						</div>
-						<div class="filter-group">
-							<label for="sortBy">Sort By</label>
-							<select id="sortBy">
-								<option value="">Default</option>
-								<option value="name-asc">Name A - Z</option>
-								<option value="name-desc">Name Z - A</option>
-								<option value="price-asc">Price: Low to High</option>
-								<option value="price-desc">Price: High to Low</option>
-							</select>
-						</div>
 						<button class="apply-filters-btn" id="applyFiltersBtn">
 						<i class="fas fa-search"></i> Apply Filters
 						</button>
 					</aside>
 					<!-- Product Grid Area -->
 					<div>
-						<div class="products-header">
-							<span class="products-count">Showing <strong>12</strong> products</span>
+						<div class="product-toolbar" id="productToolbar">
+							<span class="product-toolbar-count" id="productCount">Showing <strong>12</strong> products</span>
+							<div class="product-toolbar-sort">
+								<span class="sort-label">Sort by:</span>
+								<div class="sort-toggle-group">
+									<button class="sort-toggle-btn active" data-sort="price-asc">
+									Price: Low → High
+									</button>
+									<button class="sort-toggle-btn" data-sort="price-desc">
+									Price: High → Low
+									</button>
+								</div>
+							</div>
 						</div>
 						<div class="product-grid" id="productGrid">
 							<!-- Product 1 -->
@@ -344,6 +348,8 @@
 				</div>
 			</div>
 		</section>
+
+
 		<!-- ========== FOOTER ========== -->
 		<footer class="footer">
 			<div class="container">
@@ -397,21 +403,28 @@
 				</div>
 			</div>
 		</footer>
-		<!-- Toast Notification -->
-		<div class="toast" id="toast">
-			<i class="fas fa-check-circle"></i>
-			<span>Product added to cart</span>
-		</div>
-		<script>
-			function showToast() {
-			    var toast = document.getElementById('toast');
-			    toast.classList.add('show');
-			    setTimeout(function() { toast.classList.remove('show'); }, 3000);
-			}
-			document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
-			  btn.addEventListener('click', function() { showToast(); });
-			});
 
+		<!-- NEW Toast Notification -->
+		<div id="toastBox" class="toast-box toast-success">
+			<div class="toast-icon">
+				<i class="fa-solid fa-circle-check"></i>
+			</div>
+
+			<div class="toast-content">
+				<div class="toast-title"></div>
+				<div class="toast-message"></div>
+			</div>
+
+			<button class="toast-close">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		</div>
+
+		<script src="scripts/products_data.js"></script>
+        <script src="scripts/products_main.js"></script>
+		<script src="scripts/products.js"></script>
+
+		<script>
             let urlParams = new URLSearchParams(window.location.search);
             let searchedKeyword = urlParams.get("keyword");
             console.log("keyword param : " + searchedKeyword);
