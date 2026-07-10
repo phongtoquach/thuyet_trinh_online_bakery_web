@@ -98,10 +98,12 @@
                     <div>
                       <label for="name">Tên người đặt *</label>
                       <input type="text" placeholder="Họ và tên" id="name" />
+                      <span id="nameMessageError" class="messageError"></span>
                     </div>
                     <div>
                       <label for="phone">SĐT người đặt *</label>
                       <input type="text" placeholder="0123456789" id="phone" />
+                      <span id="phoneMessageError" class="messageError"></span>
                     </div>
                   </div>
 
@@ -157,12 +159,13 @@
                     id="texetArea"
                     placeholder="Số nhà, đường..."
                   ></textarea>
+                  <span id="texetAreaMessageError" class="messageError"></span>
                 </div>
                 <!-- End Địa Chỉ Giao Hàng -->
 
                 <!-- Start Select Tỉnh Thành -->
                 <div
-                  class="select__Address--Container grid grid-cols-2 gap-3 sm:grid-cols-4"
+                  class="select__Address--Container grid grid-cols-2 gap-3 sm:grid-cols-2"
                 >
                   <div class="select__Address--City">
                     <p>Tỉnh/TP *</p>
@@ -187,11 +190,8 @@
                 <!-- Start Select Ship Date -->
                 <div class="Select__Date">
                   <p>Chọn Ngày Giao</p>
-                  <div class="date__container flex flex-wrap gap-2">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                  <div id="date-container" class="date__container flex flex-wrap gap-2">
+                    
                   </div>
                 </div>
                 <!-- End Select Ship Date -->
@@ -199,7 +199,25 @@
             </div>
 
             <!-- Cash -->
-            <div class="cart__howToCash"></div>
+            <div class="cart__howToCash rounded-lg">
+              <h2>Phương Thức Thanh Toán</h2>
+              <div id="methodCash" class="cart__chooseMethod--button grid grid-cols-2 gap-2">
+                <button
+                  id="cod"
+                  class="btn--cart flex items-center justify-center gap-2 rounded-xl border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                >
+                  <img src="CartImgs/money.png" alt="" />
+                  COD
+                </button>
+                <button
+                  id="transfer"
+                  class="btn--cart flex items-center justify-center gap-2 rounded-xl border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
+                >
+                  <img src="CartImgs/shop.png" alt="" />
+                  Chuyển Khoản
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Side containt -->
@@ -425,10 +443,21 @@
         </div>
       </div>
     </footer>
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-      <i class="fas fa-check-circle"></i>
-      <span>Product added to cart</span>
+    
+    <!-- NEW Toast Notification -->
+    <div id="toastBox" class="toast-box toast-success">
+      <div class="toast-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div class="toast-content">
+        <div class="toast-title"></div>
+        <div class="toast-message"></div>
+      </div>
+
+      <button class="toast-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
     <script src="scripts/checkout.js"></script>

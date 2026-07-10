@@ -1,4 +1,3 @@
-
 let cartEmpty = document.getElementById("cartEmpty");
 
 let cartShop = document.getElementById("cartShop");
@@ -76,9 +75,9 @@ function renderCart() {
   function DeliveryShip(total) {
     let ship = 30000;
     if (total >= 500000) {
-        ship = 0;
+      ship = 0;
     } else {
-        ship = 30000;
+      ship = 30000;
     }
     return ship;
   }
@@ -93,7 +92,7 @@ function renderCart() {
 
             <div class="summary-row">
               <span>Vận chuyển</span>
-              <span id="cartShipping">${(DeliveryShip(total) > 0) ? DeliveryShip(total).toLocaleString('vi-VN')+'đ' : "Miễn phí"}</span>
+              <span id="cartShipping">${DeliveryShip(total) > 0 ? DeliveryShip(total).toLocaleString("vi-VN") + "đ" : "Miễn phí"}</span>
             </div>
 
             <div class="summary-row total">
@@ -182,7 +181,7 @@ document.getElementById("cartBody").addEventListener("click", function (e) {
       bakeryShopCartLs[itemIndex].quantity++;
     } else {
       bakeryShopCartLs[itemIndex].quantity = 99;
-      alert("Số lượng tối đa là 99");
+      showToastBox("error", "Có lỗi xảy ra!", "Giới hạn tối đa là 99!");
     }
     localStorage.setItem("bakeryShopCartLs", JSON.stringify(bakeryShopCartLs));
     renderCart();
@@ -193,29 +192,112 @@ document.getElementById("cartBody").addEventListener("click", function (e) {
       bakeryShopCartLs[itemIndex].quantity--;
     } else if (confirm("Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?")) {
       bakeryShopCartLs.splice(itemIndex, 1);
+      showToastBox("success", "Thành công!", "Đã xóa sản phẩm khỏi giỏ hàng!");
     }
     localStorage.setItem("bakeryShopCartLs", JSON.stringify(bakeryShopCartLs));
+
     renderCart();
   }
 
   // Xử lý nút xóa sản phẩm
   if (target.closest(".remove-cart-item")) {
-    if (confirm("Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?")) {
-      bakeryShopCartLs.splice(itemIndex, 1);
-      localStorage.setItem(
-        "bakeryShopCartLs",
-        JSON.stringify(bakeryShopCartLs),
-      );
-      renderCart();
-    }
+    bakeryShopCartLs.splice(itemIndex, 1);
+    localStorage.setItem("bakeryShopCartLs", JSON.stringify(bakeryShopCartLs));
+    renderCart();
+    showToastBox("success", "Thành công!", "Đã xóa sản phẩm khỏi giỏ hàng!");
   }
 });
 
-let clearCartBtn = document.getElementById('clearCartBtn');
+let clearCartBtn = document.getElementById("clearCartBtn");
 
-clearCartBtn.addEventListener('click', function () {
-  if (confirm('Bạn có chắc muốn xóa tất cả sản phẩm khỏi giỏ hàng ?')) {
-    localStorage.removeItem('bakeryShopCartLs');
-    renderCart();
+clearCartBtn.addEventListener("click", function () {
+  localStorage.removeItem("bakeryShopCartLs");
+  renderCart();
+  showToastBox("success", "Thành công!", "Đã xóa khỏi giỏ hàng!");
+});
+
+// =================== TOAST BOX ===================
+// Ham thuc hien show Toast Box
+// toastType : success / error
+function showToastBox(toastType, title, messageContent) {
+  let toastBox = document.getElementById("toastBox");
+  toastBox.classList.remove("toast-success", "toast-error", "show");
+
+  // check toastType de quyet dinh add CSS class toast-success hay toast-error
+  if (toastType == "success") {
+    toastBox.classList.add("toast-success");
+  } else {
+    toastBox.classList.add("toast-error");
+  }
+
+  // set title
+  toastBox.querySelector(".toast-title").innerHTML = title;
+  // set message content
+  toastBox.querySelector(".toast-message").innerHTML = messageContent;
+
+  // set icon
+  if (toastType == "success") {
+    toastBox.querySelector(".toast-icon i").className =
+      "fa-solid fa-circle-check";
+  } else {
+    toastBox.querySelector(".toast-icon i").className =
+      "fa-solid fa-circle-xmark";
+  }
+
+  toastBox.classList.add("show");
+
+  // sau x giay thi hide Toast Box nay di
+  startHideToastTimer();
+}
+
+let hideToastTimer = null;
+// Ham start timer dem x giay de thuc hien hide Toast Box
+function startHideToastTimer() {
+  console.log(
+    "[startHideToastTimer] Bat dau set timer dem nguoc de hide Toast Box!",
+  );
+  clearTimeout(hideToastTimer);
+
+  hideToastTimer = setTimeout(() => {
+    hideToastBox();
+  }, 4000);
+}
+
+// Ham hide toast box
+function hideToastBox() {
+  clearTimeout(hideToastTimer);
+
+  let toast_box = document.getElementById("toastBox");
+  toast_box.classList.remove("show");
+
+  console.log("[hideToastBox] Da hide toast box roi!");
+}
+
+// bind event "click" cho nut close de hide Toast Box
+let toastBoxCloseButton = document
+  .getElementById("toastBox")
+  .querySelector(".toast-close");
+toastBoxCloseButton.addEventListener("click", hideToastBox);
+
+// Hover vao Toast Box -> stop auto hide
+document.getElementById("toastBox").addEventListener("mouseenter", () => {
+  console.log(
+    "Xay ra event mouseenter, user dang hover vao Toast box ! Stop auto hide Toast Box!",
+  );
+  clearTimeout(hideToastTimer);
+});
+
+// Re chuot ra khoi Toast Box -> start lai timer hide Toast Box
+document.getElementById("toastBox").addEventListener("mouseleave", () => {
+  let toast_box = document.getElementById("toastBox");
+  if (toast_box.classList.contains("show") == true) {
+    console.log(
+      "[ToastBox - mouseleave] toastBox dang co CSS class 'show', nen can goi ham startHideToastTimer()!",
+    );
+    startHideToastTimer();
+  } else {
+    console.log(
+      "[ToastBox - mouseleave] toastBox khong co CSS class 'show', nen KHONG CAN goi ham startHideToastTimer()!",
+    );
   }
 });

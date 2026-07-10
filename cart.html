@@ -230,26 +230,22 @@
       </div>
     </footer>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-      <i class="fas fa-check-circle"></i>
-      <span>Product added to cart</span>
+    <!-- NEW Toast Notification -->
+    <div id="toastBox" class="toast-box toast-success">
+      <div class="toast-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div class="toast-content">
+        <div class="toast-title"></div>
+        <div class="toast-message"></div>
+      </div>
+
+      <button class="toast-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
     <script src="scripts/cart.js"></script>
-    <script>
-      function showToast() {
-        var toast = document.getElementById("toast");
-        toast.classList.add("show");
-        setTimeout(function () {
-          toast.classList.remove("show");
-        }, 3000);
-      }
-      document.querySelectorAll(".add-to-cart-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          showToast();
-        });
-      });
-    </script>
   </body>
 </html>
