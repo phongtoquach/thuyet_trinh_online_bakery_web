@@ -13,31 +13,36 @@ function showProductDetailsById(productData) {
     // open div product details layout
     productHtml = '<div class="product-details-layout">';
 
-    // check images
+    // check mang images co rong hay ko 
     let mainImageSrc = "";
     if (productData.images.length > 0) {
+        // neu mang images co phan tu thi lay phan tu dau tien (index 0) lam main image
         mainImageSrc = productData.images[0];
+    }
+    else {
+        // neu mang images rong thi lay image mac dinh lam main image
+        mainImageSrc = defaultProductImageSrc;
     }
 
     // open div : product gallery
     productHtml += '<div class="product-gallery" id="productGallery">';
-    productHtml += '<div class="main-image"><img src="' + productData.images[0] + '" alt=""></div>';
+    productHtml += '<div class="main-image"><img src="' + mainImageSrc + '" alt=""></div>';
 
-    // neu mang images rong thi ko can thumbnail
-    productHtml += '<div class="gallery-thumbnails" id="productGalleryThumbnails">';
-
-    for(let i=0; i < productData.images.length; i++) {
-        let imgHtml = '<img src="' + productData.images[i] + '" alt="image thumbnail"';
-        if (i == 0) {
-            imgHtml += ' class="product-image-thumbnail active">';
+    // neu mang images co phan tu thi moi generate thumbnails
+    if (productData.images.length > 0) {
+        productHtml += '<div class="gallery-thumbnails" id="productGalleryThumbnails">';
+        for(let i=0; i < productData.images.length; i++) {
+            let imgHtml = '<img src="' + productData.images[i] + '" alt="image thumbnail"';
+            if (i == 0) {
+                imgHtml += ' class="product-image-thumbnail active">';
+            }
+            else {
+                imgHtml += ' class="product-image-thumbnail">';
+            }
+            productHtml += imgHtml;
         }
-        else {
-            imgHtml += ' class="product-image-thumbnail">';
-        }
-        productHtml += imgHtml;
+        productHtml += '</div>';
     }
-
-    productHtml += '</div>';
 
     // close div : product gallery
     productHtml += '</div>';
@@ -151,24 +156,26 @@ function showProductDetailsById(productData) {
     // bind event click cho button -
     document.getElementById("btnQuantityMinus").addEventListener("click", decreaseQuantityForAddToCart); 
 
-    // bind event click cho cac image thumbnail
-    let imgThumbnails = document.querySelectorAll("#productGalleryThumbnails img.product-image-thumbnail");
-    imgThumbnails.forEach(imgThumb => {
-        imgThumb.addEventListener("click", function() {
-            console.log("[showProductDetailsById] image thumb duoc click la : " + this.src);
+    // Neu mang images co phan tu thi : bind event click cho cac image thumbnail
+    if (productData.images.length > 0) {
+        let imgThumbnails = document.querySelectorAll("#productGalleryThumbnails img.product-image-thumbnail");
+        imgThumbnails.forEach(imgThumb => {
+            imgThumb.addEventListener("click", function() {
+                console.log("[showProductDetailsById] image thumb duoc click la : " + this.src);
 
-            // set source cho image lon bang src cua thumb image nay
-            document.querySelector("#productGallery .main-image img").src = this.src;
+                // set source cho image lon bang src cua thumb image nay
+                document.querySelector("#productGallery .main-image img").src = this.src;
 
-            // remove CSS class active cua tat ca thumb image
-            document.querySelectorAll("#productGalleryThumbnails .product-image-thumbnail").forEach(imageThumb => {
-                imageThumb.classList.remove("active");
-            });
+                // remove CSS class active cua tat ca thumb image
+                document.querySelectorAll("#productGalleryThumbnails .product-image-thumbnail").forEach(imageThumb => {
+                    imageThumb.classList.remove("active");
+                });
 
-            // add CSS class active cho thumb image nay
-            this.classList.add("active");
-        }); 
-    });
+                // add CSS class active cho thumb image nay
+                this.classList.add("active");
+            }); 
+        });
+    }
 }
 
 /**

@@ -12,7 +12,18 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
         // open div product-card
         productsHtml += '<div class="product-card">';
 
-        productsHtml += '<div class="product-card-image"><img src="' + productsData[i].images[0] + '" alt="' + productsData[i].name + '"><span class="product-card-tag">Nổi bật</span></div>';
+        // check mang images co rong hay ko 
+        let productImageSrc = "";
+        if (productsData[i].images.length > 0) {
+            // neu mang images co phan tu thi lay phan tu dau tien (index 0) show ra
+            productImageSrc = productsData[i].images[0];
+        }
+        else {
+            // neu mang images rong thi lay image mac dinh show ra
+            productImageSrc = defaultProductImageSrc;
+        }
+
+        productsHtml += '<div class="product-card-image"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '"><span class="product-card-tag">Nổi bật</span></div>';
         
         // open div product-card-body
         productsHtml += '<div class="product-card-body"><h3>' + productsData[i].name + '</h3>';
@@ -46,7 +57,7 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
 }
 
 /**
- * Ham lay ra object product tu array productList dua theo productId truyen vao
+ * Ham lay ra object product (tu trong array productList) dua theo productId truyen vao
 */
 function getProductDetailsById(productId) {
     let productObj = null;
@@ -74,6 +85,23 @@ function getProductDetailsById(productId) {
     }
 
     return productObj;
+}
+
+/**
+ * Ham lay ra cac object product dua theo cac filter
+ * Tuc la day la ham search product theo filter
+ * param filtersData la 1 object co cau truc nhu sau :
+ * {
+ *      keyword: "",
+ *      onlyFeatured: 1,
+ *      onlyInStock
+ *      minPrice: "",
+ *      maxPrice: ""
+ * }
+ * 
+ */
+function getProductsByFilters(filtersData) {
+
 }
 
 
