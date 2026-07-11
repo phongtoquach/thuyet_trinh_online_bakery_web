@@ -52,6 +52,7 @@ function renderCart() {
                         type="number"
                         value="${bakeryShopCartLs[i].quantity}"
                         min="1"
+                        disabled
                       />
 
                       <div class="totalPriceTemp--container">
@@ -65,15 +66,20 @@ function renderCart() {
   }
 
   let cashCartList = document.getElementById("cashCartList");
-  cashCartList.innerHTML = html;
+  if (cashCartList) {
+    cashCartList.innerHTML = html || `<p class="text-center py-4 text-gray-500">Giỏ hàng của bạn đang trống</p>`;
+  }
 
-  document.querySelector(".tempTotal--price").innerHTML =
-    total.toLocaleString("vi-VN") + "đ";
+  const tempTotalVal = document.querySelector(".tempTotal--price");
+  if (tempTotalVal) {
+    tempTotalVal.innerHTML = total.toLocaleString("vi-VN") + "đ";
+  }
 
   // Tính tiền ship
-  function DeliveryShip(total) {
+  function DeliveryShip(totalPrice) {
+    if (totalPrice === 0) return 0;
     let ship = 30000;
-    if (total >= 500000) {
+    if (totalPrice >= 500000) {
       ship = 0;
     } else {
       ship = 30000;
@@ -81,16 +87,27 @@ function renderCart() {
     return ship;
   }
 
-  if (DeliveryShip(total) > 0) {
-    document.querySelector("#tempTotalShip").innerHTML =
-      DeliveryShip(total).toLocaleString("vi-VN") + "đ";
-  } else {
-    document.querySelector("#tempTotalShip").innerHTML = "Miễn Phí";
+  const tempTotalShip = document.querySelector("#tempTotalShip");
+  if (tempTotalShip) {
+    if (DeliveryShip(total) > 0) {
+      tempTotalShip.innerHTML = DeliveryShip(total).toLocaleString("vi-VN") + "đ";
+    } else {
+      tempTotalShip.innerHTML = "Miễn Phí";
+    }
   }
 
   let sum = total + DeliveryShip(total);
-  document.querySelector("#primaryTotalPrice").innerHTML =
-    sum.toLocaleString("vi-VN") + "đ";
+  const primaryTotalPrice = document.querySelector("#primaryTotalPrice");
+  if (primaryTotalPrice) {
+    primaryTotalPrice.innerHTML = sum.toLocaleString("vi-VN") + "đ";
+  }
+
+  // Cập nhật số lượng món ở phần tóm tắt đơn hàng
+  let quantityOrder = document.getElementById("quantityOrder");
+  if (quantityOrder) {
+    quantityOrder.innerHTML = bakeryShopCartLs.length;
+  }
+
 }
 
 // Render Cart khi lần đầu tải trang
@@ -101,6 +118,11 @@ let checkOutForm = document.getElementById("checkOutForm");
 checkOutForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let is_valid = true;
+
+  // Reset các thông báo lỗi trước khi kiểm tra lại
+  document.getElementById("nameMessageError").innerHTML = "";
+  document.getElementById("phoneMessageError").innerHTML = "";
+  document.getElementById("texetAreaMessageError").innerHTML = "";
 
   // Kiểm tra họ tên người đặt:
   let name = document.getElementById("name").value.trim();
@@ -116,14 +138,14 @@ checkOutForm.addEventListener("submit", function (e) {
     is_valid = false;
     document.getElementById("phoneMessageError").innerHTML =
       "Vui lòng nhập số điện thoại người đặt hàng!";
-  }
-
-  const regex =
-    /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
-  if (!regex.test(phone)) {
-    is_valid = false;
-    document.getElementById("phoneMessageError").innerHTML =
-      "Số điện thoại không hợp lệ!";
+  } else {
+    const regex =
+      /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+    if (!regex.test(phone)) {
+      is_valid = false;
+      document.getElementById("phoneMessageError").innerHTML =
+        "Số điện thoại không hợp lệ!";
+    }
   }
 
   let texetArea = document.getElementById("texetArea").value.trim();
@@ -134,7 +156,80 @@ checkOutForm.addEventListener("submit", function (e) {
   }
 
   if (is_valid == true) {
-    showToastBox("success", "Thành công!", "Bạn đã đặt hàng thành công!");
+    // 1. Lấy phương thức nhận hàng (Giao hàng / Ghé lấy)
+    let deliveryMethod = "Giao hàng";
+    const activeDeliveryBtn = document.querySelector(".cart__chooseMethod--button .btn--cart.active");
+    if (activeDeliveryBtn) {
+      deliveryMethod = activeDeliveryBtn.innerText.trim();
+    }
+
+    // 2. Lấy Tỉnh/TP và Phường/Xã từ các Dropdown
+    const citySelect = document.querySelector(".select__Address--City--dropdown");
+    const city = citySelect ? citySelect.options[citySelect.selectedIndex].text : "";
+
+    const districtSelect = document.querySelector(".select__Address--district--dropdown");
+    const district = districtSelect ? districtSelect.options[districtSelect.selectedIndex].text : "";
+
+    // 3. Lấy Ngày giao hàng được chọn
+    let deliveryDate = "";
+    const selectedDateBox = document.querySelector(".date__main.selected, .date__main--time.selected");
+    if (selectedDateBox) {
+      if (selectedDateBox.id === "custom-date-btn") {
+        const customDatePicker = document.getElementById("custom-date-picker");
+        deliveryDate = customDatePicker ? customDatePicker.value : "";
+      } else {
+        const dateContent = selectedDateBox.querySelector(".date__content--days");
+        deliveryDate = dateContent ? dateContent.innerText.trim() : "";
+      }
+    }
+
+    // 4. Lấy Phương thức thanh toán (COD / Chuyển khoản)
+    let paymentMethod = "COD"; // Mặc định
+    if (document.getElementById("transfer").classList.contains("active")) {
+      paymentMethod = "Chuyển Khoản";
+    }
+
+    // 5. Lấy danh sách giỏ hàng hiện tại và tính toán tổng tiền
+    const cartItems = JSON.parse(localStorage.getItem("bakeryShopCartLs")) || [];
+    let cartTotal = 0;
+    cartItems.forEach(item => {
+      cartTotal += item.quantity * item.unitPrice;
+    });
+
+    let shippingFee = 0;
+    if (deliveryMethod === "Giao hàng") {
+      shippingFee = cartTotal >= 500000 ? 0 : 30000;
+    }
+    let finalTotal = cartTotal + shippingFee;
+
+    // 6. Gom tất cả thông tin đơn hàng cùng giỏ hàng lại thành một Object
+    const orderInfo = {
+      name: name,
+      phone: phone,
+      deliveryMethod: deliveryMethod,
+      address: texetArea,
+      city: city,
+      district: district,
+      deliveryDate: deliveryDate,
+      paymentMethod: paymentMethod,
+      cartItems: cartItems,      // Đẩy giỏ hàng vào thông tin đặt hàng
+      cartTotal: cartTotal,      // Tổng tiền hàng
+      shippingFee: shippingFee,  // Phí vận chuyển
+      finalTotal: finalTotal,    // Tổng tiền thanh toán cuối cùng
+      createdAt: new Date().toISOString()
+    };
+
+    // 7. Đẩy toàn bộ đối tượng dữ liệu lên LocalStorage dưới dạng chuỗi JSON
+    localStorage.setItem("customerOrderInfo", JSON.stringify(orderInfo));
+
+    // 8. Xóa giỏ hàng hiện tại sau khi đặt hàng thành công để làm trống giỏ hàng
+    localStorage.removeItem("bakeryShopCartLs");
+
+    // 9. Cập nhật lại giao diện (sẽ hiển thị giỏ hàng trống và reset badge)
+    renderCart();
+
+    // Hiển thị thông báo thành công
+    showToastBox("success", "Thành công!", "Bạn đã đặt hàng thành công! Giỏ hàng đã được lưu vào thông tin đặt hàng.");
   } else {
     showToastBox(
       "error",
