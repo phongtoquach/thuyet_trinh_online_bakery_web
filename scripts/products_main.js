@@ -94,15 +94,272 @@ function getProductDetailsById(productId) {
  * {
  *      keyword: "",
  *      onlyFeatured: 1,
- *      onlyInStock
- *      minPrice: "",
- *      maxPrice: ""
+ *      onlyInStock: 1,
+ *      minPrice: null,
+ *      maxPrice: null
  * }
  * 
  */
-function getProductsByFilters(filtersData) {
+function getProductsByFilters(filtersData={}) {
+    console.log("[getProductsByFilters] filtersData ban dau :");
+    console.log(filtersData);
 
+    // truoc het, goi ham handleFiltersData() de format cac filter lai cho chuan
+    let newFiltersData = handleFiltersData(filtersData);
+    console.log("[getProductsByFilters] newFiltersData sau khi xu ly bang ham handleFiltersData() :");
+    console.log(newFiltersData);
+
+    let lowerCaseKeyword = newFiltersData.keyword.toLocaleLowerCase();
+    // duyet qua tung phan tu trong array productsList de check theo filter
+    let searchResults = [];
+    for(let i=0; i < productsList.length; i++) {
+        let productIsMatched = true;
+        console.log("[getProductsByFilters] Dang check product " + productsList[i].id + " : " + productsList[i].name + " ; price : " + productsList[i].price);
+
+        // check newFiltersData.keyword
+        if (lowerCaseKeyword != "") {
+            console.log("[getProductsByFilters] Keyword khac rong : " + lowerCaseKeyword);
+            if (!productsList[i].name.toLocaleLowerCase().includes(lowerCaseKeyword)) {
+                productIsMatched = false;
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : NOT MATCHED with keyword !");
+                continue;
+            }
+            else {
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : MATCHED with keyword !");
+            }
+        }
+        else {
+            console.log("[getProductsByFilters] Keyword rong ! Bo qua filter nay !");
+        }
+        
+        // check newFiltersData.minPrice
+        if (newFiltersData.minPrice !== null) {
+            console.log("[getProductsByFilters] Min price khac null : " + newFiltersData.minPrice);
+            if (productsList[i].price < newFiltersData.minPrice) {
+                productIsMatched = false;
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : NOT MATCHED with min price !");
+                continue;
+            }
+            else {
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : MATCHED with min price !");
+            }
+        }
+        else {
+            console.log("[getProductsByFilters] Min price null ! Bo qua filter nay !");
+        }
+
+        // check newFiltersData.maxPrice
+        if (newFiltersData.maxPrice !== null) {
+            console.log("[getProductsByFilters] Max price khac null : " + newFiltersData.maxPrice);
+            if (productsList[i].price > newFiltersData.maxPrice) {
+                productIsMatched = false;
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : NOT MATCHED with max price !");
+                continue;
+            }
+            else {
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : MATCHED with max price !");
+            }
+        }
+        else {
+            console.log("[getProductsByFilters] Max price null ! Bo qua filter nay !");
+        }
+
+        if (productIsMatched == true) {
+            let clonedProductObj = structuredClone(productsList[i]);
+            searchResults.push(clonedProductObj);
+        }
+    }
+
+    return searchResults;
 }
+
+
+function handleFiltersData(filtersData) {
+    let finalFilters = {
+        keyword: "",
+        onlyFeatured: 0,
+        onlyInStock: 0,
+        minPrice: null,
+        maxPrice: null
+    };
+
+    // check keyword
+    if (Object.hasOwn(filtersData, "keyword")) {
+        console.log("[handleFiltersData] filtersData co attr keyword ! Value : " + filtersData.keyword);
+        finalFilters.keyword = filtersData.keyword.trim();
+    }
+    else {
+        console.log("[handleFiltersData] filtersData KHONG CO attr keyword !");
+    }
+
+    // check onlyFeatured
+    if (Object.hasOwn(filtersData, "onlyFeatured")) {
+        console.log("[handleFiltersData] filtersData co attr onlyFeatured ! Value : " + filtersData.onlyFeatured);
+        // check co phai number ko
+        let onlyFeaturedVal = Number(filtersData.onlyFeatured);
+        if (Number.isNaN(onlyFeaturedVal)) {
+            onlyFeaturedVal = 0;
+        }
+        // chi chap nhan 0 hoac 1
+        if (onlyFeaturedVal != 0 && onlyFeaturedVal != 1) {
+            onlyFeaturedVal = 0;
+        }
+
+        finalFilters.onlyFeatured = onlyFeaturedVal;
+    }
+    else {
+        console.log("[handleFiltersData] filtersData KHONG CO attr onlyFeatured !");
+    }
+
+    // check onlyInStock
+    if (Object.hasOwn(filtersData, "onlyInStock")) {
+        console.log("[handleFiltersData] filtersData co attr onlyInStock ! Value : " + filtersData.onlyInStock);
+        // check co phai number ko
+        let onlyInStockVal = Number(filtersData.onlyInStock);
+        if (Number.isNaN(onlyInStockVal)) {
+            onlyInStockVal = 0;
+        }
+        // chi chap nhan 0 hoac 1
+        if (onlyInStockVal != 0 && onlyInStockVal != 1) {
+            onlyInStockVal = 0;
+        }
+
+        finalFilters.onlyInStock = onlyInStockVal;
+    }
+    else {
+        console.log("[handleFiltersData] filtersData KHONG CO attr onlyInStock !");
+    }
+
+    // check minPrice
+    if (Object.hasOwn(filtersData, "minPrice")) {
+        console.log("[handleFiltersData] filtersData co attr minPrice ! Value : " + filtersData.minPrice);
+
+        if (filtersData.minPrice === "") {
+            console.log("[handleFiltersData] minPrice rong ! Set thanh null !");
+            finalFilters.minPrice = null;
+        }
+        else {
+            // check co phai number ko
+            let minPrice_int = Number(filtersData.minPrice);
+            if (Number.isNaN(minPrice_int)) {
+                console.log("[handleFiltersData] minPrice khong phai number ! Set thanh null !");
+                finalFilters.minPrice = null;
+            }
+            else {
+                console.log("[handleFiltersData] minPrice la number : " + minPrice_int);
+                finalFilters.minPrice = minPrice_int;
+            }
+        }
+    }
+    else {
+        console.log("[handleFiltersData] filtersData KHONG CO attr minPrice !");
+    }
+
+    // check maxPrice
+    if (Object.hasOwn(filtersData, "maxPrice")) {
+        console.log("[handleFiltersData] filtersData co attr maxPrice ! Value : " + filtersData.maxPrice);
+
+        if (filtersData.maxPrice === "") {
+            console.log("[handleFiltersData] maxPrice rong ! Set thanh null !");
+            finalFilters.maxPrice = null;
+        }
+        else {
+            // check co phai number ko
+            let maxPrice_int = Number(filtersData.maxPrice);
+            if (Number.isNaN(maxPrice_int)) {
+                console.log("[handleFiltersData] maxPrice khong phai number ! Set thanh null !");
+                finalFilters.maxPrice = null;
+            }
+            else {
+                console.log("[handleFiltersData] maxPrice la number : " + maxPrice_int);
+                finalFilters.maxPrice = maxPrice_int;
+            }
+        }
+    }
+    else {
+        console.log("[handleFiltersData] filtersData KHONG CO attr maxPrice !");
+    }
+
+    return finalFilters;
+}
+
+
+/**
+ * Sort
+ */
+function sortProductsByType(productsData, sortType="") {
+    // neu mang productsData rong thi return ngay
+    if (productsData.length <= 0) {
+        return [];
+    }
+    
+    console.log("[sortProductsByType] param sortType : " + sortType);
+    if (sortType == "" || sortType == "default") {
+        console.log("[sortProductsByType] sortType rong hoac default. Set lai thanh from_newest_to_oldest");
+        sortType = "from_newest_to_oldest";
+    }
+
+    let clonedProductsData = structuredClone(productsData);
+
+    switch (sortType) {
+        case "name_asc":
+            console.log("[sortProductsByType] sortType = " + sortType + ". Sort theo name A-Z !");
+
+            clonedProductsData.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+            return clonedProductsData;
+
+            break;
+        case "name_desc":
+            console.log("[sortProductsByType] sortType = " + sortType + ". Sort theo name Z-A !");
+
+            clonedProductsData.sort(function(a, b) {
+                return b.name.localeCompare(a.name);
+            });
+            return clonedProductsData;
+
+            break;
+        case "price_asc":
+            console.log("[sortProductsByType] sortType = " + sortType + ". Sort theo price tu thap den cao !");
+
+            clonedProductsData.sort(function(a, b) {
+                return a.price - b.price;
+            });
+            return clonedProductsData;
+
+            break;
+        case "price_desc":
+            console.log("[sortProductsByType] sortType = " + sortType + ". Sort theo price tu cao den thap !");
+
+            clonedProductsData.sort(function(a, b) {
+                return b.price - a.price;
+            });
+            return clonedProductsData;
+
+            break;
+        case "from_newest_to_oldest":
+            console.log("[sortProductsByType] sortType = " + sortType + ". Sort theo Product ID tu lon den nho !");
+
+            for (let i=0; i < clonedProductsData.length; i++) {
+                for (let j=i+1; j < clonedProductsData.length; j++) {
+                    if (clonedProductsData[i].id < clonedProductsData[j].id) {
+                        let tempObj = clonedProductsData[i];
+                        clonedProductsData[i] = clonedProductsData[j];
+                        clonedProductsData[j] = tempObj;
+                    }
+                }
+            }
+
+            return clonedProductsData;
+
+            break;
+        default:
+            console.log("[sortProductsByType] Khong co sort type phu hop! Return mang goc !");
+            return clonedProductsData;
+    }
+}
+
 
 
 /**
