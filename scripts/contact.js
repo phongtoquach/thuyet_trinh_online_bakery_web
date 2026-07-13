@@ -55,3 +55,13 @@ form.addEventListener("submit", function(event){
     }
     
 });
+
+
+// kiem tra param subject trong URL
+let urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has("subject")) {
+    let subjectVal = urlParams.get("subject").trim();
+    if (subjectVal != "") {
+        document.getElementById("contactSubject").value = subjectVal;
+    }
+}
