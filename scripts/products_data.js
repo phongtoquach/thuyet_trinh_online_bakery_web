@@ -8,7 +8,7 @@ const defaultProductImageSrc = "images/default_product_image.png";
 let productsList = [
     {
         id: 123,
-        name: "Bánh Mousse Dưa Lưới Minty",
+        name: "b Bánh Mousse Dưa Lưới Minty",
         price: 545000,
         images: [
             "images/mousese-dua-luoi-minty-1.jpg",
@@ -24,7 +24,7 @@ let productsList = [
     },
     {
         id: 124,
-        name: "Bánh Mousse Thanh Nhãn",
+        name: "a Bánh Mousse Thanh Nhãn",
         price: 261000,
         images: [
             "images/mousse-thanh-nhan.jpg",
@@ -42,7 +42,7 @@ let productsList = [
     },
     {
         id: 125,
-        name: "Bánh Mousse Ngọc Nhãn",
+        name: "c Bánh Mousse Ngọc Nhãn",
         price: 565000,
         images: [
             "images/mousse-ngoc-nhan.jpg",
@@ -72,7 +72,7 @@ let productsList = [
     // }
     {
         id: 126,
-        name: "Bánh Flan Gato Strawberry",
+        name: "j Bánh Flan Gato Strawberry",
         price: 350000,
         images: [
             "images/flan-gato-dau-1.jpg",
@@ -89,7 +89,7 @@ let productsList = [
     },
     {
         id: 127,
-        name: "Bánh Flan Gato Trà Thái đỏ",
+        name: "g Bánh Flan Gato Trà Thái đỏ",
         price: 555000,
         images: [
             "images/flan-tra-thai-do-1.jpg",
@@ -105,7 +105,7 @@ let productsList = [
     },
     {
         id: 128,
-        name: "Bánh Flan Gato Fruit & Pins",
+        name: "m Bánh Flan Gato Fruit & Pins",
         price: 450000,
         images: [
             "images/flan-fruit-pins-1.jpg",

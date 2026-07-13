@@ -95,3 +95,7 @@ input[type="number"] {
 .cart-summary {
   margin-top: 20px;
 }
+
+.cartBtn--none {
+  display: none;
+}

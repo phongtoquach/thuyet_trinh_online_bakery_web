@@ -51,17 +51,18 @@
 				<div class="products-layout">
 					<!-- Filter Sidebar -->
 					<aside class="filter-sidebar">
-						<h3><i class="fas fa-filter"></i> Filters</h3>
+						<h3><i class="fas fa-filter"></i> Bộ lọc sản phẩm</h3>
 						<div class="filter-group">
-							<label for="searchKeyword">Search by Name</label>
-							<input type="text" id="searchKeyword" placeholder="e.g. Chocolate Cake">
+							<label for="searchKeyword">Tên sản phẩm</label>
+							<input type="text" id="searchKeywordTextBox" placeholder="Tên sản phẩm...">
 						</div>
 						<div class="filter-group">
-							<label>Price Range</label>
+							<label>Khoảng giá</label>
 							<div class="price-range">
-								<input type="number" id="minPrice" placeholder="Min $" min="0" step="0.01">
-								<input type="number" id="maxPrice" placeholder="Max $" min="0" step="0.01">
+								<input type="number" id="minPriceTextBox" placeholder="Giá min" min="0">
+								<input type="number" id="maxPriceTextBox" placeholder="Giá max">
 							</div>
+							<div id="priceErrorMsg" class="field-error-msgbox" style="display: none;"></div>
 						</div>
 						<button class="apply-filters-btn" id="applyFiltersBtn">
 						<i class="fas fa-search"></i> Apply Filters
@@ -74,19 +75,19 @@
 							<div class="product-toolbar-sort">
 								<span class="sort-label">Sort by:</span>
 								<div class="sort-toggle-group">
-									<button class="sort-toggle-btn active" data-sort="default">
+									<button class="sort-toggle-btn active" id="btnDefaultSort" data-sorttype="default">
 									Default
 									</button>
-									<button class="sort-toggle-btn" data-sort="name-asc">
+									<button class="sort-toggle-btn" id="btnSortByNameAsc" data-sorttype="name_asc">
 									Name: A → Z
 									</button>
-									<button class="sort-toggle-btn" data-sort="name-desc">
+									<button class="sort-toggle-btn" id="btnSortByNameDesc" data-sorttype="name_desc">
 									Name: Z → A
 									</button>
-									<button class="sort-toggle-btn" data-sort="price-asc">
+									<button class="sort-toggle-btn" id="btnSortByPriceAsc" data-sorttype="price_asc">
 									Price: Low → High
 									</button>
-									<button class="sort-toggle-btn" data-sort="price-desc">
+									<button class="sort-toggle-btn" id="btnSortByPriceDesc" data-sorttype="price_desc">
 									Price: High → Low
 									</button>
 								</div>
@@ -94,267 +95,7 @@
 						</div>
 
 						<div id="productsGridSection">
-							<div class="product-grid" id="productGrid">
-								<!-- Product 1 -->
-								<div class="product-card" data-name="Classic Chocolate Layer Cake" data-price="42.99">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" alt="Classic Chocolate Layer Cake">
-										<span class="product-card-tag">Best Seller</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Classic Chocolate Layer Cake</h3>
-										<p>Rich, moist chocolate layers with silky ganache frosting.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$42.99</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="1">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 2 -->
-								<div class="product-card" data-name="Strawberry Shortcake" data-price="38.50">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop" alt="Strawberry Shortcake">
-										<span class="product-card-tag">Seasonal</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Strawberry Shortcake</h3>
-										<p>Light vanilla sponge layered with fresh strawberries and cream.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$38.50</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="2">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 3 -->
-								<div class="product-card" data-name="Red Velvet Dream" data-price="45.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=300&fit=crop" alt="Red Velvet Dream">
-									</div>
-									<div class="product-card-body">
-										<h3>Red Velvet Dream</h3>
-										<p>Velvety crimson cake with cream cheese frosting.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$45.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="3">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 4 -->
-								<div class="product-card" data-name="French Macaron Tower" data-price="65.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=400&h=300&fit=crop" alt="French Macaron Tower">
-										<span class="product-card-tag">New</span>
-									</div>
-									<div class="product-card-body">
-										<h3>French Macaron Tower</h3>
-										<p>A stunning tower of delicate almond macarons in assorted flavors.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$65.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="4">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 5 -->
-								<div class="product-card" data-name="Cinnamon Roll Bundt Cake" data-price="35.99">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=400&h=300&fit=crop" alt="Cinnamon Roll Bundt Cake">
-									</div>
-									<div class="product-card-body">
-										<h3>Cinnamon Roll Bundt Cake</h3>
-										<p>Warm cinnamon swirls in a tender bundt cake with vanilla glaze.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$35.99</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="5">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 6 -->
-								<div class="product-card" data-name="Triple Berry Cheesecake" data-price="48.99">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=400&h=300&fit=crop" alt="Triple Berry Cheesecake">
-										<span class="product-card-tag">Popular</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Triple Berry Cheesecake</h3>
-										<p>Creamy New York-style cheesecake with mixed berry compote.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$48.99</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="6">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 7 -->
-								<div class="product-card" data-name="Lemon Meringue Tart" data-price="32.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&h=300&fit=crop" alt="Lemon Meringue Tart">
-									</div>
-									<div class="product-card-body">
-										<h3>Lemon Meringue Tart</h3>
-										<p>Tangy lemon curd in a buttery crust, topped with torched meringue.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$32.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="7">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 8 -->
-								<div class="product-card" data-name="Raspberry Almond Tart" data-price="36.50">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop" alt="Raspberry Almond Tart">
-										<span class="product-card-tag">Chef's Pick</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Raspberry Almond Tart</h3>
-										<p>Buttery almond frangipane with fresh raspberries on puff pastry.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$36.50</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="8">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 9 -->
-								<div class="product-card" data-name="Carrot Cake Supreme" data-price="40.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1621955511667-e2c316e57194?w=400&h=300&fit=crop" alt="Carrot Cake Supreme">
-									</div>
-									<div class="product-card-body">
-										<h3>Carrot Cake Supreme</h3>
-										<p>Moist spiced carrot cake with walnuts and cream cheese frosting.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$40.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="9">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 10 -->
-								<div class="product-card" data-name="Hazelnut Praline Mousse" data-price="52.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" alt="Hazelnut Praline Mousse">
-										<span class="product-card-tag">Premium</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Hazelnut Praline Mousse</h3>
-										<p>Layers of hazelnut mousse, praline crunch, and dark chocolate glaze.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$52.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="10">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 11 -->
-								<div class="product-card" data-name="Vanilla Bean Cupcake Set" data-price="28.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=400&h=300&fit=crop" alt="Vanilla Bean Cupcake Set">
-									</div>
-									<div class="product-card-body">
-										<h3>Vanilla Bean Cupcake Set</h3>
-										<p>Six fluffy vanilla cupcakes with buttercream frosting. Set of 6.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$28.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="11">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Product 12 -->
-								<div class="product-card" data-name="Pistachio Rose Cake" data-price="55.00">
-									<div class="product-card-image">
-										<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=300&fit=crop" alt="Pistachio Rose Cake">
-										<span class="product-card-tag">Exclusive</span>
-									</div>
-									<div class="product-card-body">
-										<h3>Pistachio Rose Cake</h3>
-										<p>Delicate pistachio sponge with rose water buttercream and crushed pistachios.</p>
-										<div class="product-card-footer">
-											<span class="product-price">$55.00</span>
-										</div>
-										<div class="product-card-actions">
-											<button class="add-to-cart-btn" data-product-id="12">
-											<i class="fas fa-cart-plus"></i> Add to Cart
-											</button>
-											<a href="product-details.html" class="view-details-btn">
-											<i class="fas fa-eye"></i> Details
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 
 						
