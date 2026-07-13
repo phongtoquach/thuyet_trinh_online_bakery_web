@@ -129,7 +129,7 @@ function searchAndSortProducts(event) {
         minPrice: minPriceVal,
         maxPrice: maxPriceVal
     };
-    searchedProductResults = getProductsByFilters(filtersData);
+    let searchedProductResults = getProductsByFilters(filtersData);
     console.log("[searchAndSortProducts] Data cua searchedProductResults : ");
     console.log(searchedProductResults);
 
@@ -184,6 +184,56 @@ sortToggleBtns.forEach(function(sortBtn) {
     // });
 
     sortBtn.addEventListener('click', searchAndSortProducts);
+});
+
+// bind event click cho button "Xoa bo loc"
+document.getElementById("btnClearFilters").addEventListener("click", function(event){
+    document.getElementById("searchKeywordTextBox").value = "";
+    document.getElementById("minPriceTextBox").value = "";
+    document.getElementById("maxPriceTextBox").value = "";
+    document.getElementById("priceErrorMsg").style.display = "none";
+
+    // chuan bi filter de get product
+    let filtersData = {
+        keyword: "",
+        onlyFeatured: 0,
+        onlyInStock: 0,
+        minPrice: "",
+        maxPrice: ""
+    };
+    let allProductResults = getProductsByFilters(filtersData);
+    console.log("[btnClearFilters] Data cua allProductResults : ");
+    console.log(allProductResults);
+
+    // update text products count tren page
+    document.getElementById("productsCountText").innerHTML = allProductResults.length;
+
+    if (allProductResults.length > 0) {
+        // check xem button Sort nao dang duoc chon (tuc la co CSS class 'active')
+        let selectedSortTypeStr = "";
+        document.querySelectorAll('.sort-toggle-group .sort-toggle-btn').forEach(function(sortBtnEle) {
+            if (sortBtnEle.classList.contains("active")) {
+                console.log("[btnClearFilters] Button Sort dang co CSS class 'active' la : " + sortBtnEle.id + " - sorttype : " + sortBtnEle.dataset.sorttype);
+                selectedSortTypeStr = sortBtnEle.dataset.sorttype;
+            }
+        });
+
+        // thuc hien sort dua tren mang allProductResults
+        let sortedAllProductResults = sortProductsByType(allProductResults, selectedSortTypeStr);
+
+        console.log("[btnClearFilters] Data cua sortedAllProductResults : ");
+        console.log(sortedAllProductResults);
+        console.log("[btnClearFilters] Data cua allProductResults luc nay : ");
+        console.log(allProductResults);
+        console.log("[btnClearFilters] Data cua productsList luc nay : ");
+        console.log(productsList);
+
+        // show len
+        showOrGetProductsGrid(sortedAllProductResults, "show", "productsGridSection");
+    }
+    else {
+        showNoSearchResultMessage("productsGridSection");
+    }
 });
 
 
