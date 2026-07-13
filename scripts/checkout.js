@@ -150,6 +150,20 @@ checkOutForm.addEventListener("submit", function (e) {
     }
   }
 
+  // Kiểm tra Tỉnh/TP và Phường/Xã:
+  let citySelect = document.getElementById("select_cities");
+  let districtSelect = document.getElementById("select_districts");
+  if (citySelect.value == "") {
+    is_valid = false;
+    document.getElementById("cityMessageError").innerHTML =
+      "Vui lòng chọn Tỉnh/TP!";
+  }
+  if (districtSelect.value == "") {
+    is_valid = false;
+    document.getElementById("districtMessageError").innerHTML =
+      "Vui lòng chọn Phường/Xã!";
+  }
+
   let texetArea = document.getElementById("texetArea").value.trim();
   if (texetArea == "") {
     is_valid = false;
@@ -230,8 +244,6 @@ checkOutForm.addEventListener("submit", function (e) {
       deliveryDate: deliveryDate,
       paymentMethod: paymentMethod,
       cartItems: cartItems, // Đẩy giỏ hàng vào thông tin đặt hàng
-      cartTotal: cartTotal, // Tổng tiền hàng
-      shippingFee: shippingFee, // Phí vận chuyển
       finalTotal: finalTotal, // Tổng tiền thanh toán cuối cùng
       createdAt: new Date().toISOString(),
     };

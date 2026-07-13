@@ -35,13 +35,13 @@
           </div>
         </a>
         <nav class="nav-menu">
-          <a href="index.html" class="nav-link active"
+          <a href="index.html" class="nav-link"
             ><i class="fas fa-home"></i> Trang chủ</a
           >
           <a href="products.html" class="nav-link"
             ><i class="fas fa-th-large"></i> Sản phẩm</a
           >
-          <a href="cart.html" class="nav-link"
+          <a href="cart.html" class="nav-link active"
             ><i class="fas fa-shopping-bag"></i> Giỏ hàng</a
           >
           <a href="contact.html" class="nav-link"
@@ -174,18 +174,29 @@
                   <div class="select__Address--City">
                     <p>Tỉnh/TP *</p>
                     <select
+                    id="select_cities"
                       class="select__Address--City--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
                     >
-                      <option value="">Tp Hồ Chí Minh</option>
+                      <option value=""></option>
+                      <option value="HCM">Tp Hồ Chí Minh</option>
                     </select>
+                    <span id="cityMessageError" class="messageError"></span>
                   </div>
                   <div class="select__Address--district">
                     <p>Phường/Xã *</p>
                     <select
+                    id="select_districts"
                       class="select__Address--district--dropdown flex items-center justify-center rounded-md border p-3 text-sm font-medium transition-colors border-primary bg-primary/5 text-primary"
                     >
-                      <option value="">Tân Bình</option>
+                      <option value=""></option>
+                      <option value="Sai Gon">Sài Gòn</option>
+                      <option value="Tan Dinh">Tân Định</option>
+                      <option value="Ben Thanh">Bến Thành</option>
+                      <option value="Cau Ong Lanh">Cầu Ông Lãnh</option>
+                      <option value="Tan Phu">Tân Phú</option>
+                      <option value="Tan Binh">Tân Bình</option>
                     </select>
+                    <span id="districtMessageError" class="messageError"></span>
                   </div>
                 </div>
                 <!-- End Select Tỉnh Thành -->
