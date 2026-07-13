@@ -70,7 +70,7 @@ function searchAndSortProducts(event) {
             showOrGetProductsGrid(sortedProductsList, "show", productsGridSectionId);
         }
         else {
-            showNoProductMessage(productsGridSectionId);
+            showNoSearchResultMessage(productsGridSectionId);
         }
         
         return false;
@@ -146,13 +146,13 @@ function searchAndSortProducts(event) {
         showOrGetProductsGrid(sortedSearchedProductResults, "show", productsGridSectionId);
     }
     else {
-        showNoProductMessage(productsGridSectionId);
+        showNoSearchResultMessage(productsGridSectionId);
     }
 }
 
 
-function showNoProductMessage(containerId="productsGridSection") {
-    document.getElementById(containerId).innerHTML = `<h2>Không có sản phẩm nào được tìm thấy.</h2>`;
+function showNoSearchResultMessage(containerId="productsGridSection") {
+    document.getElementById(containerId).innerHTML = `<h3>Không có sản phẩm nào được tìm thấy.</h3>`;
 }
 
 
@@ -193,5 +193,5 @@ if (sortedAllProductsList.length > 0) {
     showOrGetProductsGrid(sortedAllProductsList, "show", "productsGridSection");
 }
 else {
-    showNoProductMessage("productsGridSection");
+    showNoSearchResultMessage("productsGridSection");
 }
