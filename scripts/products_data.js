@@ -108,15 +108,112 @@ let productsList = [
         name: "Bánh Flan Gato Fruit & Pins",
         price: 450000,
         images: [
-            // "images/flan-fruit-pins-1.jpg",
-            // "images/flan-fruit-pins-2.jpg",
-            // "images/flan-fruit-pins-3.jpg",
-            // "images/flan-fruit-pins-4.jpg"
+            "images/flan-fruit-pins-1.jpg",
+            "images/flan-fruit-pins-2.jpg",
+            "images/flan-fruit-pins-3.jpg",
+            "images/flan-fruit-pins-4.jpg",
         ],
         shortDescription: "Mẫu bánh giữ trọn vị truyền thống với lớp flan béo mịn đan xen cốt chocolate đắng thanh, xốp nhẹ. Lớp jelly caramel óng ả quyện cùng dâu, dưa lưới, đào và búp sữa chua thanh mát tạo nên sự cân bằng hoàn hảo, không hề gây ngấy. Diện mạo rạng rỡ, tươi mới, là tâm điểm ý nghĩa cho mọi bữa tiệc gia đình",
         description: "<p><strong>Hương vị:</strong> Ngọt dịu - Béo nhẹ - Đắng nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm các lớp chính:</p><ul><li><p>Bánh flan vị truyền thống</p></li><li><p>Bông lan sô-cô-la</p></li></ul><p>Phần trang trí: vòng chocolate trắng, viên mousse sữa chua, dâu tây, dưa lưới và đào</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
         isFeatured: true,
         relatedProductIds: [126, 138, 0, "123abc", 127, 125, 123],
         inStock: true
-    }
+    },
+    {
+        id: 129,
+        name: "Hộp Sweetin Thanh Nhãn - Special",
+        price: 345000,
+        images: [
+            "images/Sweetin-Thanh-Nhãn-1.jpg",
+            "images/Sweetin-Thanh-Nhãn-2.jpg",
+            "images/Sweetin-Thanh-Nhãn-3.jpg",
+            "images/Sweetin-Thanh-Nhãn-4.jpg",
+            "images/Sweetin-Thanh-Nhãn-5.jpg"
+        ],
+        shortDescription: "Thanh Nhãn Special là hương vị của mùa hè được gói trọn trong từng lớp bánh tươi mát, nhẹ nhàng và đậm chất nhiệt đới. Điểm đặc biệt nằm ở những ký tự bằng socola trên mặt bánh. Bộ sưu tập đang có 5 bộ chữ gồm: LOVE U, SNVV, SUMMER, 8386, VUÝP",
+        description: "<p><strong>Hương vị:</strong> Béo nhẹ - ngọt dịu - thơm mùi vải</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh. Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li><li><p>Trên mặt bánh decor nhãn lon, hoa gumpaste, lá húng lủi, choco.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 thìa lá bạc</p></li>",
+        isFeatured: true,
+        relatedProductIds: [130, 131],
+        inStock: true
+    },
+    {
+        id: 130,
+        name: "Hộp Sweetin - Matcha Chocolate",
+        price: 285000,
+        images: [
+            "images/sweetin-matcha-1.jpg",
+            "images/sweetin-matcha-2.jpg",
+            "images/sweetin-matcha-3.jpg",
+            "images/sweetin-matcha-4.jpg",
+        ],
+        shortDescription: "Sự lựa chọn hoàn hảo cho những tín đồ yêu trà xanh, nơi hương vị thanh tao và hương thơm tinh tế của Matcha được gói trọn trong từng tầng vị êm dịu, mang lại cảm giác thư thái như một buổi trà đạo thu nhỏ.",
+        description: "<p><strong>Hương vị:</strong> Ngọt dịu - đậm vị matcha</p><p><strong>Cấu trúc bánh:</strong></p><p>Bánh gồm 5 lớp (từ dưới lên trên):</p><ul><li><p>Bạt bánh matcha cake nướng.</p></li><li><p>Mousse matcha socola nguyên chất.</p></li><li><p>Lớp ganache dẻo socola matcha.</p></li><li><p>Lớp socola matcha nguyên chất.</p></li><li><p>Bột matcha.</p></li></ul><p>Trang trí: Chocolate tạo hình tổ ong</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 thìa lá bạc</p></li>",
+        isFeatured: true,
+        relatedProductIds: [129, 131],
+        inStock: true
+    },
+    {
+        id: 131,
+        name: "Hộp Sweetin - Matcha Chocolate",
+        price: 355000,
+        images: [
+            "images/Sweetin-Dưa-Lưới-1.jpg",
+            "images/Sweetin-Dưa-Lưới-2.jpg",
+            "images/Sweetin-Dưa-Lưới-3.jpg",
+            "images/Sweetin-Dưa-Lưới-4.jpg",
+        ],
+        shortDescription: "Mousse Dưa Lưới mang hương vị mùa hè tươi mát với lớp mousse dưa lưới thanh ngọt kết hợp cùng cream cheese béo nhẹ và hậu vị bạc hà the mát đầy dễ chịu. Điểm nhấn của bánh nằm ở phần decor dưa lưới tươi cùng thanh choco thông điệp. Bộ sưu tập đang có 7 bộ chữ gồm: LOVE U, SNVV, SUMMER, 8386, VUÝP, Mẹ Yêu, Yêu Mẹ. ",
+        description: "<p><strong>Hương vị:</strong> Béo nhẹ - Ngọt dịu - The mát</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan vani truyền thống.</p></li><li><p>Mousse dưa lưới kết hợp với cream cheese béo nhẹ.</p></li><li><p>Nhân bạc hà tươi mát.</p></li><li><p>Decor dưa lưới tươi và thanh choco thông điệp.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 thìa lá bạc</p></li>",
+        isFeatured: true,
+        relatedProductIds: [129, 130],
+        inStock: true
+    },
+    {
+        id: 132,
+        name: "Hộp Amber Crunchill",
+        price: 135000,
+        images: [
+            "images/Amber-Crunchill-1.jpg",
+            "images/Amber-Crunchill-2.jpg",
+            "images/Amber-Crunchill-3.jpg",
+            "images/Amber-Crunchill-4.jpg",
+        ],
+        shortDescription: "Amber Crunchill lôi cuốn với bạt chocolate đen mềm ẩm quyện cùng mousse Earl Grey ủ caramel thơm nồng. Trải nghiệm vị giác đa tầng nhờ lớp chocolate mỏng và ngũ cốc giòn tan. Một lựa chọn tinh tế, đậm đà vị caramel và nồng nàn hương trà. ",
+        description: "<p><strong>Hương vị:</strong> Béo nhẹ - thơm dịu - giòn rụm</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Lớp crunchy caramel: sự kết hợp giữa ngũ cốc giòn cùng chocolate caramel thơm lừng.</p></li><li><p>Lớp chocolate caramel: phủ một lớp mỏng tạo độ giòn nhẹ.</p></li><li><p>Mousse Earl Grey hòa quyện cùng chocolate trắng, ngọt béo nhẹ, dậy hương trà thêm chút vị caramel tinh tế.</p></li><li><p>Lớp bạt bánh chocolate đen mềm ẩm.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>2 muỗng nhựa</p></li>",
+        isFeatured: true,
+        relatedProductIds: [133, 134],
+        inStock: true
+    },
+    {
+        id: 133,
+        name: "Hộp Forest Crunchill",
+        price: 165000,
+        images: [
+            "images/Forest-Crunchill-1.jpg",
+            "images/Forest-Crunchill-2.jpg",
+            "images/Forest-Crunchill-3.jpg",
+            "images/Forest-Crunchill-4.jpg",
+        ],
+        shortDescription: "Forest Crunchill nồng nàn với bạt chocolate thấm rượu cherry và mứt dâu cherry chua dịu. Lớp mousse vanilla hạt béo mịn quyện cùng chocolate mỏng và ngũ cốc praline giòn rụm tạo cấu trúc đa tầng. Vị đắng thanh xen lẫn nét ngọt thơm nồng nàn, mang lại trải nghiệm vị giác đầy chiều sâu. ",
+        description: "<p><strong>Hương vị:</strong> Đậm đà  - Chua nhẹ - Béo dịu</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Lớp crunchy chocolate đen: sự kết hợp giữa ngũ cốc giòn cùng chocolate đen và hạnh nhân hạt phỉ.</p></li><li><p>Lớp chocolate đen: phủ một lớp mỏng tạo độ giòn nhẹ.</p></li><li><p>Mousse vị vanilla: vị mousse thơm béo kết hợp cùng hạt vanilla li ti thơm lừng.</p></li><li><p>Lớp mứt cherry nấu cùng dâu và rượu cherry đậm đà.</p></li><li><p>Lớp bạt bánh chocolate đen mềm ẩm, được thấm một lớp syrup rượu cherry.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>2 muỗng nhựa</p></li>",
+        isFeatured: true,
+        relatedProductIds: [132, 134],
+        inStock: true
+    },
+    {
+        id: 134,
+        name: "Hộp Matcha Crunchill",
+        price: 155000,
+        images: [
+            "images/Matcha-Crunchill-1.jpg",
+            "images/Matcha-Crunchill-2.jpg",
+            "images/Matcha-Crunchill-3.jpg",
+            "images/Matcha-Crunchill-4.jpg",
+        ],
+        shortDescription: "Matcha Crunchill mang đến trải nghiệm đa tầng: bạt trà xanh hạnh nhân xốp mịn quyện cùng mứt dâu phúc bồn tử chua ngọt. Lớp mousse matcha béo mượt thơm lừng, kết hợp cùng chocolate đen mỏng và ngũ cốc giòn tan. Sự hòa quyện hoàn hảo giữa vị thanh đắng và ngọt dịu. ",
+        description: "<p><strong>Hương vị:</strong> Thơm mát - Chua dịu - giòn rụm</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Lớp crunchy trà xanh: sự kết hợp giữa ngũ cốc giòn cùng chocolate trắng và bột trà xanh thơm lừng.</p></li><li><p>Lớp chocolate đen: phủ một lớp mỏng tạo độ giòn nhẹ.</p></li><li><p>Mousse trà xanh và chocolate trắng ngọt và béo nhẹ, thơm mùi trà xanh.</p></li><li><p>Lớp mứt dâu và phúc bồn tử vị chua ngọt được nấu thủ công.</p></li><li><p>Lớp bạt bánh trà xanh hạnh nhân xốp mịn.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>2 muỗng nhựa</p></li>",
+        isFeatured: true,
+        relatedProductIds: [132, 133],
+        inStock: true
+    },
 ];
