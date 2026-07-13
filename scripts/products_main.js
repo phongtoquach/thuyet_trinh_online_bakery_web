@@ -93,8 +93,8 @@ function getProductDetailsById(productId) {
  * param filtersData la 1 object co cau truc nhu sau :
  * {
  *      keyword: "",
- *      onlyFeatured: 1,
- *      onlyInStock: 1,
+ *      onlyFeatured: 0,
+ *      onlyInStock: 0,
  *      minPrice: null,
  *      maxPrice: null
  * }
@@ -110,6 +110,12 @@ function getProductsByFilters(filtersData={}) {
     console.log(newFiltersData);
 
     let lowerCaseKeyword = newFiltersData.keyword.toLocaleLowerCase();
+    // neu cac filter trong newFiltersData deu rong, null : lay tat ca product trong mang productsList
+    if (lowerCaseKeyword == "" && newFiltersData.onlyFeatured == 0 && newFiltersData.onlyInStock == 0 && newFiltersData.minPrice === null && newFiltersData.maxPrice === null) {
+        console.log("[getProductsByFilters] Khong co filter nao trong newFiltersData. Lay tat ca product trong mang productsList !");
+        return structuredClone(productsList);
+    }
+    
     // duyet qua tung phan tu trong array productsList de check theo filter
     let searchResults = [];
     for(let i=0; i < productsList.length; i++) {
@@ -165,6 +171,7 @@ function getProductsByFilters(filtersData={}) {
         }
 
         if (productIsMatched == true) {
+            console.log("[getProductsByFilters] Product " + productsList[i].id + " da PASS ! Add vao mang searchResults !");
             let clonedProductObj = structuredClone(productsList[i]);
             searchResults.push(clonedProductObj);
         }

@@ -55,26 +55,26 @@ function searchAndSortProducts(event) {
     console.log("[searchAndSortProducts] max price str : " + maxPriceVal);
     
     // Neu khong co filter nao thi co nghia la show het tat ca product, nhung van sort theo sort option dang duoc chon
-    if (searchedKeyword == "" && minPriceVal == "" && maxPriceVal == "") {
-        console.log("[searchAndSortProducts] Khong co search filter. Show het tat ca product trong mang productsList, nhung van apply sort option dang duoc chon !");
+    // if (searchedKeyword == "" && minPriceVal == "" && maxPriceVal == "") {
+    //     console.log("[searchAndSortProducts] Khong co search filter. Show het tat ca product trong mang productsList, nhung van apply sort option dang duoc chon !");
 
-        // goi ham sort
-        let sortedProductsList = sortProductsByType(productsList, selectedSortType);
+    //     // goi ham sort
+    //     let sortedProductsList = sortProductsByType(productsList, selectedSortType);
 
-        console.log("[searchAndSortProducts] Data cua sortedProductsList : ");
-        console.log(sortedProductsList);
-        console.log("[searchAndSortProducts] Data cua productsList luc nay : ");
-        console.log(productsList);
+    //     console.log("[searchAndSortProducts] Data cua sortedProductsList : ");
+    //     console.log(sortedProductsList);
+    //     console.log("[searchAndSortProducts] Data cua productsList luc nay : ");
+    //     console.log(productsList);
 
-        if (sortedProductsList.length > 0) {
-            showOrGetProductsGrid(sortedProductsList, "show", productsGridSectionId);
-        }
-        else {
-            showNoSearchResultMessage(productsGridSectionId);
-        }
+    //     if (sortedProductsList.length > 0) {
+    //         showOrGetProductsGrid(sortedProductsList, "show", productsGridSectionId);
+    //     }
+    //     else {
+    //         showNoSearchResultMessage(productsGridSectionId);
+    //     }
         
-        return false;
-    }
+    //     return false;
+    // }
 
     // convert min price thanh number
     let minPrice = 0;
@@ -130,6 +130,11 @@ function searchAndSortProducts(event) {
         maxPrice: maxPriceVal
     };
     searchedProductResults = getProductsByFilters(filtersData);
+    console.log("[searchAndSortProducts] Data cua searchedProductResults : ");
+    console.log(searchedProductResults);
+
+    // update text products count tren page
+    document.getElementById("productsCountText").innerHTML = searchedProductResults.length;
 
     if (searchedProductResults.length > 0) {
         // thuc hien sort dua tren mang searchedProductResults
@@ -137,7 +142,7 @@ function searchAndSortProducts(event) {
 
         console.log("[searchAndSortProducts] Data cua sortedSearchedProductResults : ");
         console.log(sortedSearchedProductResults);
-        console.log("[searchAndSortProducts] Data cua searchedProductResults : ");
+        console.log("[searchAndSortProducts] Data cua searchedProductResults luc nay : ");
         console.log(searchedProductResults);
         console.log("[searchAndSortProducts] Data cua productsList luc nay : ");
         console.log(productsList);
@@ -146,6 +151,7 @@ function searchAndSortProducts(event) {
         showOrGetProductsGrid(sortedSearchedProductResults, "show", productsGridSectionId);
     }
     else {
+        console.log("[searchAndSortProducts] mang searchedProductResults rong ! Show message no product found !");
         showNoSearchResultMessage(productsGridSectionId);
     }
 }
@@ -188,6 +194,9 @@ console.log("Data cua sortedAllProductsList : ");
 console.log(sortedAllProductsList);
 console.log("Data cua productsList luc nay : ");
 console.log(productsList);
+
+// update text products count tren page
+document.getElementById("productsCountText").innerHTML = sortedAllProductsList.length;
 
 if (sortedAllProductsList.length > 0) {
     showOrGetProductsGrid(sortedAllProductsList, "show", "productsGridSection");
