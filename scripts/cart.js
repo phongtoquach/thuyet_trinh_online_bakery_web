@@ -10,6 +10,10 @@ function renderCart() {
   if (bakeryShopCartLs.length == 0) {
     cartEmpty.style.display = "block";
     cartShop.style.display = "none";
+
+    // update header cart badge
+    updateHeaderCartBadge();
+
     return;
   }
   cartEmpty.style.display = "none";
@@ -151,6 +155,9 @@ function renderCart() {
   `;
 
   let carList = (document.getElementById("cartBody").innerHTML = html);
+
+  // update header cart badge
+  updateHeaderCartBadge();
 }
 
 // Chạy hàm khi lần đầu tải trang
@@ -300,3 +307,12 @@ document.getElementById("toastBox").addEventListener("mouseleave", () => {
     );
   }
 });
+
+
+// Ham de update headerCartBadgeText bang so luong item trong cart (bakeryShopCartLs)
+function updateHeaderCartBadge() {
+    let currentCart = JSON.parse(localStorage.getItem("bakeryShopCartLs")) || [];
+    console.log("[updateHeaderCartBadge] Update header cart badge thanh : " + currentCart.length);
+    
+    document.getElementById("headerCartBadgeText").innerHTML = currentCart.length;
+}
