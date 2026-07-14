@@ -14,23 +14,25 @@
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">
-        <div class="logo-icon"><i class="fas fa-birthday-cake"></i></div>
+        <div class="logo-image">
+          <img src="images/web_logo_small.png" alt="Logo Maison Sweet Bakery">
+        </div>
         <div class="logo-text">
-          Sweet Crumbs
+          Maison Sweet Bakery
           <small>Bakery &amp; Patisserie</small>
         </div>
       </a>
 
       <nav class="nav-menu">
-        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-        <a href="products.html" class="nav-link"><i class="fas fa-th-large"></i> Products</a>
-        <a href="cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Cart</a>
-        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Trang chủ</a>
+        <a href="products.html" class="nav-link"><i class="fas fa-th-large"></i> Sản phẩm</a>
+        <a href="cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Giỏ hàng</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Liên hệ</a>
       </nav>
 
       <div class="search-box">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="homeSearch" placeholder="Search our bakery...">
+        <input type="text" id="txtHeaderSearch" placeholder="Tìm sản phẩm...">
       </div>
 
       <a href="cart.html" class="cart-icon" id="headerCart">
@@ -261,29 +263,24 @@ Niềm đam mê làm bánh là động lực để chúng tôi không ngừng ho
     </div>
   </footer>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span>Product added to cart</span>
+  <!-- NEW Toast Notification -->
+  <div id="toastBox" class="toast-box toast-success">
+    <div class="toast-icon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+
+    <div class="toast-content">
+      <div class="toast-title"></div>
+      <div class="toast-message"></div>
+    </div>
+
+    <button class="toast-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
   </div>
 
-  <script>
-    // Toast function
-    function showToast() {
-      var toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(function() {
-        toast.classList.remove('show');
-      }, 3000);
-    }
-
-    // Attach to all Add to Cart buttons
-    document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        showToast();
-      });
-    });
-  </script>
+  <script src="scripts/products_main.js"></script>
+  <script src="scripts/header_search.js"></script>
 
 </body>
 </html>
