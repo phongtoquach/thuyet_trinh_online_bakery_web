@@ -1,3 +1,7 @@
+.products-container-section .container {
+	max-width: 1440px;
+}
+
 /* === Filter Sidebar (Products Page) === */
 .filter-sidebar {
 	background: var(--color-white);
