@@ -72,21 +72,14 @@ function showProductDetailsById(productData) {
                         <button class="add-to-cart-btn" id="addToCartBtn" onclick="handleAddProductToCart(` + productData.id + `)">
                         <i class="fas fa-cart-plus"></i> Add to Cart
                         </button>
-                        <button class="btn btn-secondary" id="wishlistBtn">
-                        <i class="far fa-heart"></i> Wishlist
-                        </button>
                     </div>
                     `;
 
     // section : product meta data
     productHtml += `<div style="padding-top: 1.5rem; border-top: 1px solid var(--color-border); margin-top: var(--space-md);">
-                        <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: var(--space-sm);">
-                            <i class="fas fa-box" style="color: var(--color-gold); margin-right: 0.5rem;"></i>
-                            <strong>Availability:</strong> <span style="color: var(--color-success);">In Stock</span>
-                        </p>
                         <p style="font-size: 0.9rem; color: var(--color-text-light);">
                             <i class="fas fa-truck" style="color: var(--color-gold); margin-right: 0.5rem;"></i>
-                            <strong>Delivery:</strong> Same-day for orders before 2 PM
+                            <strong>Giao hàng:</strong> Giao trong ngày trước 2h chiều
                         </p>
                     </div>`;
 
@@ -99,30 +92,10 @@ function showProductDetailsById(productData) {
     // section : product tabs (bao gom : Product Description, Thanh phan)
     productHtml += `<div class="product-tabs">
                         <div class="tab-buttons">
-							<button class="tab-btn active" data-tab="description">Mô tả</button>
-							<button class="tab-btn" data-tab="ingredients">Thành phần</button>
+							<button class="tab-btn active" data-tab="description">Mô tả sản phẩm</button>
 						</div>
 
                         <div class="tab-content active" id="tab-description">`+ productData.description +`</div>
-
-						<div class="tab-content" id="tab-ingredients">
-							<ul>
-								<li>Organic All-Purpose Flour</li>
-								<li>Belgian Dark Cocoa Powder (72%)</li>
-								<li>Farm-Fresh Free-Range Eggs</li>
-								<li>Unsalted European-Style Butter</li>
-								<li>Pure Cane Sugar</li>
-								<li>Madagascar Bourbon Vanilla Extract</li>
-								<li>Premium Dark Chocolate (Ganache)</li>
-								<li>Heavy Whipping Cream</li>
-								<li>Baking Powder &amp; Baking Soda</li>
-								<li>Fine Sea Salt</li>
-								<li>Whole Milk</li>
-							</ul>
-							<p style="margin-top: var(--space-md); font-size: 0.85rem; color: var(--color-text-muted);">
-								<i class="fas fa-info-circle"></i> Contains: Wheat, Eggs, Dairy, Soy. Produced in a facility that handles tree nuts and peanuts.
-							</p>
-						</div>
                     </div>`;
 
     // Section : cac san pham lien quan
@@ -382,7 +355,11 @@ function handleAddProductToCart(productId) {
 
 function showNoProductMessage() {
     // set content cho div productDetailsSection : thong bao khong tim thay product
-    document.getElementById("productDetailsSection").innerHTML = `<h2>Không tìm thấy sản phẩm</h2>`;
+    document.getElementById("productDetailsSection").innerHTML = `<div style="text-align: center;">
+                                                                    <h3 style="margin-bottom: 15px;">Không tìm thấy sản phẩm</h3>
+                                                                    <p>Xin vui lòng đi đến trang sản phẩm để chọn sản phẩm khác.</p>
+                                                                    <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Đi đến trang sản phẩm</a>
+                                                                </div>`;
 
     // hide breadcrumb
     document.getElementById("breadcrumb").style.display = "none";
