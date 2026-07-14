@@ -2,6 +2,12 @@ let form = document.getElementById("contactForm");
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
+    // moi lan click nut submit form, xoa het content trong cac div thong bao error message
+    let errorsDiv = document.getElementsByClassName("errorcontact");
+    for (let i = 0; i < errorsDiv.length; i++) {
+        errorsDiv[i].innerHTML = "";
+    }
+
     let isValid = true;
     let fullname = document.getElementById("contactName").value.trim();
     let email = document.getElementById("contactEmail").value.trim();
@@ -51,7 +57,7 @@ form.addEventListener("submit", function(event){
 
     if(isValid){
         contactForm.reset();
-        showToastBox("success", "send success", "Your message has been sent successfully.");
+        showToastBox("success", "Gửi liên hệ thành công!", "Thông tin liên hệ của bạn đã được gửi đến Maison Sweet Bakery! Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất! Xin cảm ơn!");
     }
     
 });
