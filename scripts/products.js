@@ -96,6 +96,11 @@ function searchAndSortProducts(event) {
         if (Number.isNaN(minPrice) || minPrice < 0) {
             priceErrorMsgDiv.style.display = "block";
             priceErrorMsgDiv.innerHTML = "Giá min cần phải là số và phài từ 0 trở lên !";
+
+            if (event.target.tagName == "BUTTON" && event.target.classList.contains("sort-toggle-btn")) {
+                showToastBox("error", "Vui lòng điều chỉnh bộ lọc!", "Giá min cần phải là số và phài từ 0 trở lên !");
+            }
+
             return false;
         }
         else {
@@ -114,6 +119,11 @@ function searchAndSortProducts(event) {
         if (Number.isNaN(maxPrice) || maxPrice < 0) {
             priceErrorMsgDiv.style.display = "block";
             priceErrorMsgDiv.innerHTML = "Giá max cần phải là số và phải từ 0 trở lên !";
+
+            if (event.target.tagName == "BUTTON" && event.target.classList.contains("sort-toggle-btn")) {
+                showToastBox("error", "Vui lòng điều chỉnh bộ lọc!", "Giá max cần phải là số và phải từ 0 trở lên !");
+            }
+
             return false;
         }
         else {
@@ -126,6 +136,11 @@ function searchAndSortProducts(event) {
         if (maxPrice < minPrice) {
             priceErrorMsgDiv.style.display = "block";
             priceErrorMsgDiv.innerHTML = "Giá max cần phải lớn hơn hoặc bằng giá min !";
+
+            if (event.target.tagName == "BUTTON" && event.target.classList.contains("sort-toggle-btn")) {
+                showToastBox("error", "Vui lòng điều chỉnh bộ lọc!", "Giá max cần phải lớn hơn hoặc bằng giá min !");
+            }
+
             return false;
         }
     }
