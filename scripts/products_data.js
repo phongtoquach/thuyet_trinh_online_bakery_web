@@ -215,12 +215,12 @@ let productsList = [
         ],
         shortDescription: "Tuyệt tác nghệ thuật dành riêng cho các bữa tiệc sang trọng và dịp kỷ niệm đặc biệt. Mẫu bánh gây ấn tượng mạnh mẽ với tạo hình thiên nga trắng kem quý phái cùng lớp trái cây tươi rực rỡ sắc màu. Hương vị thanh tao từ bắp tươi kết hợp kết cấu mềm mịn hứa hẹn sẽ chinh phục những vị khách sành ăn nhất. ",
         description: "<p><strong>Hương vị:</strong> Béo thơm - Chua ngọt - Mềm mịn</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan bắp: Ẩm mịn, xốp mềm, lưu giữ trọn vẹn hương thơm nguyên bản.</p></li><li><p>Kem bắp tươi làm từ 100% bắp tươi, mềm mại và tan ngay trên đầu lưỡi với vị ngọt thanh thanh.</p></li><li><p>Chi tiết cổ và cánh thiên nga được tạo hình thủ công tỉ mỉ từ chocolate cao cấp.</p></li><li><p>Mặt bánh được điểm xuyết rạng rỡ bằng các loại trái cây tươi mọng nước như dâu tây, đào ngọt...</p></li><li><p>Lớp bạt bánh trà xanh hạnh nhân xốp mịn.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>Dao cắt bánh</p></li><li><p>Bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul>",
-        isFeatured: false,
+        isFeatured: true,
         relatedProductIds: [136, 134, 133]
     },
     {
         id: 136,
-        name: "Delicate Bloom (short) - Bánh kem Bắp Dâu",
+        name: "Delicate Bloom - Bánh kem Bắp Dâu",
         price: 535000,
         images: [
             "images/delicate_bloom_1.jpg",
