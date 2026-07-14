@@ -204,4 +204,34 @@ let productsList = [
         isFeatured: false,
         relatedProductIds: [132, 133]
     },
+    {
+        id: 135,
+        name: "Bánh Thiên Nga - Kem Bắp Nhiệt Đới",
+        price: 575000,
+        images: [
+            "images/Matcha-Crunchill-1.jpg",
+            "images/Matcha-Crunchill-2.jpg",
+            "images/Matcha-Crunchill-3.jpg",
+            "images/Matcha-Crunchill-4.jpg",
+        ],
+        shortDescription: "Tuyệt tác nghệ thuật dành riêng cho các bữa tiệc sang trọng và dịp kỷ niệm đặc biệt. Mẫu bánh gây ấn tượng mạnh mẽ với tạo hình thiên nga trắng kem quý phái cùng lớp trái cây tươi rực rỡ sắc màu. Hương vị thanh tao từ bắp tươi kết hợp kết cấu mềm mịn hứa hẹn sẽ chinh phục những vị khách sành ăn nhất. ",
+        description: "<p><strong>Hương vị:</strong> Béo thơm - Chua ngọt - Mềm mịn</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan bắp: Ẩm mịn, xốp mềm, lưu giữ trọn vẹn hương thơm nguyên bản.</p></li><li><p>Kem bắp tươi làm từ 100% bắp tươi, mềm mại và tan ngay trên đầu lưỡi với vị ngọt thanh thanh.</p></li><li><p>Chi tiết cổ và cánh thiên nga được tạo hình thủ công tỉ mỉ từ chocolate cao cấp.</p></li><li><p>Mặt bánh được điểm xuyết rạng rỡ bằng các loại trái cây tươi mọng nước như dâu tây, đào ngọt...</p></li><li><p>Lớp bạt bánh trà xanh hạnh nhân xốp mịn.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>Dao cắt bánh</p></li><li><p>Bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li>",
+        isFeatured: false,
+        relatedProductIds: [136, 137]
+    },
+    {
+        id: 136,
+        name: "Delicate Bloom (short) - Bánh kem Bắp Dâu",
+        price: 535000,
+        images: [
+            "images/Matcha-Crunchill-1.jpg",
+            "images/Matcha-Crunchill-2.jpg",
+            "images/Matcha-Crunchill-3.jpg",
+            "images/Matcha-Crunchill-4.jpg",
+        ],
+        shortDescription: "Đây chính là lựa chọn quốc dân mang vị ngọt thanh, thơm dịu. Lớp cốt bông lan xốp mềm quyện cùng mousse bắp béo nhẹ tạo cảm giác tan chảy, giải ngấy cực đỉnh. Trang trí đầy đặn với dâu tây, dưa lưới, đào và bắp hạt - đây là món bánh gần gũi, tươi mát cho mọi bữa tiệc gia đình. ",
+        description: "<p><strong>Hương vị:</strong> Ngọt dịu - Thơm đặc trưng - Béo nhẹ</p><p><strong>Bánh size 22cm - cao 4cm</strong><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Mousse bắp</p></li><li><p>Bông lan bắp</p></li><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>Dao cắt bánh</p></li><li><p>Bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li><li><p>Cây ghim và phụ kiện riêng của bánh</p></li>",
+        isFeatured: false,
+        relatedProductIds: [134, 135]
+    },
 ];
