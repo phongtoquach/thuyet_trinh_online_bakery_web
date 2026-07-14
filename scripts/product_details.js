@@ -70,7 +70,7 @@ function showProductDetailsById(productData) {
                     
                     <div class="product-detail-actions">
                         <button class="add-to-cart-btn" id="addToCartBtn" onclick="handleAddProductToCart(` + productData.id + `)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Thêm vào giỏ
                         </button>
                     </div>
                     `;
