@@ -316,7 +316,7 @@ function handleFiltersData(filtersData) {
 
 
 /**
- * Sort
+ * Ham thuc hien sort 1 mang product dua theo param Sort Type truyen vao
  */
 function sortProductsByType(productsData, sortType="") {
     // neu mang productsData rong thi return ngay

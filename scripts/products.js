@@ -272,23 +272,53 @@ if (urlParams.has("keyword") && urlParams.get("keyword") !== "") {
     document.getElementById("txtHeaderSearch").value = keywordParam;
 }
 
+// kiem tra trong URL co param onlyFeatured khong
+if (urlParams.has("onlyFeatured") && urlParams.get("onlyFeatured") !== "") {
+    console.log("Co ton tai URL param onlyFeatured : " + urlParams.get("onlyFeatured"));
+    let onlyFeatured_val = urlParams.get("onlyFeatured").trim();
+    let finalOnlyFeatured = Number(onlyFeatured_val);
+    if (Number.isNaN(finalOnlyFeatured)) {
+        console.log("param onlyFeatured khong phai number! Set thanh 0 !");
+        finalOnlyFeatured = 0;
+    }
+    
+    // chi chap nhan 0 hoac 1
+    console.log("finalOnlyFeatured = " + finalOnlyFeatured);
+    if (finalOnlyFeatured != 0 && finalOnlyFeatured != 1) {
+        console.log("param onlyFeatured khac 0 & 1 ! Set thanh 0 !");
+        finalOnlyFeatured = 0;
+    }
+    console.log("finalOnlyFeatured sau cung = " + finalOnlyFeatured);
+
+    // set cho keyword trong productFiltersData
+    productFiltersData.onlyFeatured = finalOnlyFeatured;
+
+    // neu finalOnlyFeatured = 1 : check checkbox chkOnlyFeatured
+    if (finalOnlyFeatured == 1) {
+        console.log("finalOnlyFeatured = 1 ! Check checkbox chkOnlyFeatured !");
+        document.getElementById("chkOnlyFeatured").checked = true;
+    }
+}
+
+// goi ham lay danh sach product theo filter productFiltersData
 let filteredProductsList = getProductsByFilters(productFiltersData);
-console.log("Data cua filteredProductsList : ");
+console.log("Data cua filteredProductsList (sau khi filter) : ");
 console.log(filteredProductsList);
-
-let sortedFilteredProductsList = sortProductsByType(filteredProductsList, "default");
-
-console.log("Data cua sortedFilteredProductsList : ");
-console.log(sortedFilteredProductsList);
-console.log("Data cua filteredProductsList luc nay : ");
-console.log(filteredProductsList);
-console.log("Data cua productsList luc nay : ");
-console.log(productsList);
 
 // update text products count tren page
-document.getElementById("productsCountText").innerHTML = sortedFilteredProductsList.length;
+document.getElementById("productsCountText").innerHTML = filteredProductsList.length;
 
-if (sortedFilteredProductsList) {
+if (filteredProductsList.length > 0) {
+    // thuc hien sort
+    let sortedFilteredProductsList = sortProductsByType(filteredProductsList, "default");
+
+    console.log("Data cua sortedFilteredProductsList (sau khi sort) : ");
+    console.log(sortedFilteredProductsList);
+    console.log("Data cua filteredProductsList luc nay : ");
+    console.log(filteredProductsList);
+    console.log("Data cua productsList luc nay : ");
+    console.log(productsList);
+
     showOrGetProductsGrid(sortedFilteredProductsList, "show", "productsGridSection");
 }
 else {

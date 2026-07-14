@@ -187,7 +187,7 @@ let productsList = [
         shortDescription: "Forest Crunchill nồng nàn với bạt chocolate thấm rượu cherry và mứt dâu cherry chua dịu. Lớp mousse vanilla hạt béo mịn quyện cùng chocolate mỏng và ngũ cốc praline giòn rụm tạo cấu trúc đa tầng. Vị đắng thanh xen lẫn nét ngọt thơm nồng nàn, mang lại trải nghiệm vị giác đầy chiều sâu. ",
         description: "<p><strong>Hương vị:</strong> Đậm đà  - Chua nhẹ - Béo dịu</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Lớp crunchy chocolate đen: sự kết hợp giữa ngũ cốc giòn cùng chocolate đen và hạnh nhân hạt phỉ.</p></li><li><p>Lớp chocolate đen: phủ một lớp mỏng tạo độ giòn nhẹ.</p></li><li><p>Mousse vị vanilla: vị mousse thơm béo kết hợp cùng hạt vanilla li ti thơm lừng.</p></li><li><p>Lớp mứt cherry nấu cùng dâu và rượu cherry đậm đà.</p></li><li><p>Lớp bạt bánh chocolate đen mềm ẩm, được thấm một lớp syrup rượu cherry.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>2 muỗng nhựa</p></li>",
         isFeatured: true,
-        relatedProductIds: [132, 134]
+        relatedProductIds: [132, 134, 131]
     },
     {
         id: 134,
