@@ -399,7 +399,7 @@ if (urlParams.has("product_id") && urlParams.get("product_id") !== "") {
 }
 else {
     console.log("Khong ton tai URL param product_id hoac product_id rong!");
-    showNoProductMessage()
+    showNoProductMessage();
 }
 
 
