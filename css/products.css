@@ -61,6 +61,23 @@
 	font-size: 14px;
 }
 
+.filter-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.filter-checkbox label {
+	width: 200px;
+	padding-top: 10px;
+}
+
+.filter-checkbox input, .filter-checkbox input:checked {
+	width: 25px;
+	transform: scale(1.3);
+	border: 2px solid #999;
+}
+
 
 /* === Product Toolbar === */
 .product-toolbar {

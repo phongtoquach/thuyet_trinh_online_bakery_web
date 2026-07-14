@@ -26,7 +26,7 @@ function searchAndSortProducts(event) {
         }
     }
     else {
-        console.log("[searchAndSortProducts] Element dang phat event la Input TextBox : " + elementId);
+        console.log("[searchAndSortProducts] Element dang phat event la Input TextBox / CheckBox : " + elementId);
 
         // check xem button Sort nao dang duoc chon (tuc la co CSS class 'active')
         document.querySelectorAll('.sort-toggle-group .sort-toggle-btn').forEach(function(sortBtnEle) {
@@ -49,6 +49,16 @@ function searchAndSortProducts(event) {
     // lay value cua 2 textbox gia
     let minPriceVal = document.getElementById("minPriceTextBox").value.trim();
     let maxPriceVal = document.getElementById("maxPriceTextBox").value.trim();
+
+    // check checkbox chkOnlyFeatured co duoc check ko
+    let onlyFeaturedVal = 0;
+    if (document.getElementById("chkOnlyFeatured").checked) {
+        console.log("[searchAndSortProducts] checkbox chkOnlyFeatured dang duoc check !");
+        onlyFeaturedVal = 1;
+    }
+    else {
+        console.log("[searchAndSortProducts] checkbox chkOnlyFeatured khong duoc check !");
+    }
 
     console.log("[searchAndSortProducts] keyword ten product : " + searchedKeyword);
     console.log("[searchAndSortProducts] min price str : " + minPriceVal);
@@ -124,8 +134,7 @@ function searchAndSortProducts(event) {
     // bat dau goi ham getProductsByFilters()
     let filtersData = {
         keyword: searchedKeyword,
-        onlyFeatured: 0,
-        onlyInStock: 0,
+        onlyFeatured: onlyFeaturedVal,
         minPrice: minPriceVal,
         maxPrice: maxPriceVal
     };
@@ -161,10 +170,11 @@ function showNoSearchResultMessage(containerId="productsGridSection") {
     document.getElementById(containerId).innerHTML = `<h3>Không có sản phẩm nào được tìm thấy.</h3>`;
 }
 
-
+// bind event cho cac input trong Filters
 document.getElementById("searchKeywordTextBox").addEventListener("input", searchAndSortProducts);
 document.getElementById("minPriceTextBox").addEventListener("input", searchAndSortProducts);
 document.getElementById("maxPriceTextBox").addEventListener("input", searchAndSortProducts);
+document.getElementById("chkOnlyFeatured").addEventListener("change", searchAndSortProducts);
 
 
 // bind event click cho cac button Sort
@@ -191,13 +201,14 @@ document.getElementById("btnClearFilters").addEventListener("click", function(ev
     document.getElementById("searchKeywordTextBox").value = "";
     document.getElementById("minPriceTextBox").value = "";
     document.getElementById("maxPriceTextBox").value = "";
+    document.getElementById("chkOnlyFeatured").checked = false;
+
     document.getElementById("priceErrorMsg").style.display = "none";
 
     // chuan bi filter de get product
     let filtersData = {
         keyword: "",
         onlyFeatured: 0,
-        onlyInStock: 0,
         minPrice: "",
         maxPrice: ""
     };
@@ -237,19 +248,48 @@ document.getElementById("btnClearFilters").addEventListener("click", function(ev
 });
 
 
-// vua load page thi get all product tu mang productsList voi sort type "default"
-let sortedAllProductsList = sortProductsByType(productsList, "default");
+// check cac param trong URL
+let urlParams = new URLSearchParams(window.location.search);
 
-console.log("Data cua sortedAllProductsList : ");
-console.log(sortedAllProductsList);
+// chuan bi filter de get product
+let productFiltersData = {
+    keyword: "",
+    onlyFeatured: 0,
+    minPrice: "",
+    maxPrice: ""
+};
+
+// kiem tra trong URL co param keyword khong
+if (urlParams.has("keyword") && urlParams.get("keyword") !== "") {
+    let keywordParam = urlParams.get("keyword").trim();
+    console.log("Co URL param keyword : " + keywordParam);
+    // set cho keyword trong productFiltersData
+    productFiltersData.keyword = keywordParam;
+
+    // set value cho textbox keyword trong khu vuc Filters
+    document.getElementById("searchKeywordTextBox").value = keywordParam;
+    // set value cho textbox keyword tren Header
+    document.getElementById("txtHeaderSearch").value = keywordParam;
+}
+
+let filteredProductsList = getProductsByFilters(productFiltersData);
+console.log("Data cua filteredProductsList : ");
+console.log(filteredProductsList);
+
+let sortedFilteredProductsList = sortProductsByType(filteredProductsList, "default");
+
+console.log("Data cua sortedFilteredProductsList : ");
+console.log(sortedFilteredProductsList);
+console.log("Data cua filteredProductsList luc nay : ");
+console.log(filteredProductsList);
 console.log("Data cua productsList luc nay : ");
 console.log(productsList);
 
 // update text products count tren page
-document.getElementById("productsCountText").innerHTML = sortedAllProductsList.length;
+document.getElementById("productsCountText").innerHTML = sortedFilteredProductsList.length;
 
-if (sortedAllProductsList.length > 0) {
-    showOrGetProductsGrid(sortedAllProductsList, "show", "productsGridSection");
+if (sortedFilteredProductsList) {
+    showOrGetProductsGrid(sortedFilteredProductsList, "show", "productsGridSection");
 }
 else {
     showNoSearchResultMessage("productsGridSection");

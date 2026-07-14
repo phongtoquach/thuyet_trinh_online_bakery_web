@@ -26,7 +26,13 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
         // chuan bi product detail URL de gan vao cac thanh phan trong product card
         let productDetailsUrl = "product_details.html?product_id=" + productsData[i].id;
 
-        productsHtml += '<div class="product-card-image"><a href="' + productDetailsUrl + '" target="_blank"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '"><span class="product-card-tag">Nổi bật</span><a></div>';
+        // check isFeatured
+        let featuredTag = "";
+        if (productsData[i].isFeatured == true) {
+            featuredTag = '<span class="product-card-tag">Nổi bật</span>';
+        }
+
+        productsHtml += '<div class="product-card-image"><a href="' + productDetailsUrl + '" target="_blank"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '">' + featuredTag + '</a></div>';
         
         // open div product-card-body
         productsHtml += '<div class="product-card-body"><a href="' + productDetailsUrl + '" target="_blank"><h3>' + productsData[i].name + '</h3></a>';
@@ -97,7 +103,6 @@ function getProductDetailsById(productId) {
  * {
  *      keyword: "",
  *      onlyFeatured: 0,
- *      onlyInStock: 0,
  *      minPrice: null,
  *      maxPrice: null
  * }
@@ -114,7 +119,7 @@ function getProductsByFilters(filtersData={}) {
 
     let lowerCaseKeyword = newFiltersData.keyword.toLocaleLowerCase();
     // neu cac filter trong newFiltersData deu rong, null : lay tat ca product trong mang productsList
-    if (lowerCaseKeyword == "" && newFiltersData.onlyFeatured == 0 && newFiltersData.onlyInStock == 0 && newFiltersData.minPrice === null && newFiltersData.maxPrice === null) {
+    if (lowerCaseKeyword == "" && newFiltersData.onlyFeatured == 0 && newFiltersData.minPrice === null && newFiltersData.maxPrice === null) {
         console.log("[getProductsByFilters] Khong co filter nao trong newFiltersData. Lay tat ca product trong mang productsList !");
         return structuredClone(productsList);
     }
@@ -173,6 +178,23 @@ function getProductsByFilters(filtersData={}) {
             console.log("[getProductsByFilters] Max price null ! Bo qua filter nay !");
         }
 
+        // check newFiltersData.onlyFeatured
+        if (newFiltersData.onlyFeatured == 1) {
+            console.log("[getProductsByFilters] filter onlyFeatured = 1");
+            if (productsList[i].isFeatured == false) {
+                productIsMatched = false;
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : co isFeatured = false. NOT MATCHED!");
+                continue;
+            }
+            else {
+                console.log("[getProductsByFilters] Product " + productsList[i].id + " : co isFeatured = true. MATCHED!");
+            }
+        }
+        else {
+            console.log("[getProductsByFilters] filter onlyFeatured = " + newFiltersData.onlyFeatured + " ! Bo qua filter nay !");
+        }
+
+        // Neu product nay deu pass tat ca filter
         if (productIsMatched == true) {
             console.log("[getProductsByFilters] Product " + productsList[i].id + " da PASS ! Add vao mang searchResults !");
             let clonedProductObj = structuredClone(productsList[i]);
@@ -188,7 +210,6 @@ function handleFiltersData(filtersData) {
     let finalFilters = {
         keyword: "",
         onlyFeatured: 0,
-        onlyInStock: 0,
         minPrice: null,
         maxPrice: null
     };
@@ -222,23 +243,23 @@ function handleFiltersData(filtersData) {
     }
 
     // check onlyInStock
-    if (Object.hasOwn(filtersData, "onlyInStock")) {
-        console.log("[handleFiltersData] filtersData co attr onlyInStock ! Value : " + filtersData.onlyInStock);
-        // check co phai number ko
-        let onlyInStockVal = Number(filtersData.onlyInStock);
-        if (Number.isNaN(onlyInStockVal)) {
-            onlyInStockVal = 0;
-        }
-        // chi chap nhan 0 hoac 1
-        if (onlyInStockVal != 0 && onlyInStockVal != 1) {
-            onlyInStockVal = 0;
-        }
+    // if (Object.hasOwn(filtersData, "onlyInStock")) {
+    //     console.log("[handleFiltersData] filtersData co attr onlyInStock ! Value : " + filtersData.onlyInStock);
+    //     // check co phai number ko
+    //     let onlyInStockVal = Number(filtersData.onlyInStock);
+    //     if (Number.isNaN(onlyInStockVal)) {
+    //         onlyInStockVal = 0;
+    //     }
+    //     // chi chap nhan 0 hoac 1
+    //     if (onlyInStockVal != 0 && onlyInStockVal != 1) {
+    //         onlyInStockVal = 0;
+    //     }
 
-        finalFilters.onlyInStock = onlyInStockVal;
-    }
-    else {
-        console.log("[handleFiltersData] filtersData KHONG CO attr onlyInStock !");
-    }
+    //     finalFilters.onlyInStock = onlyInStockVal;
+    // }
+    // else {
+    //     console.log("[handleFiltersData] filtersData KHONG CO attr onlyInStock !");
+    // }
 
     // check minPrice
     if (Object.hasOwn(filtersData, "minPrice")) {
