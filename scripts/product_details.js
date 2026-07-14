@@ -363,6 +363,9 @@ function showNoProductMessage() {
 
     // hide breadcrumb
     document.getElementById("breadcrumb").style.display = "none";
+
+    // set title cua page
+    document.title = "Sản phẩm | " + websiteName;
 }
 
 
