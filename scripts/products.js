@@ -254,3 +254,7 @@ if (sortedAllProductsList.length > 0) {
 else {
     showNoSearchResultMessage("productsGridSection");
 }
+
+
+// khi vua load page, update headerCartBadgeText bang so luong item trong cart (bakeryShopCartLs)
+updateHeaderCartBadgeByCurrentCart();

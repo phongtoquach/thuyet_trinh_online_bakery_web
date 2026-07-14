@@ -23,17 +23,20 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
             productImageSrc = defaultProductImageSrc;
         }
 
-        productsHtml += '<div class="product-card-image"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '"><span class="product-card-tag">Nổi bật</span></div>';
+        // chuan bi product detail URL de gan vao cac thanh phan trong product card
+        let productDetailsUrl = "product_details.html?product_id=" + productsData[i].id;
+
+        productsHtml += '<div class="product-card-image"><a href="' + productDetailsUrl + '" target="_blank"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '"><span class="product-card-tag">Nổi bật</span><a></div>';
         
         // open div product-card-body
-        productsHtml += '<div class="product-card-body"><h3>' + productsData[i].name + '</h3>';
-        productsHtml += '<div class="short-desc">' + productsData[i].shortDescription + '</div>';
+        productsHtml += '<div class="product-card-body"><a href="' + productDetailsUrl + '" target="_blank"><h3>' + productsData[i].name + '</h3></a>';
+        productsHtml += '<div class="short-desc"><a href="' + productDetailsUrl + '" target="_blank">' + productsData[i].shortDescription + '</a></div>';
         productsHtml += '<div class="product-card-footer"><span class="product-price">' + productsData[i].price.toLocaleString("vi-VN") + 'đ</span></div>';
         
         // generate buttons : Add to cart, xem chi tiet
         productsHtml += '<div class="product-card-actions">';
         productsHtml += '<button class="add-to-cart-btn" onclick="addProductToCart(' + productsData[i].id + ')"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>';
-        productsHtml += '<a href="product_details.html?product_id=' + productsData[i].id + '" class="view-details-btn" target="_blank"><i class="fas fa-eye"></i> Xem chi tiết</a>';
+        productsHtml += '<a href="' + productDetailsUrl + '" class="view-details-btn" target="_blank"><i class="fas fa-eye"></i> Xem chi tiết</a>';
         productsHtml += "</div>";
 
         // close div product-card-body
@@ -517,6 +520,9 @@ function addProductToCart(proId, quantity=1) {
                     <span>Số lượng trong giỏ: ` + cartItemObj.quantity + `</span><br>
                     <a href="cart.html">Xem giỏ hàng</a>`;
     showToastBox("success", "Đã thêm vào giỏ hàng", toastMsg);
+
+    // update so trong Cart Badge tren Header 
+    updateHeaderCartBadgeByCurrentCart();
 }
 
 
@@ -598,6 +604,14 @@ document.getElementById('toastBox').addEventListener("mouseleave", () => {
     }
 });
 
+
+// Ham de update headerCartBadgeText bang so luong item trong cart (bakeryShopCartLs)
+function updateHeaderCartBadgeByCurrentCart() {
+    let currentCart = JSON.parse(localStorage.getItem("bakeryShopCartLs")) || [];
+    console.log("[updateHeaderCartBadgeByCurrentCart] Update header cart badge thanh : " + currentCart.length);
+    
+    document.getElementById("headerCartBadgeText").innerHTML = currentCart.length;
+}
 
 // Ham de xoa het cac item trong cart
 function clearCart() {

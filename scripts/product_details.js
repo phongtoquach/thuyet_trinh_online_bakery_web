@@ -421,3 +421,7 @@ else {
     console.log("Khong ton tai URL param product_id hoac product_id rong!");
     showNoProductMessage()
 }
+
+
+// khi vua load page, update headerCartBadgeText bang so luong item trong cart (bakeryShopCartLs)
+updateHeaderCartBadgeByCurrentCart();
