@@ -65,3 +65,7 @@ if (urlParams.has("subject")) {
         document.getElementById("contactSubject").value = subjectVal;
     }
 }
+
+
+// khi vua load page, update headerCartBadgeText bang so luong item trong cart (bakeryShopCartLs)
+updateHeaderCartBadgeByCurrentCart();
