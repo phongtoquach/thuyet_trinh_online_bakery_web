@@ -8,7 +8,7 @@ const defaultProductImageSrc = "images/default_product_image.png";
 let productsList = [
     {
         id: 123,
-        name: "b Bánh Mousse Dưa Lưới Minty",
+        name: "Bánh Mousse Dưa Lưới Minty",
         price: 545000,
         images: [
             "images/mousese-dua-luoi-minty-1.jpg",
@@ -23,14 +23,14 @@ let productsList = [
     },
     {
         id: 124,
-        name: "a Bánh Mousse Thanh Nhãn",
+        name: "Bánh Mousse Thanh Nhãn",
         price: 261000,
         images: [
-            "images/mousse-thanh-nhan.jpg",
-            "images/mousse-thanh-nhan-2.jpg",
-            "images/mousse-thanh-nhan-3.jpg",
-            "images/mousse-thanh-nhan-4.jpg",
-            "images/mousse-thanh-nhan-5.jpg"
+            // "images/mousse-thanh-nhan.jpg",
+            // "images/mousse-thanh-nhan-2.jpg",
+            // "images/mousse-thanh-nhan-3.jpg",
+            // "images/mousse-thanh-nhan-4.jpg",
+            // "images/mousse-thanh-nhan-5.jpg"
         ],
         shortDescription: "Mousse Thanh Nhãn là sự giao thoa giữa cốt choco đậm đà và mousse nhãn ngọt thanh, mát mịn. Nhân bánh gây ấn tượng với thịt nhãn giòn sần sật quyện cùng hạt dẻ béo bùi lạ miệng, thơm ngậy. Vẻ ngoài chỉn chu với nhãn tươi và hoa thủ công, mang đến trải nghiệm vị giác tinh tế, thanh mát cho ngày hè",
         description: "<p><strong>Hương vị:</strong>&nbsp;Thanh mát - Ngọt dịu - Béo nhẹ</p><p><strong>Cấu trúc bánh:</strong></p><p>Phần thân bánh gồm 3 lớp xen kẽ các lớp:</p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh.</p></li><li><p>Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li></ul><p>Phần trang trí: Trên mặt bánh decor kem topping, nhãn lon, hoa gumpaste, lá húng lủi, choco.</p><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 dao cắt bánh</p></li><li><p>1 bộ dĩa và muỗng</p></li><li><p>Hộp nến nhỏ</p></li></ul><p></p>",
@@ -40,7 +40,7 @@ let productsList = [
     },
     {
         id: 125,
-        name: "c Bánh Mousse Ngọc Nhãn",
+        name: "Bánh Mousse Ngọc Nhãn",
         price: 565000,
         images: [
             "images/mousse-ngoc-nhan.jpg",
@@ -69,7 +69,7 @@ let productsList = [
     // }
     {
         id: 126,
-        name: "j Bánh Flan Gato Strawberry",
+        name: "Bánh Flan Gato Strawberry",
         price: 350000,
         images: [
             "images/flan-gato-dau-1.jpg",
@@ -85,7 +85,7 @@ let productsList = [
     },
     {
         id: 127,
-        name: "g Bánh Flan Gato Trà Thái đỏ",
+        name: "Bánh Flan Gato Trà Thái đỏ",
         price: 555000,
         images: [
             "images/flan-tra-thai-do-1.jpg",
@@ -100,7 +100,7 @@ let productsList = [
     },
     {
         id: 128,
-        name: "m Bánh Flan Gato Fruit & Pins",
+        name: "Bánh Flan Gato Fruit & Pins",
         price: 450000,
         images: [
             "images/flan-fruit-pins-1.jpg",

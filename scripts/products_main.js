@@ -505,11 +505,22 @@ function addProductToCart(proId, quantity=1) {
                     return false;
                 }
 
+                // check mang images product nay co rong ko
+                let productImgSrc = "";
+                if (productsList[i].images.length > 0) {
+                    console.log("[addProductToCart] Product nay co image !");
+                    productImgSrc = productsList[i].images[0];
+                }
+                else {
+                    console.log("[addProductToCart] Product nay khong co image ! Su dung default image !");
+                    productImgSrc = defaultProductImageSrc;
+                }
+
                 // lay vai attribute can thiet tu product object
                 cartItemObj = {
                     productId: productsList[i].id,
                     name: productsList[i].name,
-                    image: productsList[i].images[0],
+                    image: productImgSrc,
                     unitPrice: productsList[i].price,
                     quantity: quantity
                 };
