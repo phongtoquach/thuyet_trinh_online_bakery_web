@@ -124,11 +124,11 @@ let productsList = [
         name: "Hộp Sweetin Thanh Nhãn - Special",
         price: 345000,
         images: [
-            "images/Sweetin-Thanh-Nhãn-1.jpg",
-            "images/Sweetin-Thanh-Nhãn-2.jpg",
-            "images/Sweetin-Thanh-Nhãn-3.jpg",
-            "images/Sweetin-Thanh-Nhãn-4.jpg",
-            "images/Sweetin-Thanh-Nhãn-5.jpg"
+            "images/Sweetin-Thanh-Nhan-1.jpg",
+            "images/Sweetin-Thanh-Nhan-2.jpg",
+            "images/Sweetin-Thanh-Nhan-3.jpg",
+            "images/Sweetin-Thanh-Nhan-4.jpg",
+            "images/Sweetin-Thanh-Nhan-5.jpg"
         ],
         shortDescription: "Thanh Nhãn Special là hương vị của mùa hè được gói trọn trong từng lớp bánh tươi mát, nhẹ nhàng và đậm chất nhiệt đới. Điểm đặc biệt nằm ở những ký tự bằng socola trên mặt bánh. Bộ sưu tập đang có 5 bộ chữ gồm: LOVE U, SNVV, SUMMER, 8386, VUÝP",
         description: "<p><strong>Hương vị:</strong> Béo nhẹ - ngọt dịu - thơm mùi vải</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan choco.</p></li><li><p>Mousse nhãn mềm mát mịn vị ngọt thanh. Lớp nhân nhãn có thịt nhãn giòn sần sật, lớp nhân hạt dẻ béo bùi.</p></li><li><p>Trên mặt bánh decor nhãn lon, hoa gumpaste, lá húng lủi, choco.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 thìa lá bạc</p></li>",
@@ -154,13 +154,13 @@ let productsList = [
     },
     {
         id: 131,
-        name: "Hộp Sweetin - Matcha Chocolate",
+        name: "Hộp Sweetin Dưa Lưới Minty - Special",
         price: 355000,
         images: [
-            "images/Sweetin-Dưa-Lưới-1.jpg",
-            "images/Sweetin-Dưa-Lưới-2.jpg",
-            "images/Sweetin-Dưa-Lưới-3.jpg",
-            "images/Sweetin-Dưa-Lưới-4.jpg",
+            "images/Sweetin-Dua-Luoi-1.jpg",
+            "images/Sweetin-Dua-Luoi-2.jpg",
+            "images/Sweetin-Dua-Luoi-3.jpg",
+            "images/Sweetin-Dua-Luoi-4.jpg",
         ],
         shortDescription: "Mousse Dưa Lưới mang hương vị mùa hè tươi mát với lớp mousse dưa lưới thanh ngọt kết hợp cùng cream cheese béo nhẹ và hậu vị bạc hà the mát đầy dễ chịu. Điểm nhấn của bánh nằm ở phần decor dưa lưới tươi cùng thanh choco thông điệp. Bộ sưu tập đang có 7 bộ chữ gồm: LOVE U, SNVV, SUMMER, 8386, VUÝP, Mẹ Yêu, Yêu Mẹ. ",
         description: "<p><strong>Hương vị:</strong> Béo nhẹ - Ngọt dịu - The mát</p><p><strong>Cấu trúc bánh:</strong></p><ul><li><p>Bạt bông lan vani truyền thống.</p></li><li><p>Mousse dưa lưới kết hợp với cream cheese béo nhẹ.</p></li><li><p>Nhân bạc hà tươi mát.</p></li><li><p>Decor dưa lưới tươi và thanh choco thông điệp.</p></li></ul><p><strong>Bảo quản:</strong> Bánh nên được dùng trong ngày và ngon hơn khi bảo quản lạnh trước khi thưởng thức.</p><p><strong>Phụ kiện tặng kèm:</strong></p><ul><li><p>1 thìa lá bạc</p></li>",
