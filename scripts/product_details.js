@@ -1,5 +1,5 @@
 /**
- * Ham tao HTML section Product Details (trong trang product details)
+ * Ham tao HTML section Product Details (trong trang product details) dua theo object Product duoc truyen vao ham
  */
 function showProductDetailsById(productData) {
     let productHtml = "";

@@ -29,7 +29,7 @@ function showOrGetProductsGrid(productsData, actionName="show", containerId="") 
         // check isFeatured
         let featuredTag = "";
         if (productsData[i].isFeatured == true) {
-            featuredTag = '<span class="product-card-tag">Nổi bật</span>';
+            featuredTag = '<span class="product-card-tag">Rất Nổi bật - Best Seller</span>';
         }
 
         productsHtml += '<div class="product-card-image"><a href="' + productDetailsUrl + '" target="_blank"><img src="' + productImageSrc + '" alt="' + productsData[i].name + '">' + featuredTag + '</a></div>';
@@ -103,8 +103,8 @@ function getProductDetailsById(productId) {
  * {
  *      keyword: "",
  *      onlyFeatured: 0,
- *      minPrice: null,
- *      maxPrice: null
+ *      minPrice: "",
+ *      maxPrice: ""
  * }
  * 
  */
@@ -206,6 +206,16 @@ function getProductsByFilters(filtersData={}) {
 }
 
 
+/**
+ * Ham format lai filtersData de dam bao tung attribute trong filtersData luon valid
+ * {
+ *      keyword: "",
+ *      onlyFeatured: 0,
+ *      minPrice: null,
+ *      maxPrice: null
+ * }
+ * 
+ */
 function handleFiltersData(filtersData) {
     let finalFilters = {
         keyword: "",
